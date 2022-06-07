@@ -1,0 +1,23 @@
+{
+  "title": "Survey 1",
+  "header": "Some text intro",
+  "body": "Main info text",
+  "footer": "Some end text",
+  "questions":{
+    "0": {
+      "question": "Vraag 1 .. , welk antwoord kies je?",
+      "answers": {
+          "0": "Mee eens",
+          "1": "Niet mee eens"
+      }
+    },
+    "1": {
+      "question": "Vraag 2, welk antwoord kies je?",
+      "answers": {
+          "0": "Antwoord 1",
+          "1": "Antwoord 2",
+          "2": "Antwoord 3"
+      }
+    }
+  }
+}

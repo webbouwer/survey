@@ -1,0 +1,22 @@
+{
+  "title": "Survey 2",
+  "header": "Some text intro",
+  "body": "Main info text",
+  "footer": "Some end text",
+  "questions":{
+    "0": {
+      "question": "blabla 1, welk antwoord kies je?",
+      "answers": {
+          "0": "blabla 1",
+          "1": "blabla 2"
+      }
+    },
+    "1": {
+      "question": "blabla 2, welk antwoord kies je?",
+      "answers": {
+          "0": "blabla 1 1",
+          "1": "blabla 2 2"
+      }
+    }
+  }
+}

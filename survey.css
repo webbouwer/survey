@@ -1,0 +1,26 @@
+body
+{
+
+}
+#pagecontainer
+{
+  max-width:760px;
+  margin:0px auto;
+}
+
+#previewbox
+{
+  max-height:360px;
+  overflow-y:auto;
+  background-color:#efef3e;
+}
+
+.questionbox
+{
+clear:both;
+}
+.questionbox .answerbox
+{
+  float:left;
+  margin-right:10px;
+}
