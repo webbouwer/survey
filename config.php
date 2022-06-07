@@ -9,7 +9,6 @@ $fromName  = "Webbouwer";
 $formEmail = "support@webdesigndenhaag.net";
 $fromWebsite = "webdesigndenhaag.net";
 
-
 // language
 if( !isset($lang) ){
   $lang = 'en';

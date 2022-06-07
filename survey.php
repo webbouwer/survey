@@ -3,7 +3,7 @@ include('config.php');
 
 //https://www.php.net/manual/en/timezones.europe.php
 $timezone = date_default_timezone_set('Europe/Amsterdam');
-$date = date('Y-m-d H:i:s', time());
+$date = date('Y-m-d', time());
 
 /*** check requests ***/
 if( isset($_GET['qa']) && isset($_GET['s']) ){ // participant survey id
@@ -19,11 +19,12 @@ if( isset($_GET['qa']) && isset($_GET['s']) ){ // participant survey id
   $senddate = $udata->ed;
   $qa1 = $_GET['qa'];
 
-  $expiredate = date('Y-m-d H:i:s', strtotime('+5 days', strtotime($senddate)));
+  $expiredate = date('Y-m-d', strtotime('+7 days', strtotime($senddate)));
 
   $date_diff=( strtotime( $expiredate ) - strtotime( $date ) ) / 86400;
 
-  if( round($date_diff, 0) < 1 ){
+  if( strtotime( $date ) > strtotime( $expiredate ) ){
+    //round($date_diff, 0) < 1
     // expired
     $action = 3;
   }
@@ -138,9 +139,14 @@ if( isset($_POST['sid']) && isset($_POST['action']) ){
 ?>
 
 <?php if($action == 2){
+
+
+
+
   echo '<p>'._TEXT_THANKYOUCOMPLETESEND.'</p>';
   // redirect
 } ?>
+
 <?php if($action == 3){
   echo '<p>'._LINKISEXPIRED.'</p>';
 }?>

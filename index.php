@@ -14,6 +14,9 @@ get_currentuserinfo();
 // print_r($current_user);
 */
 
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,14 +39,18 @@ get_currentuserinfo();
 
       <div>
         <p><?php echo _SELECTSURVEYLIST; ?></p>
+
         <p>
+          <?php
+          makeSurveySelectBox();
+          ?>
+          <!--
           <select id="sr" name="sr">
             <option value="0" selected="selected"><?php echo _SELECTSURVEY; ?></option>
-
             <option value="1">Lijst 1</option>
             <option value="2">Lijst 2</option>
-
           </select>
+        -->
         </p>
       </div>
 
@@ -59,6 +66,13 @@ get_currentuserinfo();
 
   <!-- javascript data<lijst>.json -->
   <script>
+
+    window.addEventListener('load', function(event) {
+      let selected = document.getElementById('sr').value;
+      if( selected != 0 ){
+        getFormData(selected);
+      }
+    });
 
     document.getElementById('sr').onchange = function() {
       getFormData(this.value);

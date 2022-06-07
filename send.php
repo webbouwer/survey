@@ -1,7 +1,7 @@
 <?php
 include('config.php');
 $timezone = date_default_timezone_set('Europe/Amsterdam');
-$date = date('Y-m-d H:i:s', time());
+$date = date('Y-m-d', time());
 $send = false; // check befor sending
 
 if( isset($_POST['sid']) && isset($_POST['sr']) ){
@@ -15,11 +15,13 @@ if( isset($_POST['sid']) && isset($_POST['sr']) ){
     "ed" => $date,
   );
   $sdata = urlencode( encrypt($key, json_encode( $udata ) ) );
-  $expiredate = date('d-m-Y', strtotime('+7 days', strtotime($date)));
+  $expiredate = date('Y-m-d', strtotime('+7 days', strtotime($date)));
 
-  $file = 'lib/list'.$_POST['sr'].'.json';
-  $json = file_get_contents($file);
-  $json_data = json_decode($json,true);
+  $lib = getSurveyFileList();
+  $json_data = $lib[$_POST['sr']]['json'];
+  //$file = 'lib/list'.$_POST['sr'].'.json';
+  //$json = file_get_contents($file);
+  //$json_data = json_decode($json,true);
   //print_r( $json_data );
   // ..
   $send = true;   // send first email with survey nr - first question
@@ -29,7 +31,7 @@ if( isset($_POST['sid']) && isset($_POST['sr']) ){
 <?php
 if($send){
 
-  $subject = _SUBJECT_SURVEYEMAIL .' '._FROM.' '.$fromName .' '._AT.' '.$fromWebsite;
+  $subject = _SUBJECT_SURVEYEMAIL .' '._FROM.' '.$fromName .' '._AT.' '.$_SERVER['HTTP_HOST'];  // $fromWebsite;
 
   $answers = '';
   if( isset( $json_data['questions'][0]['answers'] ) ){
@@ -47,7 +49,7 @@ if($send){
 
       <!-- body html -->
 
-      <div>'._EXPIRESON.''.$expiredate.'</div>
+      <div>'._EXPIRESON.' '.$expiredate.'</div>
 
       <div>'.$json_data['questions'][0]['question'].'</div>
       <div>'.$answers.'</div>
@@ -75,8 +77,8 @@ if($send){
 
   // confirm mail
   if( $retval == true ) {
-    
-    $subject2 = _SUBJECT_SURVEYCONFIRMEMAIL.' '._FROM.' '.$fromName .' '._AT.' '.$fromWebsite;
+
+    $subject2 = _SUBJECT_SURVEYCONFIRMEMAIL.' '._FROM.' '.$fromName .' '._AT.' '.$_SERVER['HTTP_HOST']; // $fromWebsite;
     $htmlContent2 = '<div>'._SURVEYLIST.' '.$_POST['sr'].' '._ISSENDTO.' '.$_POST['pn'].' - '.$_POST['pe'].'.</div>'.
       '<div>'._SURVEYEXPIRESON.' '.$expiredate.'</div>';
 
