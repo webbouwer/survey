@@ -1,0 +1,20 @@
+/* Admin Style*/
+
+
+.emailform label
+{
+  display:block;
+}
+
+.emailform label .incorrect
+{
+  border:2px solid red;
+}
+
+
+
+
+#actionbox .element .inputbox
+{
+  background-color:#cdefef;
+}
