@@ -17,8 +17,6 @@
 <script>
 jQuery(function($){
 
-
-
 });
 </script>
 
@@ -26,12 +24,13 @@ jQuery(function($){
 </head>
 <body>
 
+
   <div id="pagecontainer">
 
-    <div id="headcontainer">Survey header</div>
+    <div id="headcontainer"><div class="outermargin">Survey header</div></div>
 
     <div id="contentcontainer">
-      <div id="loginbox">
+      <div id="loginbox" class="outermargin">
 
         login here
         <form action="admin/index.php" method="post">
@@ -48,7 +47,7 @@ jQuery(function($){
         <?php
           if( isset($_GET['msg']) ){
 
-            echo '<div>'.$_GET['msg'].'</div>'; 
+            echo '<div>'.$_GET['msg'].'</div>';
 
           }
         ?>
@@ -56,8 +55,10 @@ jQuery(function($){
       </div>
     </div>
 
-    <div id="footcontainer">Survey footer</div>
+    <div id="footcontainer"><div class="outermargin">Survey Footer</div></div>
 
   </div>
+
+
 </body>
 </html>

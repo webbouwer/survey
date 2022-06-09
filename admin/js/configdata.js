@@ -21,13 +21,7 @@ jQuery(function($){
 								let fields = data['fields'];
                 $.each(data, function(idx, obj) {
 
-                    if(idx == 'fields'){
-                        /*$.each(obj, function(fkey, fieldname) {
-                            fielddata += fieldname+' ';
-                        });
-                        fielddata += '<br />';*/
-                    }else{
-
+                    if(idx != 'fields'){
                         $.each(obj, function( key, value) {
                             textdata += '<div id="nr'+idx+'" class="entry"><div class="element" data-nr="'+idx+'" data-field="'+key+'">'+fields[key]+': <span class="inputbox">'+value+'</span></div></div>';
                         });
@@ -36,7 +30,7 @@ jQuery(function($){
                 });
             }
 
-            container.html('<div id="configlist">'+fielddata + '' +textdata+'</div><a href="../logout.php">logout</a>');
+            container.html('<a href="../logout.php">logout</a><div id="configlist">' +textdata+'</div>');
 
         })
         .fail( function( data ) {
@@ -89,6 +83,12 @@ jQuery(function($){
 			saveConfigData( toSave );
 	    $(this).parent().removeClass('edit').html(txt);
 	  });
+
+    $('body').on('keyup','#configlist .inputbox.edit input.textinput',function(){ // selector ? [contenteditable=true]
+        if(event.keyCode==13){
+            $(this).blur();
+        }
+    });
 
 
 });

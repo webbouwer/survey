@@ -55,6 +55,8 @@ class loginAdmin{
     }else{
 
       $_SESSION['adminname'] = $this->adminname;
+      header('location: ../admin');
+      exit();
 
     }
 

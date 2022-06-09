@@ -4,15 +4,15 @@ jQuery(function($) {
 
     var formhtml = $('<div class="emailform"></div>');
     formhtml.append('<input id="action" name="action" type="hidden" value="input">');
-    formhtml.append('<label class="formfield"><input id="fromName" name="fromName" type="text" placeholder="Naam"><label>');
-    formhtml.append('<label class="formfield"><select id="fromEmail" name="fromEmail"><option value="support@webdesigndenhaag.net" selected="selected">support@webdesigndenhaag.net</option><option value="project@oddsized.org">project@oddsized.org</option></select><label>');
-    formhtml.append('<label class="formfield"><input id="toName" name="toName" type="text" placeholder="Naam"><label>');
+    formhtml.append('<label class="formfield"><span>From name</span><input id="fromName" name="fromName" type="text" placeholder="Naam"></label>');
+    formhtml.append('<label class="formfield"><span>From email</span><select id="fromEmail" name="fromEmail"><option value="support@webdesigndenhaag.net" selected="selected">support@webdesigndenhaag.net</option><option value="project@oddsized.org">project@oddsized.org</option></select></label>');
+    formhtml.append('<label class="formfield"><span>Recipient name</span><input id="toName" name="toName" type="text" placeholder="Naam"></label>');
     //formhtml.append('<label class="formfield"><select id="toEmail" name="toEmail"><option value="support@webdesigndenhaag.net" selected="selected">support@webdesigndenhaag.net</option><option value="project@oddsized.org">project@oddsized.org</option></select><label>');
-    formhtml.append('<label class="formfield"><input id="toEmail" name="toEmail" type="email" placeholder="Email-adres"><label>');
-    formhtml.append('<label class="formfield"><input id="subjectContent" name="subjectContent" type="text" placeholder="Subject"><label>');
-    formhtml.append('<label class="formfield"><textarea id="htmlContent" name="htmlContent" placeholder="Email content"></textarea><label>');
+    formhtml.append('<label class="formfield"><span>Recipient Email</span><input id="toEmail" name="toEmail" type="email" placeholder="Email-adres"></label>');
+    formhtml.append('<label class="formfield"><span>Subject</span><input id="subjectContent" name="subjectContent" type="text" placeholder="Subject"></label>');
+    formhtml.append('<label class="formfield"><span>Message</span><textarea id="htmlContent" name="htmlContent" placeholder="Email content"></textarea></label>');
     formhtml.append('<button class="sendbutton">Send</button>');
-    
+
     container.append(formhtml);
 
   }

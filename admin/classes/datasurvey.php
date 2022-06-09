@@ -15,7 +15,7 @@
         public  function __construct(){
 
             $this->source = new rwdata;
-            $this->filename = 'config.json';
+            $this->filename = 'data.json';
             $this->datalist = array();
 
             // check file
@@ -43,6 +43,38 @@
                   }
 
               }
+              // copy row data
+              if( isset($_REQUEST['data']) && $_REQUEST['action'] == 'copy' ){
+
+                  // replace field value
+                  if( isset($_REQUEST['data']['nr']) ){
+                    $copy = $arr[ $_REQUEST['data']['nr'] ];
+                    $copy['id'] = $copy['id'].'-copy';
+                    $arr[] = $copy;
+          	        $this->source->dataToFile( $arr, $this->filename );
+                  }
+
+              }
+              // delete row data
+              if( isset($_REQUEST['data']) && $_REQUEST['action'] == 'delete' ){
+
+                  // replace field value
+                  if( isset($_REQUEST['data']['nr']) ){
+                    unset( $arr[ $_REQUEST['data']['nr'] ] );
+          	        $this->source->dataToFile( $arr, $this->filename );
+                  }
+              }
+
+              // add new
+              if( $_REQUEST['action'] == 'new' ){
+
+                  // add new row with fields
+                  $this->defineFields();
+                  $new = $this->fields[1];
+                  $arr[] = $new;
+          	      $this->source->dataToFile( $arr, $this->filename );
+
+              }
 
 
             }
@@ -54,27 +86,40 @@
 
         }
 
+        private function defineFields(){
+
+          $this->fields = [
+                  'fields' =>
+                  [
+                  'id'=>'Id',
+                  'title'=>'Title',
+                  'desc'=>'Short desc',
+                  'salut'=>'Salutation',
+                  'introtext'=>'Intro text',
+                  'infotext'=>'Info text',
+                  'usage'=>'Help text',
+                  'endtext'=>'Outro text',
+                  'json'=>'Survey Data',
+                  ],
+                  1 =>
+                  [
+                  'id'=>'id',
+                  'title'=>'title',
+                  'desc'=>'Short description text',
+                  'salut'=>'Salutation',
+                  'introtext'=>'Introduction text following the title in the intro section',
+                  'infotext'=>'Main Info text followed by the survey section',
+                  'usage'=>'Overall usage notes and tips text for help section',
+                  'endtext'=>'Outro text (finnishing) below the survey section',
+                  'json'=>'',
+                  ],
+                ];
+        }
+
         private function setDefaultData(){
 
-            $arr = [ 'fields' =>
-                    [
-                    'sender'=>'Profile name',
-                    'email'=>'Emailaddress',
-                    'domain'=>'Website domain',
-                    'admin_name'=>'Username',
-                    'admin_pass'=>'Password',
-                    'admin_lang'=>'Language',
-                    ],
-                    1 =>
-                    [
-                      'sender'=>'Test Profiler',
-                      'email'=>'support@webdesigndenhaag.net',
-                      'domain'=>'webbouwer.org',
-                      'admin_name'=>'admin',
-                      'admin_pass'=>'admin',
-                      'admin_lang'=>'en',
-                    ],
-                ];
+          $this->defineFields();
+          $arr = $this->fields;
           $this->datalist = $arr;
 	        $this->source->dataToFile( $arr, $this->filename );
 
