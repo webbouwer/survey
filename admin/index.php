@@ -20,6 +20,8 @@ https://releases.jquery.com/
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <!-- Survey -->
+
+<script src="../util/js/pagelayers.js"></script>
 <script src="js/configdata.js"></script>
 <script src="js/surveydata.js"></script>
 <script src="js/emaildata.js"></script>

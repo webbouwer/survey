@@ -1,6 +1,6 @@
-<?php
-    /* encryptdata */
+<?php require_once('index.php');
 
+    /* encryptdata */
     require_once('rwdata.php');
 
     $activeData = new dataList;

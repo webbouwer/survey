@@ -1,8 +1,30 @@
+/*
+ * #emailform
+ * JQuery
+ * admin/js/adminview.js
+ * admin/js/surveydata.js
+ * admin/js/configdata.js
+ * - admin/classes/datasurvey.php
+ * - admin/classes/dataconfig.php
+ * - - admin/classes/rwdata.php
+ * - - - admin/classes/data/data.json
+ * - - - admin/classes/data/config.json
+ *
+*/
 jQuery(function($) {
 
-  markupEmailForm = function(container) {
+  $(document).ready(function(){
+
+  //var configs = getConfigDataTable();
+  //console.log(configs);
+  //var surveys = getSurveyDataTable();
+  //console.log(surveys);
+
+  markupEmailForm = function( container ) {
+
 
     var formhtml = $('<div class="emailform"></div>');
+
     formhtml.append('<input id="action" name="action" type="hidden" value="input">');
     formhtml.append('<label class="formfield"><span>From name</span><input id="fromName" name="fromName" type="text" placeholder="Naam"></label>');
     formhtml.append('<label class="formfield"><span>From email</span><select id="fromEmail" name="fromEmail"><option value="support@webdesigndenhaag.net" selected="selected">support@webdesigndenhaag.net</option><option value="project@oddsized.org">project@oddsized.org</option></select></label>');
@@ -83,5 +105,7 @@ jQuery(function($) {
     checkBeforeSend(form);
 
   });
+
+});// end ready
 
 });

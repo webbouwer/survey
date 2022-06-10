@@ -1,30 +1,50 @@
+/*
+ * #surveylist
+ * JQuery
+ * util/js/pagelayers.js
+ * admin/js/adminview.js
+ * admin/js/surveydata.js
+ * admin/js/configdata.js
+ * - admin/classes/datasurvey.php
+ * - admin/classes/dataconfig.php
+ * - - admin/classes/rwdata.php
+ * - - - admin/classes/data/data.json
+ * - - - admin/classes/data/config.json
+ *
+*/
 jQuery(function($){
+
+    $(document).ready(function(){
 
     var surveyData;
 
-    getSurveyDataTable = function( container ){
+    var surveyDataUrl = 'classes/datasurvey.php'; // protected
+
+    getSurveyDataTable = function( container = false ){
 
         $.ajax({
             type: 'POST',
-            url: 'classes/datasurvey.php',
+            url: surveyDataUrl,
             //data: {json: JSON.stringify(json_data)},
             dataType: 'json',
+
         }).done( function( data ) {
 
-            console.log('done');
+            //console.log('done');
             //console.log(data);
 
             var fielddata = '';
             var textdata = '';
 
-            if( data['fields']){
+            if( data['fields'] ){
 
                 surveyData = [];
 								let fields = data['fields'];
+                surveyData['fields'] = fields;
                 $.each(data, function(idx, obj) {
 
-
                     surveyData[idx] = [];
+
                     if(idx == 'fields'){
                         let fieldrow = ''; // header columns
                         $.each(obj, function(fkey, fieldname) {
@@ -48,52 +68,54 @@ jQuery(function($){
                     }
 
                 });
+                if( !container ){
+                  //console.log(surveyData);
+                  return surveyData;
+                }else{
+                  container.html('<table id="surveylist">'+fielddata + '' +textdata +'</table>');
+                }
 
             }
 
-            console.log(surveyData);
-
-            container.html('<table id="surveylist">'+fielddata + '' +textdata +'</table>');
-
         })
         .fail( function( data ) {
-            console.log('fail');
-            console.log(data);
+            console.log('failed to collect data');
+            //console.log(data);
         });
     }
 
-		saveSurveyData = function( tosave ){
+		function saveSurveyData( tosave ){
 
 			var senddata =  { 'data': tosave, 'action': 'save' };
-      console.log( senddata.data );
+      //console.log( senddata.data );
 			$.ajax({
 					type: 'POST',
-					url: 'classes/datasurvey.php',
+					url: surveyDataUrl,
 					data: senddata,
 					dataType: 'json',
 			}).done( function( data ) {
-					console.log('done');
+					//console.log('done');
 			})
 			.fail( function( data ) {
-					console.log('fail');
+					console.log('failed to save data');
 			});
 
 		}
 
-    copySurveyData = function( tocopy ){
+    function copySurveyData( tocopy ){
 
 			var senddata =  { 'data': tocopy, 'action': 'copy' };
-      console.log( senddata.data );
+      //console.log( senddata.data );
 			$.ajax({
 					type: 'POST',
-					url: 'classes/datasurvey.php',
+					url: surveyDataUrl,
 					data: senddata,
 					dataType: 'json',
 			}).done( function( data ) {
         // reload table
         let container = $('#surveylist').parent();
         getSurveyDataTable( container );
-				console.log('copied');
+				//console.log('copied');
 			})
 			.fail( function( data ) {
 					console.log('failed to copy');
@@ -101,20 +123,20 @@ jQuery(function($){
 
 		}
 
-    deleteSurveyData = function( todelete ){
+    function deleteSurveyData( todelete ){
 
 			var senddata =  { 'data': todelete, 'action': 'delete' };
-      console.log( senddata.data );
+      //console.log( senddata.data );
 			$.ajax({
 					type: 'POST',
-					url: 'classes/datasurvey.php',
+					url: surveyDataUrl,
 					data: senddata,
 					dataType: 'json',
 			}).done( function( data ) {
         // reload table
         let container = $('#surveylist').parent();
         getSurveyDataTable( container );
-				console.log('deleted');
+				//console.log('deleted');
 			})
 			.fail( function( data ) {
 					console.log('failed to delete');
@@ -122,19 +144,19 @@ jQuery(function($){
 
 		}
 
-    newSurveyData = function(){
+    function newSurveyData(){
 
 			var senddata =  { 'data': {}, 'action': 'new' };
 			$.ajax({
 					type: 'POST',
-					url: 'classes/datasurvey.php',
+					url: surveyDataUrl,
 					data: senddata,
 					dataType: 'json',
 			}).done( function( data ) {
         // reload table
         let container = $('#surveylist').parent();
         getSurveyDataTable( container );
-				console.log('new survey added');
+				//console.log('new survey added');
 			})
 			.fail( function( data ) {
 					console.log('failed to create new survey');
@@ -143,10 +165,31 @@ jQuery(function($){
 		}
 
 
-    function viewSurvey(row){
+    function editSurvey( idx ){
 
-      let cnt = 'view: '+surveyData[row]['id'];
-      addOverlay('surveyview', cnt);
+      var fields = surveyData['fields'];
+      var row = surveyData[idx];
+
+      let html = '<div id="editbox">';
+
+      html += '<div class="title">'+fields['title']+':'+row.title+'</div>';
+
+      let json = JSON.parse(row['json']); //JSON.stringify();
+
+      $.each(json, function( key, value) {
+
+        html += '<div id="nr'+idx+'" class="entry"><div class="element" data-nr="'+idx+'" data-field="'+key+'">'+key+': <span class="inputbox">'+JSON.stringify(value)+'</span></div></div>';
+
+      });
+      html += '</div>';
+      return html;
+    }
+
+
+    function viewSurvey(rowid){
+
+      let survey = editSurvey( rowid )
+      addOverlay('surveyview', survey);
 
     }
 
@@ -166,33 +209,6 @@ jQuery(function($){
       }
     }
 
-
-    /* global */
-    var pagelayers = [];
-
-    function addOverlay( id, content = 'Oooops something is missing..' )
-    {
-
-      let layer = $('<div id="'+id+'" style="display:none;" class="overLayScreen"><div class="framecontainer outermargin"><div class="contentbox">'+content+'</div><button type=button class="closeOverlay"><span>close</span></button></div></div>');
-
-      if( $('body').find('.overLayScreen').length > 0){
-        $('body').find('.overLayScreen').fadeOut(500, function(){
-          $(this).remove();
-          $('body').append(layer);
-          layer.fadeIn(500);
-        });
-      }else{
-        $('body').append(layer);
-        layer.fadeIn(500);
-      }
-
-    }
-
-    function removeOverlay(){
-      $('body').find('.overLayScreen').fadeOut(500, function(){
-        $(this).remove();
-      });
-    }
 
 
 
@@ -255,5 +271,6 @@ jQuery(function($){
       removeOverlay();
     });
 
+  }); // end ready
 
 });

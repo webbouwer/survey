@@ -1,4 +1,5 @@
-<?php
+<?php require_once('index.php');
+
 $sendEmail = new sendHTMLEmail;
 
 class sendHTMLEmail{

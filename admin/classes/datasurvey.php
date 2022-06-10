@@ -1,4 +1,4 @@
-<?php
+<?php require_once('index.php');
     /* encryptdata */
 
     require_once('rwdata.php');
@@ -88,6 +88,32 @@
 
         private function defineFields(){
 
+          $json = [
+            "0"=> [
+              "question"=> "Vraag 1 .. , welk antwoord kies je?",
+              "type"  => "range",
+              "tips"  => "This is a survey",
+              "answers"=> [
+                  "0"=> "Mee eens",
+                  "1"=> "Maakt niet uit",
+                  "2"=> "Niet mee eens"
+              ]
+            ],
+            "1"=> [
+              "question"=> "Vraag 2, welk antwoord kies je?",
+              "type"  => "select",
+              "tips"  => "Answer this question",
+              "answers"=> [
+                  "0"=> "Antwoord 1",
+                  "1"=> "Antwoord 2",
+                  "2"=> "Antwoord 3",
+                  ]
+              ]
+
+          ];
+
+          $surveysetup = json_encode($json, true);
+
           $this->fields = [
                   'fields' =>
                   [
@@ -111,7 +137,8 @@
                   'infotext'=>'Main Info text followed by the survey section',
                   'usage'=>'Overall usage notes and tips text for help section',
                   'endtext'=>'Outro text (finnishing) below the survey section',
-                  'json'=>'',
+                  'json'=>$surveysetup,
+
                   ],
                 ];
         }

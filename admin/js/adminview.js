@@ -1,5 +1,19 @@
+/*
+* #pagecontainer
+* JQuery
+* admin/js/adminview.js
+* util/js/pagelayers.js
+* admin/js/surveydata.js
+* admin/js/configdata.js
+* - admin/classes/datasurvey.php
+* - admin/classes/dataconfig.php
+* - - admin/classes/rwdata.php
+* - - - admin/classes/data/data.json
+* - - - admin/classes/data/config.json
+*/
 jQuery(function($){
 
+    $(document).ready(function(){
     /* admin specific */
 
     const actionmenu = $('#actionmenu');
@@ -15,10 +29,6 @@ jQuery(function($){
       'configadmin': 'Profile',
     }
 
-
-
-    $(document ).ready(function() {
-
       function createMenu( id, data, container){
         let menu = $('<ul id="'+id+'"></ul>');
         $.each(adminmenu, function(k, v) {
@@ -27,7 +37,6 @@ jQuery(function($){
         container.html( menu );
       }
       createMenu( "adminmenu", adminmenu, actionmenu); //actionmenu.html( '<ul id="adminmenu"><li id="homeadmin">Home</li>..
-
 
       function getDashboard(){
         actionbox.html('<div><h1>Dashboard</h1><p>Kies een optie voor beheer</p></div>');
@@ -72,6 +81,6 @@ jQuery(function($){
 
       getDashboard();
 
-    });
+    }); // end ready
 
 });

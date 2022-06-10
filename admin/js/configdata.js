@@ -1,22 +1,36 @@
-
+/*
+* #configlist
+* JQuery
+* admin/js/adminview.js
+* util/js/pagelayers.js
+* admin/js/configdata.js
+* - admin/classes/dataconfig.php
+* - - admin/classes/rwdata.php
+* - - - admin/classes/data/config.json
+*/
 jQuery(function($){
 
-    getConfigDataTable = function( container ){
+
+    $(document).ready(function(){
+
+    var configDataUrl = 'classes/dataconfig.php'; // protected
+
+    getConfigDataTable = function( container = false ){
 
         $.ajax({
             type: 'POST',
-            url: 'classes/dataconfig.php',
+            url: configDataUrl,
             //data: {json: JSON.stringify(json_data)},
             dataType: 'json',
         }).done( function( data ) {
 
-            console.log('done');
-            console.log(data);
+            //console.log('done');
+            //console.log(data);
 
             var fielddata = '';
             var textdata = '';
 
-            if( data['fields']){
+            if( data['fields'] ){
 
 								let fields = data['fields'];
                 $.each(data, function(idx, obj) {
@@ -28,14 +42,18 @@ jQuery(function($){
                     }
 
                 });
-            }
+                if( !container ){
+                  return data;
+                }else{
+                  container.html('<a href="../logout.php">logout</a><div id="configlist">' +textdata+'</div>');
+                }
 
-            container.html('<a href="../logout.php">logout</a><div id="configlist">' +textdata+'</div>');
+            }
 
         })
         .fail( function( data ) {
-            console.log('fail');
-            console.log(data);
+            console.log('failed to collect data');
+            //console.log(data);
         });
     }
 
@@ -46,18 +64,18 @@ jQuery(function($){
 			var senddata =  { 'data': tosave, 'action': 'save' };
 			$.ajax({
 					type: 'POST',
-					url: 'classes/dataconfig.php',
+					url: configDataUrl,
 					data: senddata,
 					dataType: 'json',
 			}).done( function( data ) {
-					console.log('done');
+					//console.log('done');
 					//console.log(data);
 					//displayList(data); //(for admins)
 					//alert( JSON.stringify( data ) );
 
 			})
 			.fail( function( data ) {
-					console.log('fail');
+					console.log('failed to save data');
 					//console.log(data);
 			});
 
@@ -90,5 +108,5 @@ jQuery(function($){
         }
     });
 
-
+  });// end ready
 });
