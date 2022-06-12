@@ -1,7 +1,5 @@
 <?php session_start();
 
-require_once('rwdata.php');
-
 $loginAdmin = new loginAdmin;
 
 class loginAdmin{
@@ -11,10 +9,6 @@ class loginAdmin{
   private $result     = array();
   private $redirect   = '../login.php';
 
-  //private $source;
-  //private $filename;
-  //private $fields;
-  //private $datalist;
 
   public  function __construct(){
 
@@ -35,7 +29,7 @@ class loginAdmin{
 
 
         // .. find adminname in archive...
-      
+
         if( $_REQUEST['name'] != $this->defaultname ){
           $this->result['chk'] = 0;
           $this->result['msg'] = 'Login name not correct';

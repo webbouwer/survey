@@ -5,11 +5,9 @@ require("admin/components/classes/template.php");
 $template = new Template();
 $template->file("public/theme/index.tpl"); // route
 
-
 $htmlhead = '<link rel="stylesheet" href="public/theme/css/style.css" type="text/css" media="all" />'
 .'<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>'
-.'<script src="admin/components/js/login.js"></script>'; 
-
+.'<script src="admin/components/js/login.js"></script>';
 
 function htmlLoginbox(){
 
@@ -27,7 +25,6 @@ function htmlLoginbox(){
     }
 
   $loginbox .= '</div>';
-
   return $loginbox;
 }
 
