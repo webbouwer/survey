@@ -1,6 +1,6 @@
 <?php session_start();
 
-//require_once('rwdata.php');
+require_once('rwdata.php');
 
 $loginAdmin = new loginAdmin;
 
@@ -35,15 +35,14 @@ class loginAdmin{
 
 
         // .. find adminname in archive...
-        //$this->matchAccount( $_REQUEST['name'], $_REQUEST['pass'] );
-
+      
         if( $_REQUEST['name'] != $this->defaultname ){
           $this->result['chk'] = 0;
           $this->result['msg'] = 'Login name not correct';
         }
         if( $_REQUEST['pass'] != $this->defaultpassword ){
           $this->result['chk'] = 0;
-          $this->result['msg'] = 'Login password not correct';
+          $this->result['msg'] = $list; //'Login password not correct';
         }
 
         if( $this->result['chk'] == 0 ){
@@ -71,40 +70,8 @@ class loginAdmin{
     }
 
   }
-/*
-  public function matchAccount( $name, $pass ){
-
-    $this->source = new rwdata;
-    $this->filename = 'config.json';
-    $this->datalist = array();
-    $arr = $this->source->dataFromFile( $this->filename );
-    if( is_array($arr) && isset($arr['fields']) ){
-      $this->datalist = $arr;
-
-      while (list($key, $val) = each($this->datalist)){
-        if($val != 'fields'){
-          $nm = array_search( $name , $this->datalist[$key] );
-          if( $nm == 'admin_name' ){
-            $this->result['chk'] = 0;
-            $this->result['msg'] = 'Login name correct';
-            $pw = array_search( $pass , $this->datalist[$key] );
-            if( $pw == 'admin_pass' ){
-                $this->result['chk'] = 1;
-                $this->result['msg'] = 'Login correct';
-            }else{
-              $this->result['chk'] = 0;
-              $this->result['msg'] = 'Login password not correct';
-            }
-            break;
-          }
-
-        }
-      }
 
 
-    }
-  }
-*/
   public function logoutAdmin(){
 
     unset($_SESSION['adminname']);

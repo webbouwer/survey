@@ -1,13 +1,5 @@
-/*
-* #configlist
-* JQuery
-* admin/js/adminview.js
-* util/js/pagelayers.js
-* admin/js/configdata.js
-* - admin/classes/dataconfig.php
-* - - admin/classes/rwdata.php
-* - - - admin/classes/data/config.json
-*/
+
+
 jQuery(function($){
 
 
@@ -20,7 +12,7 @@ jQuery(function($){
         $.ajax({
             type: 'POST',
             url: configDataUrl,
-            //data: {json: JSON.stringify(json_data)},
+            data: {'action': 'list', 'name': 'admin' },
             dataType: 'json',
         }).done( function( data ) {
 
@@ -72,7 +64,7 @@ jQuery(function($){
 
 			})
 			.fail( function( data ) {
-					console.log('failed to save data');
+					//console.log('failed to save data');
 					//console.log(data);
 			});
 

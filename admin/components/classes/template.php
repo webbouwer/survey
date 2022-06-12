@@ -7,24 +7,6 @@ class Template{
 
   public function __construct(){
 
-    /*
-      $modlist = ['adminbar','config','content'];
-
-      foreach ($modlist as $dir){
-
-        $file = 'components/modules/'.$dir.'/'.$dir.'.php';
-
-        if(file_exists('components/modules/'.$dir.'/'.$dir.'.php')){
-          ob_start();
-          include($file);
-          $content = ob_get_clean();
-          $this->modules[$dir] = $content;
-        }
-
-      }
-
-    */
-
   }
 
   // Open the file and store the content
@@ -44,5 +26,27 @@ class Template{
      $this->content = str_replace('{'.$var.'}', $val, $this->content);
   }
 
+  public function searchDataList( $url, $var ){
 
+    if (file_exists( $url ) && isset($var) ){
+
+      $data = json_encode($var);
+
+      $options = array(
+          'http' => array(
+              'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+              'method'  => 'POST',
+              'content' => http_build_query($data)
+          )
+      );
+      $context  = stream_context_create($options);
+      $result = file_get_contents($url, false, $context);
+      if ($result) {
+        return $result;
+      }
+    }
+    return false;
+
+
+  }
 }

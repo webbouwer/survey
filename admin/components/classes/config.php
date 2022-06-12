@@ -40,17 +40,44 @@
                   if( isset($_REQUEST['data']['nr']) && isset($_REQUEST['data']['field']) && isset($_REQUEST['data']['content']) ){
                     $arr[ $_REQUEST['data']['nr'] ][ $_REQUEST['data']['field'] ] = $_REQUEST['data']['content'];
           	        $this->source->dataToFile( $arr, $this->filename );
-                  } 
+                  }
 
               }
-
-
+              if( $_REQUEST['action'] == 'list' ){
+                print_r(json_encode($this->datalist));
+              }
+              if( $_REQUEST['action'] == 'login' ){
+                //echo json_encode($this->datalist);
+                if( isset($_REQUEST['name']) && isset($_REQUEST['pass']) ){
+                  //print_r(json_encode($arr));
+                  $chk = 0;
+                  $msg = '';
+                  foreach($this->datalist as $key => $val){
+                    if( $key != 'fields'){
+                      foreach($this->datalist[$key] as $f => $c ){
+                        if( $f == 'admin_name' && $c == $_REQUEST['name']){
+                          if( $this->datalist[$key]['admin_pass'] == $_REQUEST['pass']){
+                            $chk = 1;
+                            $msg = 'Login!';
+                            $_SESSION['adminname'] = $_REQUEST['name'];
+                            break;
+                          }else{
+                            $msg = 'Password does not match';
+                            break;
+                          }
+                        }else{
+                          $msg = 'Name does not match';
+                        }
+                      }
+                    }
+                  }
+                  $arr = ['chk' => $chk, 'msg' => $msg];
+                  print_r(json_encode($arr));
+                  //print_r(json_encode($this->datalist[$key]))
+                }
+              }
             }
 
-            // remove data
-
-            //echo json_encode($this->datalist);
-            print_r(json_encode($arr));
 
         }
 
