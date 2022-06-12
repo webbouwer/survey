@@ -12,7 +12,7 @@ jQuery(function($){
         $.ajax({
             type: 'POST',
             url: configDataUrl,
-            data: {'action': 'list', 'name': 'admin' },
+            data: {'action': 'list', 'name': 'check' },
             dataType: 'json',
         }).done( function( data ) {
 
@@ -26,7 +26,11 @@ jQuery(function($){
 
                     if(idx != 'fields'){
                         $.each(obj, function( key, value) {
+                          if( key == 'admin_pass'){
+                            textdata += '<div id="nr'+idx+'" class="entry"><div class="element" data-nr="'+idx+'" data-field="'+key+'">'+fields[key]+': <span class="inputbox password"><input style="border:none;" class="password" type="password" value="'+value+'"/></span></div></div>';
+                          }else{
                             textdata += '<div id="nr'+idx+'" class="entry"><div class="element" data-nr="'+idx+'" data-field="'+key+'">'+fields[key]+': <span class="inputbox">'+value+'</span></div></div>';
+                          }
                         });
                     }
 
@@ -74,21 +78,33 @@ jQuery(function($){
 
 
 
-		$('body').on('click', '#configlist .inputbox:not(.edit)', function() {
+		$('body').on('click touchstart', '#configlist .inputbox:not(.edit)', function() {
 
-	    let txt = $(this).html().trim();
-	    let inp = $('<input class="textinput" type="text" value="' + txt + '" />');
+      let txt = $(this).html().trim();
+      if( $(this).find('input').hasClass('password') ){
+        txt = $(this).find('input').val();
+        $(this).html('');
+      }
+         let type = 'text';
+	       let inp = $('<input class="textinput" type="text" value="' + txt + '" />');
 
 	    $(this).addClass('edit');
 	    $(this).html(inp);
 			$('body').find('#configlist .inputbox.edit input.textinput').select();
+
 	  });
 
 	  $('body').on('blur', '#configlist .inputbox.edit input.textinput', function() {
 	    let txt = $(this).val();
 			let toSave = { 'nr': $(this).parent().parent().data('nr'), 'field': $(this).parent().parent().data('field'), 'content': txt };
 			saveConfigData( toSave );
-	    $(this).parent().removeClass('edit').html(txt);
+      if( $(this).parent().hasClass('password') ){
+        txt = '<input style="border:none;" class="password" type="password" value="'+txt+'"/>'
+      }
+      $(this).parent().removeClass('edit').html(txt);
+
+
+
 	  });
 
     $('body').on('keyup','#configlist .inputbox.edit input.textinput',function(){ // selector ? [contenteditable=true]

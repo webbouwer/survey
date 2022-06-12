@@ -26,30 +26,6 @@ jQuery(function($){
                 $('body').find('#loginbox .loginmessage').html(data['msg']).fadeIn(500);
               });
             }
-            /*
-              var fielddata = '';
-              var textdata = '';
-
-              if( data['fields'] ){
-
-                  let fields = data['fields'];
-                  $.each(data, function(idx, obj) {
-
-                      if(idx != 'fields'){
-                          $.each(obj, function( key, value) {
-
-                              textdata += '<div id="nr'+idx+'" class="entry"><div class="element" data-nr="'+idx+'" data-field="'+key+'">'+fields[key]+': <span class="inputbox">'+value+'</span></div></div>';
-                          });
-                      }
-
-                  });
-                  //console.log(data);
-                  return data;
-
-
-              }
-              */
-
           })
           .fail( function( data ) {
               console.log('failed to collect data');

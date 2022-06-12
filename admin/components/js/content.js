@@ -11,7 +11,7 @@ jQuery(function($){
         //'homeadmin': 'Dashboard',
         //'sendadmin': 'Send',
         //'activityadmin': 'Activity',
-        'survey': 'Surveys',
+        //'survey': 'Surveys',
         'config': 'Config',
         'logout': 'Logout',
       }
