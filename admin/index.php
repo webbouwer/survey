@@ -6,7 +6,9 @@ $template->file("components/themes/theme/admin.php"); // route
 
 $htmlhead = '<link rel="stylesheet" href="components/themes/theme/css/style.css" type="text/css" media="all" />'
 .'<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>'
+.'<script src="components/js/pagelayers.js"></script>'
 .'<script src="components/js/content.js"></script>'
+.'<script src="components/js/datalist.js"></script>'
 .'<script src="components/js/config.js"></script>';
 
 $adminbar = '<div id="adminbar"></div>';

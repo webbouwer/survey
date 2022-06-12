@@ -11,7 +11,7 @@ jQuery(function($){
         'home': 'Dashboard',
         //'sendadmin': 'Send',
         //'activityadmin': 'Activity',
-        //'survey': 'Surveys',
+        'data': 'Data',
         'config': 'Config',
         'logout': 'Logout',
       }
@@ -41,7 +41,9 @@ jQuery(function($){
       $('body').on('click touchstart', '#adminbar .home', function() {
         homePage();
       });
-
+      $('body').on('click touchstart', '#adminbar .data', function() {
+        getTableData( actionbox );
+      });
       $('body').on('click touchstart', '#adminbar .config', function() {
         getConfigs();
       });
