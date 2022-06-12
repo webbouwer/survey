@@ -13,10 +13,11 @@
 <body>
   <div id="pagecontainer">
     <div id="headcontainer">
-        {adminbar}
+
         <div class="outermargin">
           <div id="headcontent">
             {header}
+            {adminbar}
           </div>
         </div>
       </div>

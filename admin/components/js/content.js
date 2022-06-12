@@ -8,7 +8,7 @@ jQuery(function($){
       var footerbox = $('#footcontent');
 
       let adminmenu = {
-        //'homeadmin': 'Dashboard',
+        'home': 'Dashboard',
         //'sendadmin': 'Send',
         //'activityadmin': 'Activity',
         //'survey': 'Surveys',
@@ -26,6 +26,10 @@ jQuery(function($){
         createMenu( "adminmenu", adminmenu, adminbox);
 
 
+      function homePage(){
+        window.location.href = 'index.php';
+      }
+
       function getConfigs(){
         getConfigDataTable( actionbox );
       }
@@ -33,6 +37,10 @@ jQuery(function($){
       function logOut(){
         window.location.href = '../logout.php';
       }
+
+      $('body').on('click touchstart', '#adminbar .home', function() {
+        homePage();
+      });
 
       $('body').on('click touchstart', '#adminbar .config', function() {
         getConfigs();
