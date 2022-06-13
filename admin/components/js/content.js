@@ -9,7 +9,7 @@ jQuery(function($){
 
       let adminmenu = {
         'home': 'Dashboard',
-        //'sendadmin': 'Send',
+        'send': 'Send',
         //'activityadmin': 'Activity',
         'data': 'Data',
         'config': 'Config',
@@ -34,6 +34,11 @@ jQuery(function($){
         getConfigDataTable( actionbox );
       }
 
+      function getEmailMarkup(){
+        actionbox.html('<div><h1>Versturen</h1><p>Vul in en verstuur</p><div id="emaildata"></div></div>');
+        markupEmailForm( $('#emaildata') );
+      }
+
       function logOut(){
         window.location.href = '../logout.php';
       }
@@ -41,13 +46,17 @@ jQuery(function($){
       $('body').on('click touchstart', '#adminbar .home', function() {
         homePage();
       });
+
+      $('body').on('click touchstart', '#adminbar .send', function() {
+        getEmailMarkup();
+      }); 
+
       $('body').on('click touchstart', '#adminbar .data', function() {
         getTableData( actionbox );
       });
       $('body').on('click touchstart', '#adminbar .config', function() {
         getConfigs();
       });
-
 
       $('body').on('click touchstart', '#adminbar .logout', function() {
         logOut();

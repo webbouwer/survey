@@ -3,10 +3,14 @@ class Template{
 
   protected $content;
 
+  public $scripts = [];
   public $modules = [];
 
   public function __construct(){
 
+      // register  js, css and tpl file urls from modules (folder)
+      //$modules[] = ['name'=>'','js'=>[],'css'=>[]]
+      
   }
 
   // Open the file and store the content
