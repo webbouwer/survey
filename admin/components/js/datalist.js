@@ -25,16 +25,14 @@ jQuery(function($){
 
             if( data['fields'] ){
 
-                datalist = [];
+                datalist = data;
 								let fields = data['fields'];
-                datalist['fields'] = fields;
                 $.each(data, function(idx, obj) {
-
-                    datalist[idx] = [];
 
                     if(idx == 'fields'){
                         let fieldrow = ''; // header columns
                         $.each(obj, function(fkey, fieldname) {
+                          datalist[idx][fkey] = fieldname;
                           if( fkey == 'id' || fkey == 'title' || fkey == 'desc')
                             fieldrow += '<th class="fieldname">'+fieldname+'</th>';
                         });
@@ -55,8 +53,9 @@ jQuery(function($){
                     }
 
                 });
+
+                //console.log(datalist);
                 if( !container ){
-                  //console.log(datalist);
                   return datalist;
                 }else{
                   container.html('<table id="datalist">'+fielddata + '' +textdata +'</table>');
@@ -159,13 +158,31 @@ jQuery(function($){
 
       let html = '<div id="editbox">';
 
-      html += '<div class="title">'+fields['title']+':'+row.title+'</div>';
+      html += '<div class="element" data-nr="'+idx+'" data-field="title">';
+      html += '<div class="title">'+fields['title']+': <span class="inputbox">'+row.title+'</span></div>';
+      html += '</div>';
 
       let json = JSON.parse(row['json']); //JSON.stringify();
 
       $.each(json, function( key, value) {
 
-        html += '<div id="nr'+idx+'" class="entry"><div class="element" data-nr="'+idx+'" data-field="'+key+'">'+key+': <span class="inputbox">'+JSON.stringify(value)+'</span></div></div>';
+        html += '<div id="nr'+idx+'" class="entry">';
+        $.each(value, function( rkey, rvalue) {
+        html += '<div class="element json" data-nr="'+idx+'" data-field="'+rkey+'">';
+        if( $.isArray(rvalue) ){
+          html += '<div class="subelements json" data-field="'+rkey+'">';
+          let c = 0;
+          $.each(rvalue, function( fkey, fvalue) {
+            html += '<div class="json" data-field="'+fkey+'" data-field="'+c+'">'+fkey+': <span class="inputbox">'+fvalue+'</span></div>';
+            c++;
+          });
+          html += '</div>';
+        }else{
+          html += ''+rkey+': <span class="inputbox">'+rvalue+'</span>';
+        }
+        html += '</div>';
+        });
+        html += '</div>';
 
       });
       html += '</div>';
@@ -200,7 +217,7 @@ jQuery(function($){
 
 
 
-    // inline edit
+    // inline edit datalist
 		$('body').on('click touchstart', '#datalist .inputbox:not(.edit)', function() {
 
 	    let txt = $(this).html().trim();
@@ -232,6 +249,45 @@ jQuery(function($){
         }
     });
 
+    // inline edit datalist-editbox
+		$('body').on('click touchstart', '#editbox .inputbox:not(.edit)', function() {
+
+	    let txt = $(this).html().trim();
+	    let inp = $('<input class="textinput" type="text" value="' + txt + '" />');
+
+	    $(this).addClass('edit');
+	    $(this).html(inp);
+			$('body').find('#editbox .inputbox.edit input.textinput').select();
+	  });
+
+	  $('body').on('blur', '#editbox .inputbox.edit input.textinput', function() {
+	    let txt = $(this).val();
+      if( $(this).parent().parent().hasClass('json') ){
+        console.log('saving sub elements to json variable');
+      }else{
+        console.log('saving element to field in row');
+      }
+      /*
+			let toSave = { 'nr': $(this).parent().parent().data('nr'), 'field': $(this).parent().parent().data('field'), 'content': txt };
+			saveDataList( toSave );
+      */
+	    $(this).parent().removeClass('edit').html(txt);
+      /*
+      if( toSave.field == 'id'){ //id changed
+        let container = $('#datalist').parent();
+        setTimeout( function(){
+          getTableData( container );
+        }, 10);
+      }
+      */
+	  });
+
+    $('body').on('keyup','#editbox .inputbox.edit input.textinput',function(){ // selector ? [contenteditable=true]
+        if(event.keyCode==13){
+            $(this).blur();
+        }
+    });
+
     /* Page layer */
 
       addOverlay = function( id, content = 'Oooops something is missing..', type = false )
@@ -258,7 +314,7 @@ jQuery(function($){
           $(this).remove();
         });
       }
-     
+
 
 
     /* Data row actions */

@@ -57,10 +57,11 @@ jQuery(function($) {
     }
 
     if (chk.status == 'send') {
-      //alert('Email submit: ' + JSON.stringify(chk.tosend));
       toSend = chk.tosend;
       setMessagebox('Sending email..');
-      sendHTMLEmail( toSend );
+      setTimeout( 300, function(){
+        sendHTMLEmail( toSend );
+      });
     }
 
   }
@@ -81,17 +82,10 @@ jQuery(function($) {
           data: senddata,
           dataType: 'json',
         }).done(function(data) {
-          //console.log('email send');
-          //console.log(data);
           setMessagebox(data['msg']);
-          //displayList(data); //(for admins)
-          //alert( JSON.stringify( data ) );
         })
         .fail(function(data) {
-          //console.log('sending failed');
-          //console.log(data);
           setMessagebox(data['msg']);
-
         });
 
     } else {
@@ -100,8 +94,6 @@ jQuery(function($) {
         "status": "failed",
         "msg": "Error: Not enough or incorrect data to send an email."
       };
-      //console.log('sending failed');
-      //console.log(data);
       setMessagebox(data['msg']);
 
     }
