@@ -1,1 +1,68 @@
- 
+/**/
+
+body
+{
+
+}
+
+.outermargin
+{
+
+}
+
+/* tool elements */
+button
+{
+
+}
+button.small
+{
+
+}
+
+button.closeOverlay
+{
+
+}
+button.closeOverlay span
+{
+
+}
+
+.layer
+{
+
+}
+
+.overLayScreen.layer
+{
+
+}
+
+/* datalist */
+#dataview.overLayScreen.layer
+{
+
+}
+
+
+
+#dataview.overLayScreen.layer .framecontainer.outermargin
+{
+
+}
+
+#dataview.overLayScreen.layer .framecontainer .contentbox #editbox
+{
+
+}
+
+#dataview #editbox > div.element.row span.inputbox
+{
+
+}
+
+#dataview #editbox > div.entry.json .element span.inputbox
+{
+
+}

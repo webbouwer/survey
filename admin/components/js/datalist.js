@@ -80,7 +80,7 @@ jQuery(function($){
 					data: senddata,
 					dataType: 'json',
 			}).done( function( data ) {
-					//console.log('done');
+					console.log(senddata);
 			})
 			.fail( function( data ) {
 					console.log('failed to save data');
@@ -156,24 +156,28 @@ jQuery(function($){
       var fields = datalist['fields'];
       var row = datalist[idx];
 
-      let html = '<div id="editbox">';
+      let html = '<div id="editbox" data-nr="'+idx+'">';
 
-      html += '<div class="element" data-nr="'+idx+'" data-field="title">';
-      html += '<div class="title">'+fields['title']+': <span class="inputbox">'+row.title+'</span></div>';
-      html += '</div>';
+      $.each(row, function( fieldkey, fieldvalue) {
+        if( fieldkey != 'json'){
+          html += '<div class="element row" data-nr="'+idx+'" data-field="'+fieldkey+'">';
+          html += ''+fields[fieldkey]+': <span class="inputbox">'+fieldvalue+'</span>';
+          html += '</div>';
+        }
+      });
 
       let json = JSON.parse(row['json']); //JSON.stringify();
 
       $.each(json, function( key, value) {
 
-        html += '<div id="nr'+idx+'" class="entry">';
+        html += '<div data-nr="'+idx+'" class="entry json">';
         $.each(value, function( rkey, rvalue) {
-        html += '<div class="element json" data-nr="'+idx+'" data-field="'+rkey+'">';
+        html += '<div class="element" data-field="'+rkey+'">';
         if( $.isArray(rvalue) ){
-          html += '<div class="subelements json" data-field="'+rkey+'">';
+          html += '<div class="subelements" data-field="'+rkey+'">';
           let c = 0;
           $.each(rvalue, function( fkey, fvalue) {
-            html += '<div class="json" data-field="'+fkey+'" data-field="'+c+'">'+fkey+': <span class="inputbox">'+fvalue+'</span></div>';
+            html += '<div data-field="'+fkey+'">'+fkey+': <span class="inputbox">'+fvalue+'</span></div>';
             c++;
           });
           html += '</div>';
@@ -216,77 +220,86 @@ jQuery(function($){
 
 
 
-
     // inline edit datalist
-		$('body').on('click touchstart', '#datalist .inputbox:not(.edit)', function() {
-
+		$('body').on('click touchstart', '#datalist .inputbox:not(.edit),#editbox .row .inputbox:not(.edit)', function() {
 	    let txt = $(this).html().trim();
 	    let inp = $('<input class="textinput" type="text" value="' + txt + '" />');
-
 	    $(this).addClass('edit');
 	    $(this).html(inp);
-			$('body').find('#datalist .inputbox.edit input.textinput').select();
+			$('body').find('#datalist .inputbox.edit input.textinput,#editbox .row .inputbox.edit input.textinput').select();
 	  });
-
-	  $('body').on('blur', '#datalist .inputbox.edit input.textinput', function() {
+	  $('body').on('blur', '#datalist .inputbox.edit input.textinput,#editbox .row .inputbox.edit input.textinput', function() {
 	    let txt = $(this).val();
 			let toSave = { 'nr': $(this).parent().parent().data('nr'), 'field': $(this).parent().parent().data('field'), 'content': txt };
 			saveDataList( toSave );
 	    $(this).parent().removeClass('edit').html(txt);
-
-      if( toSave.field == 'id'){ //id changed
+      //if( toSave.field == 'id' ){ //id changed
         let container = $('#datalist').parent();
         setTimeout( function(){
           getTableData( container );
         }, 10);
-      }
-
+      //}
 	  });
-
-    $('body').on('keyup','#datalist .inputbox.edit input.textinput',function(){ // selector ? [contenteditable=true]
+    $('body').on('keyup','#datalist .inputbox.edit input.textinput,#editbox .row .inputbox.edit input.textinput',function(){ // selector ? [contenteditable=true]
         if(event.keyCode==13){
             $(this).blur();
         }
     });
 
-    // inline edit datalist-editbox
-		$('body').on('click touchstart', '#editbox .inputbox:not(.edit)', function() {
+
+    // inline edit datalist[row][]'json'] editbox
+		$('body').on('click touchstart', '#editbox .json .inputbox:not(.edit)', function() {
 
 	    let txt = $(this).html().trim();
 	    let inp = $('<input class="textinput" type="text" value="' + txt + '" />');
-
 	    $(this).addClass('edit');
 	    $(this).html(inp);
-			$('body').find('#editbox .inputbox.edit input.textinput').select();
+			$('body').find('#editbox .json .inputbox.edit input.textinput').select();
 	  });
 
-	  $('body').on('blur', '#editbox .inputbox.edit input.textinput', function() {
+	  $('body').on('blur', '#editbox .json .inputbox.edit input.textinput', function() {
+
 	    let txt = $(this).val();
-      if( $(this).parent().parent().hasClass('json') ){
-        console.log('saving sub elements to json variable');
-      }else{
-        console.log('saving element to field in row');
-      }
-      /*
-			let toSave = { 'nr': $(this).parent().parent().data('nr'), 'field': $(this).parent().parent().data('field'), 'content': txt };
-			saveDataList( toSave );
-      */
+      let obj = $(this).parent().removeClass('edit').html(txt);
+      let json = {};
+      // row
+      $('#editbox .entry.json').each(function (i, e) {
+        json[i] = {}; // the json row
+        $(e).find('.element').each(function (f, v) {
+          json[i][$(v).data('field')] = $(v).find('.inputbox').text(); // string
+          if($(v).find('.subelements').length > 0){
+            json[i][$(v).data('field')] = new Array();
+            $(v).find('.subelements div').each(function (a, b) {
+              json[i][$(v).data('field')][a] = $(b).find('.inputbox').text(); // array
+            });
+          }
+        });
+      });
+      // fields
+      console.log('saving sub elements to json variable');
+      let data = { 'nr': $('#editbox').data('nr'), 'field': 'json', 'content': JSON.stringify(json) };
+      //let toSave = JSON.stringify(data); alert( toSave );
+			saveDataList( data );
 	    $(this).parent().removeClass('edit').html(txt);
-      /*
-      if( toSave.field == 'id'){ //id changed
+
+      //if( toSave.field == 'id'){ //id changed
         let container = $('#datalist').parent();
         setTimeout( function(){
           getTableData( container );
         }, 10);
-      }
-      */
+      // }
+
+
+
 	  });
 
-    $('body').on('keyup','#editbox .inputbox.edit input.textinput',function(){ // selector ? [contenteditable=true]
+    $('body').on('keyup','#editbox .json .inputbox.edit input.textinput',function(){ // selector ? [contenteditable=true]
         if(event.keyCode==13){
             $(this).blur();
         }
     });
+
+
 
     /* Page layer */
 
