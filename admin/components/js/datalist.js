@@ -58,6 +58,7 @@ jQuery(function($){
                 if( !container ){
                   return datalist;
                 }else{
+                  $('body').prepend('<div id="messagebox"></div>');
                   container.html('<table id="datalist">'+fielddata + '' +textdata +'</table>');
                 }
 
@@ -228,6 +229,7 @@ jQuery(function($){
 	    $(this).html(inp);
 			$('body').find('#datalist .inputbox.edit input.textinput,#editbox .row .inputbox.edit input.textinput').select();
 	  });
+
 	  $('body').on('blur', '#datalist .inputbox.edit input.textinput,#editbox .row .inputbox.edit input.textinput', function() {
 	    let txt = $(this).val();
 			let toSave = { 'nr': $(this).parent().parent().data('nr'), 'field': $(this).parent().parent().data('field'), 'content': txt };
@@ -235,6 +237,8 @@ jQuery(function($){
 	    $(this).parent().removeClass('edit').html(txt);
       //if( toSave.field == 'id' ){ //id changed
         let container = $('#datalist').parent();
+
+        setMessagebox('Saved!', 2000);
         setTimeout( function(){
           getTableData( container );
         }, 10);
@@ -280,6 +284,8 @@ jQuery(function($){
       let data = { 'nr': $('#editbox').data('nr'), 'field': 'json', 'content': JSON.stringify(json) };
       //let toSave = JSON.stringify(data); alert( toSave );
 			saveDataList( data );
+
+      setMessagebox('Saved!', 2000);
 	    $(this).parent().removeClass('edit').html(txt);
 
       //if( toSave.field == 'id'){ //id changed
@@ -299,7 +305,20 @@ jQuery(function($){
         }
     });
 
-
+    /* Message box layer */
+    function setMessagebox(msg, time = false){
+      if( $('body').find('#messagebox .formmessage').length < 1){
+        $('#messagebox').append('<div class="formmessage"></div>');
+      }
+      $('body').find('#messagebox .formmessage').fadeOut( 300, function(){
+        $('body').find('#messagebox .formmessage').html(msg).fadeIn(500);
+      });
+      if( time ){
+        setTimeout( function(){
+          $('body').find('#messagebox .formmessage').fadeOut(500);
+        }, time);
+      }
+    }
 
     /* Page layer */
 

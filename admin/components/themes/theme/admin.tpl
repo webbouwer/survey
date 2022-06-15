@@ -11,17 +11,21 @@
 {htmlhead}
 </head>
 <body>
+
   <div id="pagecontainer">
     <div id="headcontainer">
-
         <div class="outermargin">
           <div id="headcontent">
             {header}
-            {adminbar}
           </div>
         </div>
       </div>
     </div>
+
+    <div id="sidebarcontainer">
+      {adminbar}
+    </div>
+
     <div id="contentcontainer">
       <div class="outermargin">
         <div id="maincontent">

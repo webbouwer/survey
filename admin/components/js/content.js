@@ -35,8 +35,7 @@ jQuery(function($){
       }
 
       function getEmailMarkup(){
-        actionbox.html('<div><h1>Versturen</h1><p>Vul in en verstuur</p><div id="emaildata"></div></div>');
-        markupEmailForm( $('#emaildata') );
+        markupEmailForm( actionbox ); //
       }
 
       function logOut(){
@@ -49,7 +48,7 @@ jQuery(function($){
 
       $('body').on('click touchstart', '#adminbar .send', function() {
         getEmailMarkup();
-      }); 
+      });
 
       $('body').on('click touchstart', '#adminbar .data', function() {
         getTableData( actionbox );

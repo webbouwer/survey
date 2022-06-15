@@ -2,15 +2,49 @@
 
 body
 {
-
+  margin:0;
+  padding:0;
 }
 
-.outermargin
+
+/* colors */
+#headcontainer,
+#footcontainer
 {
-
+  background-color:#cdefef;
 }
 
-/* tool elements */
+#messagebox .formmessage,
+#messagebox .loginmessage
+{
+  background-color:#ededed;
+}
+
+
+
+/* form elements */
+#messagebox
+{
+  position:fixed;
+  top:0px;
+  left:0px;
+  width:100%;
+  text-align:center;
+  z-index:999;
+}
+#messagebox .formmessage
+{
+  position:relative;
+  max-width:480px;
+  margin:5px auto;
+  text-align:left;
+}
+
+input.incorrect
+{
+  border:1px solid red;
+}
+
 button
 {
 
@@ -36,6 +70,14 @@ button.closeOverlay span
 
 .overLayScreen.layer
 {
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  overflow-y:auto;
+
+  background-color:#ffffff;
 
 }
 
@@ -49,7 +91,7 @@ button.closeOverlay span
 
 #dataview.overLayScreen.layer .framecontainer.outermargin
 {
-
+  position:relative;
 }
 
 #dataview.overLayScreen.layer .framecontainer .contentbox #editbox
@@ -64,5 +106,56 @@ button.closeOverlay span
 
 #dataview #editbox > div.entry.json .element span.inputbox
 {
+
+}
+
+
+
+/* Small */
+.outermargin
+{
+  padding:2vh 2vw;
+}
+
+#headcontainer
+{
+}
+#sidebarcontainer
+{
+}
+#contentcontainer
+{
+}
+#footcontainer
+{
+}
+
+/* large */
+@media all and (min-width: 560px){
+#headcontainer
+{
+  height:8vh;
+}
+#sidebarcontainer
+{
+	width:24%;
+	float:left;
+	min-height:85vh;
+}
+#contentcontainer
+{
+	width:76%;
+	min-height:85vh;
+}
+
+.outermargin
+{
+  padding:2vh 2vw;
+}
+
+#footcontainer
+{
+  height:7vh;
+}
 
 }

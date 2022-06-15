@@ -26,10 +26,7 @@ class sendHTMLEmail{
 
     // check request action
     $chk = false;
-    if( isset($_REQUEST['action']) ){
-
-      // prepare data
-      if( isset($_REQUEST['data']) && $_REQUEST['action'] == 'send' ){
+    if( isset($_REQUEST['data']) && $_REQUEST['action'] == 'send' ){
 
           if(  isset($_REQUEST['data']['fromname'])
             && isset($_REQUEST['data']['fromemail'])
@@ -44,7 +41,6 @@ class sendHTMLEmail{
             $this->htmlContent = $_REQUEST['data']['htmlcontent'];
             $chk = true;
           }
-      }
 
     }
 
@@ -88,7 +84,7 @@ class sendHTMLEmail{
 
     // output json response
     header('Content-Type: application/json');
-    print json_encode($this->result);
+    print json_encode($this->result); 
 
   }
 

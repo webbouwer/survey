@@ -5,6 +5,10 @@ jQuery(function($){
 
       var configDataUrl = 'admin/components/classes/config.php';
 
+      if( $('body').find('#messagebox .loginmessage').length < 1){
+        $('#loginbox').append('<div id="messagebox"><div class="loginmessage"></div></div>');
+      }
+
       getConfigDataTable = function(){
         let nm = $("#name").val();
         let ps= $("#pass").val();
@@ -14,17 +18,29 @@ jQuery(function($){
               data: {'action': 'login','name': nm ,'pass': ps },
               dataType: 'json',
           }).done( function( data ) {
+
             if( data['chk'] == 1){
-              window.location.href = 'admin/index.php';
+
+
+              $('body').find('#messagebox .loginmessage').fadeOut( 300, function(){
+                $('body').find('#messagebox .loginmessage').html('Login confirmed; redirecting..').fadeIn(300);
+                setTimeout( function(){
+                  $('body').find('#messagebox .loginmessage').fadeOut(200);
+                }, 700);
+                setTimeout( function(){
+                    window.location.href = 'admin/index.php';
+                }, 1200);
+              });
+
+
             }else{
 
               //return data;
-              if( $('body').find('#loginbox .loginmessage').length < 1){
-                $('#loginbox').append('<div class="loginmessage"></div>');
-              }
-
-              $('body').find('#loginbox .loginmessage').fadeOut( 300, function(){
-                $('body').find('#loginbox .loginmessage').html(data['msg']).fadeIn(500);
+              $('body').find('#messagebox .loginmessage').fadeOut( 300, function(){
+                $('body').find('#messagebox .loginmessage').html(data['msg']).fadeIn(500);
+                setTimeout( function(){
+                  $('body').find('#messagebox .loginmessage').fadeOut();
+                }, 4000);
               });
 
             }

@@ -11,14 +11,23 @@ $htmlhead = '<link rel="stylesheet" href="public/theme/css/style.css" type="text
 
 function htmlLoginbox(){
 
-  $loginbox = '<div id="loginbox" class="outermargin">
-    <h3>login here</h3>
+  $loginbox = '<div id="loginbox">
+
+    <div class="content-title">
+      <h3>login here</h3>
+    </div>
     <form action="admin/index.php" method="post">
+    <div class="formrow">
       <label class="formfield"><input id="name" name="name" type="text" placeholder="Admin name">
       </label>
+    </div>
+    <div class="formrow">
       <label class="formfield"><input id="pass" name="pass" type="password" placeholder="Password">
       </label>
+    </div>
+    <div class="formend">
       <input id="go" name="go" type="submit" value="login" />
+    </div>
     </form>';
     if( isset($_GET['msg']) ){
       $loginbox .= '<div class="loginmessage">'.$_GET['msg'].'</div>';
