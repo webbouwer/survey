@@ -1,0 +1,30 @@
+/* colors dark */
+body
+{
+  color:#ededed;
+  background-color:#161B22;
+}
+
+a
+{
+  color:#888888;
+}
+a:hover
+{
+  color:#ededed;
+}
+
+#headcontainer,
+#footcontainer
+{
+  color:#ededed;
+  background-color:#0D1117;
+}
+
+#messagebox .formmessage,
+#messagebox .loginmessage,
+.overLayScreen.layer
+{
+  color:#ededed;
+  background-color:#161B22;
+}

@@ -114,6 +114,8 @@ jQuery(function($) {
 
   });
 
+  markupEmailForm( $('#maincontent') ); //
+
 });// end ready
 
 });

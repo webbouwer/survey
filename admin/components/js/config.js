@@ -113,6 +113,9 @@ jQuery(function($){
         }
     });
 
+
+    getConfigDataTable( $('#maincontent') );
+
   });// end ready
 
 });

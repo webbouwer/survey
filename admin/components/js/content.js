@@ -2,64 +2,32 @@ jQuery(function($){
 
     $(document).ready(function(){
 
-      var adminbox = $('#adminbar');
-      var headerbox = $('#headcontent');
-      var actionbox = $('#maincontent');
-      var footerbox = $('#footcontent');
+        /* Page layer */
+        addOverlay = function( id, content = 'Oooops something is missing..', type = false )
+        {
+          if(!type) type = 'layer'; // box, bar, note
 
-      let adminmenu = {
-        'home': 'Dashboard',
-        'send': 'Send',
-        //'activityadmin': 'Activity',
-        'data': 'Data',
-        'config': 'Config',
-        'logout': 'Logout',
-      }
+          let layer = $('<div id="'+id+'" style="display:none;" class="overLayScreen '+type+'"><div class="framecontainer outermargin"><div class="contentbox">'+content+'</div><button type=button class="closeOverlay"><span>close</span></button></div></div>');
 
-        function createMenu( id, data, container){
-          let menu = $('<ul id="'+id+'"></ul>');
-          $.each(adminmenu, function(k, v) {
-            menu.append('<li class="'+k+'">'+v+'</li>');
-          });
-          container.prepend( menu );
+          if( $('body').find('.overLayScreen').length > 0){
+            $('body').find('.overLayScreen').fadeOut(500, function(){
+              $(this).remove();
+              $('body').append(layer);
+              layer.fadeIn(500);
+            });
+          }else{
+            $('body').append(layer);
+            layer.fadeIn(500);
+          }
+
         }
-        createMenu( "adminmenu", adminmenu, adminbox);
 
+        removeOverlay = function(){
+          $('body').find('.overLayScreen').fadeOut(500, function(){
+            $(this).remove();
+          });
+        }
 
-      function homePage(){
-        window.location.href = 'index.php';
-      }
-
-      function getConfigs(){
-        getConfigDataTable( actionbox );
-      }
-
-      function getEmailMarkup(){
-        markupEmailForm( actionbox ); //
-      }
-
-      function logOut(){
-        window.location.href = '../logout.php';
-      }
-
-      $('body').on('click touchstart', '#adminbar .home', function() {
-        homePage();
-      });
-
-      $('body').on('click touchstart', '#adminbar .send', function() {
-        getEmailMarkup();
-      });
-
-      $('body').on('click touchstart', '#adminbar .data', function() {
-        getTableData( actionbox );
-      });
-      $('body').on('click touchstart', '#adminbar .config', function() {
-        getConfigs();
-      });
-
-      $('body').on('click touchstart', '#adminbar .logout', function() {
-        logOut();
-      });
 
     });
 

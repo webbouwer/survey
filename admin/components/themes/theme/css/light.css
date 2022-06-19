@@ -1,0 +1,12 @@
+/* colors light */
+#headcontainer,
+#footcontainer
+{
+  background-color:#cdefef;
+}
+
+#messagebox .formmessage,
+#messagebox .loginmessage
+{
+  background-color:#ededed;
+}

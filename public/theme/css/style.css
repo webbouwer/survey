@@ -4,10 +4,16 @@ body
 {
   margin:0;
   padding:0;
+
+  font-family: 'Montserrat', sans-serif;
+  font-size:1.1em;
+  letter-spacing: -0.02em;
+  font-weight:500;
+  line-height:1.6em;
 }
 
 
-/* colors */
+/* colors (light) */
 #headcontainer,
 #footcontainer
 {
@@ -19,6 +25,12 @@ body
 {
   background-color:#ededed;
 }
+
+.overLayScreen.layer
+{
+  background-color:#ffffff;
+}
+
 
 
 
@@ -76,9 +88,6 @@ button.closeOverlay span
   top:0;
   left:0;
   overflow-y:auto;
-
-  background-color:#ffffff;
-
 }
 
 /* datalist */
@@ -111,14 +120,21 @@ button.closeOverlay span
 
 
 
-/* Small */
+/* (Sm)all */
+#pagecontainer
+{
+  width:100%;
+}
 .outermargin
 {
   padding:2vh 2vw;
 }
 
-#headcontainer
+#headcontainer,
+#contentcontainer,
+#footcontainer
 {
+  width:100%;
 }
 #sidebarcontainer
 {
@@ -138,13 +154,22 @@ button.closeOverlay span
 }
 #sidebarcontainer
 {
+  position:absolute;
 	width:24%;
-	float:left;
 	min-height:85vh;
 }
+
+ul li
+{
+  list-style:none;
+  margin:0px;
+  padding:0px; 
+}
+
 #contentcontainer
 {
 	width:76%;
+  margin-left:24%;
 	min-height:85vh;
 }
 
