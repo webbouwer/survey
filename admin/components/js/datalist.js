@@ -59,6 +59,7 @@ jQuery(function($){
                   return datalist;
                 }else{
                   //$('body').prepend('<div id="messagebox"></div>');
+                  container.html('');
                   container.append('<table id="datalist">'+fielddata + '' +textdata +'</table>');
                 }
 
@@ -89,7 +90,7 @@ jQuery(function($){
 
 		}
 
-    function copyDataList( tocopy ){
+    function copyDataListRow( tocopy ){
 
 			var senddata =  { 'data': tocopy, 'action': 'copy' };
       //console.log( senddata.data );
@@ -206,7 +207,7 @@ jQuery(function($){
       var dialog = confirm('copy: '+datalist[row]['id']+'?');
       if (dialog) {
         let toCopy = { 'nr': row };
-  			copyDataList( toCopy );
+  			copyDataListRow( toCopy );
       }
     }
 
