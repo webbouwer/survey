@@ -1,0 +1,23 @@
+[12-Jun-2022 00:52:22 UTC] PHP Parse error:  syntax error, unexpected ']' in /home/webbouwer/public_html/lab/php/survey/admin/components/classes/login.php on line 95
+[12-Jun-2022 00:52:26 UTC] PHP Parse error:  syntax error, unexpected ']' in /home/webbouwer/public_html/lab/php/survey/admin/components/classes/login.php on line 95
+[12-Jun-2022 00:52:47 UTC] PHP Parse error:  syntax error, unexpected ']' in /home/webbouwer/public_html/lab/php/survey/admin/components/classes/login.php on line 95
+[12-Jun-2022 00:55:59 UTC] PHP Parse error:  syntax error, unexpected ']' in /home/webbouwer/public_html/lab/php/survey/admin/components/classes/login.php on line 88
+[12-Jun-2022 09:50:39 UTC] PHP Parse error:  syntax error, unexpected end of file, expecting function (T_FUNCTION) or const (T_CONST) in /home/webbouwer/public_html/lab/php/survey/admin/components/classes/template.php on line 52
+[12-Jun-2022 10:02:59 UTC] PHP Fatal error:  Uncaught Error: Call to a member function searchDataList() on null in /home/webbouwer/public_html/lab/php/survey/login.php:28
+Stack trace:
+#0 /home/webbouwer/public_html/lab/php/survey/login.php(36): htmlLoginbox()
+#1 {main}
+  thrown in /home/webbouwer/public_html/lab/php/survey/login.php on line 28
+[12-Jun-2022 13:31:48 UTC] PHP Parse error:  syntax error, unexpected 'POST' (T_STRING) in /home/webbouwer/public_html/lab/php/survey/login.php on line 20
+[12-Jun-2022 13:32:39 UTC] PHP Parse error:  syntax error, unexpected '.' in /home/webbouwer/public_html/lab/php/survey/login.php on line 11
+[12-Jun-2022 13:32:59 UTC] PHP Parse error:  syntax error, unexpected 'nr' (T_STRING) in /home/webbouwer/public_html/lab/php/survey/login.php on line 36
+[12-Jun-2022 15:00:30 UTC] PHP Parse error:  syntax error, unexpected 'public' (T_PUBLIC) in /home/webbouwer/public_html/lab/php/survey/admin/components/classes/template.php on line 24
+[12-Jun-2022 15:01:11 UTC] PHP Parse error:  syntax error, unexpected '}', expecting end of file in /home/webbouwer/public_html/lab/php/survey/login.php on line 29
+[12-Jun-2022 15:01:25 UTC] PHP Parse error:  syntax error, unexpected '}', expecting end of file in /home/webbouwer/public_html/lab/php/survey/login.php on line 29
+[12-Jun-2022 15:01:40 UTC] PHP Parse error:  syntax error, unexpected '}', expecting end of file in /home/webbouwer/public_html/lab/php/survey/login.php on line 29
+[12-Jun-2022 15:02:24 UTC] PHP Parse error:  syntax error, unexpected '}', expecting end of file in /home/webbouwer/public_html/lab/php/survey/login.php on line 29
+[12-Jun-2022 15:02:25 UTC] PHP Parse error:  syntax error, unexpected '}', expecting end of file in /home/webbouwer/public_html/lab/php/survey/login.php on line 29
+[12-Jun-2022 15:02:27 UTC] PHP Parse error:  syntax error, unexpected '}', expecting end of file in /home/webbouwer/public_html/lab/php/survey/login.php on line 29
+[12-Jun-2022 15:03:05 UTC] PHP Parse error:  syntax error, unexpected '}', expecting end of file in /home/webbouwer/public_html/lab/php/survey/login.php on line 29
+[12-Jun-2022 15:03:13 UTC] PHP Parse error:  syntax error, unexpected '}', expecting end of file in /home/webbouwer/public_html/lab/php/survey/login.php on line 29
+[12-Jun-2022 15:03:14 UTC] PHP Parse error:  syntax error, unexpected '}', expecting end of file in /home/webbouwer/public_html/lab/php/survey/login.php on line 29

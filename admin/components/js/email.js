@@ -6,8 +6,6 @@ jQuery(function($) {
 
     var formhtml = $('<div class="emailform"></div>');
 
-    formhtml.append('<div class="content-title"><h1>Versturen</h1></div><div class="content-intro"><p>Vul in en verstuur</p></div>');
-
     formhtml.append('<div id="messagebox"></div>');
 
     formhtml.append('<input id="action" name="action" type="hidden" value="input">');
@@ -92,19 +90,7 @@ jQuery(function($) {
 
     }
 
-  function setMessagebox(msg, time = false){
-    if( $('body').find('#messagebox .formmessage').length < 1){
-      $('#messagebox').append('<div class="formmessage"></div>');
-    }
-    $('body').find('#messagebox .formmessage').fadeOut( 300, function(){
-      $('body').find('#messagebox .formmessage').html(msg).fadeIn(500);
-    });
-    if( time ){
-      setTimeout( function(){
-        $('body').find('#messagebox .formmessage').fadeOut(500);
-      }, time);
-    }
-  }
+
 
 
   $('body').on('click', '.emailform .sendbutton', function() {

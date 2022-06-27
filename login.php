@@ -11,22 +11,21 @@ $htmlhead = '<link rel="stylesheet" href="public/theme/css/style.css" type="text
 
 function htmlLoginbox(){
 
-  $loginbox = '<div id="loginbox">
-
+  $loginbox = '<div class="loginbox">
     <div class="content-title">
       <h3>login here</h3>
     </div>
     <form action="admin/index.php" method="post">
     <div class="formrow">
-      <label class="formfield"><input id="name" name="name" type="text" placeholder="Admin name">
+      <label class="formfield"><span>Username: </span><input id="name" name="name" type="text" placeholder="Admin name">
       </label>
     </div>
     <div class="formrow">
-      <label class="formfield"><input id="pass" name="pass" type="password" placeholder="Password">
+      <label class="formfield"><span>Password: </span><input id="pass" name="pass" type="password" placeholder="Password">
       </label>
     </div>
     <div class="formend">
-      <input id="go" name="go" type="submit" value="login" />
+      <div class="formfield"><span> </span><input id="go" name="go" type="submit" value="login" /></div>
     </div>
     </form>';
     if( isset($_GET['msg']) ){
@@ -42,10 +41,11 @@ $loginbox = htmlLoginbox();
 $htmlfoot = '';
 
 
-
-$template->assign("title", "Theme frontend title");
-$template->assign("header", "Theme frontend header");
 $template->assign("htmlhead", $htmlhead);
+
+$template->assign("header", "Theme frontend header");
+
+$template->assign("title", "Admin login");
 $template->assign("content", $loginbox );
 $template->assign("footer", "Theme footer");
 $template->assign("htmlfoot", $htmlfoot );

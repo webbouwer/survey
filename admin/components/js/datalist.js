@@ -58,8 +58,8 @@ jQuery(function($){
                 if( !container ){
                   return datalist;
                 }else{
-                  $('body').prepend('<div id="messagebox"></div>');
-                  container.html('<table id="datalist">'+fielddata + '' +textdata +'</table>');
+                  //$('body').prepend('<div id="messagebox"></div>');
+                  container.append('<table id="datalist">'+fielddata + '' +textdata +'</table>');
                 }
 
             }

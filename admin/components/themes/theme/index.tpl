@@ -8,23 +8,38 @@
 <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 <!-- HTML doc title -->
 <title>{title}</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;800&display=swap" rel="stylesheet">
+
 {htmlhead}
 </head>
 <body>
+
   <div id="pagecontainer">
     <div id="headcontainer">
-      <div class="outermargin">
-        <div id="headcontent">
-          {header}
+        <div class="outermargin">
+          <div id="headcontent">
+            {header}
+          </div>
         </div>
       </div>
+
+    <div id="sidebarcontainer">
+      {adminbar}
     </div>
+
     <div id="contentcontainer">
       <div class="outermargin">
+
+        <div class="content-title"><h2>{title}</h2></div><div class="content-intro">{intro}</div>
+
         <div id="maincontent">
           <!-- main content -->
           {content}
         </div>
+
       </div>
     </div>
     <div id="footcontainer">

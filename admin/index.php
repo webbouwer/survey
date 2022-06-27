@@ -15,15 +15,17 @@ $adminbar = '<div id="adminbar">'.getAdminbar().'</div>';
 
 $htmlfoot = '';
 
-$template->assign("title", "Admin example Title");
-
-$template->assign("htmlhead", $htmlhead );
+$template->assign("htmlhead", $htmlhead ); 
 
 $template->assign("adminbar", $adminbar );
 
+$template->assign("header", "Admin theme header");
 
-$template->assign("header", "<div>Admin theme header</div>");
-$template->assign("content", "Admin theme content");
+$template->assign("title", "Admin");
+$template->assign("intro", "Selecteer een optie");
+
+$template->assign("content", "");
+
 $template->assign("footer", "Admin theme footer");
 
 $template->assign("htmlfoot", $htmlfoot );

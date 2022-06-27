@@ -31,6 +31,27 @@ body
   background-color:#ffffff;
 }
 
+input, textarea, button, select
+{
+  background:rgb(225,225,225,0.5);
+
+  font-family: 'Montserrat', sans-serif;
+  font-size:1.1em;
+  letter-spacing: 0.01em;
+  font-weight:500;
+  line-height:1.6em;
+}
+input:hover, textarea:hover, button:hover, select:hover
+{
+  background:rgb(225,225,225,0.8);
+}
+
+button.small
+{
+  font-size:0.8em;
+  letter-spacing: -0.01em;
+}
+
 
 
 
@@ -51,19 +72,37 @@ body
   margin:5px auto;
   text-align:left;
 }
-
-input.incorrect
+.formrow,
+.formend,
+.entry
 {
-  border:1px solid red;
+  padding:3px 0px;
+}
+.formend
+{
 }
 
-button
+.formfield span
 {
+  display:inline-block;
+  min-width:180px;
+  margin-right:10px;
+}
 
+input, textarea, button, select
+{
+  margin:0px 2px;
+  border:none;
+  padding:4px 12px;
+  border-radius:8px;
 }
 button.small
 {
-
+  padding:3px 6px;
+}
+input.incorrect
+{
+  border:1px solid red;
 }
 
 button.closeOverlay
@@ -75,11 +114,44 @@ button.closeOverlay span
 
 }
 
+/* Email form */
+
+
+/* datalist */
+table#datalist
+{
+  width:100%;
+}
+table th
+{
+  text-align:left;
+}
+#dataview.overLayScreen.layer
+{
+}
+#dataview.overLayScreen.layer .framecontainer.outermargin
+{
+  position:relative;
+}
+#dataview.overLayScreen.layer .framecontainer .contentbox #editbox
+{
+}
+#dataview #editbox > div.element.row span.inputbox
+{
+}
+#dataview #editbox > div.entry.json .element span.inputbox
+{
+}
+span.inputbox:hover
+{
+  background-color:#ded0e8;
+}
+
+/* overlay */
 .layer
 {
 
 }
-
 .overLayScreen.layer
 {
   position:fixed;
@@ -88,34 +160,6 @@ button.closeOverlay span
   top:0;
   left:0;
   overflow-y:auto;
-}
-
-/* datalist */
-#dataview.overLayScreen.layer
-{
-
-}
-
-
-
-#dataview.overLayScreen.layer .framecontainer.outermargin
-{
-  position:relative;
-}
-
-#dataview.overLayScreen.layer .framecontainer .contentbox #editbox
-{
-
-}
-
-#dataview #editbox > div.element.row span.inputbox
-{
-
-}
-
-#dataview #editbox > div.entry.json .element span.inputbox
-{
-
 }
 
 
@@ -163,13 +207,13 @@ ul li
 {
   list-style:none;
   margin:0px;
-  padding:0px; 
+  padding:0px;
 }
 
 #contentcontainer
 {
 	width:76%;
-  margin-left:24%;
+  padding-left:24%;
 	min-height:85vh;
 }
 

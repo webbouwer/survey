@@ -32,10 +32,14 @@
 
     <div id="contentcontainer">
       <div class="outermargin">
+
+        <div class="content-title"><h2>{title}</h2></div><div class="content-intro">{intro}</div>
+
         <div id="maincontent">
           <!-- main content -->
           {content}
         </div>
+
       </div>
     </div>
     <div id="footcontainer">

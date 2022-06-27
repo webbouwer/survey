@@ -27,18 +27,18 @@ jQuery(function($){
                     if(idx != 'fields'){
                         $.each(obj, function( key, value) {
                           if( key == 'admin_pass'){
-                            textdata += '<div id="nr'+idx+'" class="entry"><div class="element" data-nr="'+idx+'" data-field="'+key+'">'+fields[key]+': <span class="inputbox password"><input style="border:none;" class="password" type="password" value="'+value+'"/></span></div></div>';
+                            textdata += '<div class="formrow"><div class="formfield" data-nr="'+idx+'" data-field="'+key+'"><span>'+fields[key]+': </span><span class="inputbox password"><input style="border:none;" class="password" type="password" value="'+value+'"/></span></div></div>';
                           }else{
-                            textdata += '<div id="nr'+idx+'" class="entry"><div class="element" data-nr="'+idx+'" data-field="'+key+'">'+fields[key]+': <span class="inputbox">'+value+'</span></div></div>';
+                            textdata += '<div class="formrow"><div class="formfield" data-nr="'+idx+'" data-field="'+key+'"><span>'+fields[key]+': </span><span class="inputbox">'+value+'</span></div></div>';
                           }
-                        });
+                        }); 
                     }
 
                 });
                 if( !container ){
                   return data;
                 }else{
-                  container.html('<div id="configlist">' +textdata+'</div>');
+                  container.html('<div class="configlist">' +textdata+'</div>');
                 }
 
             }
@@ -78,7 +78,7 @@ jQuery(function($){
 
 
 
-		$('body').on('click touchstart', '#configlist .inputbox:not(.edit)', function() {
+		$('body').on('click touchstart', '.configlist .inputbox:not(.edit)', function() {
 
       let txt = $(this).html().trim();
       if( $(this).find('input').hasClass('password') ){
@@ -90,11 +90,11 @@ jQuery(function($){
 
 	    $(this).addClass('edit');
 	    $(this).html(inp);
-			$('body').find('#configlist .inputbox.edit input.textinput').select();
+			$('body').find('.configlist .inputbox.edit input.textinput').select();
 
 	  });
 
-	  $('body').on('blur', '#configlist .inputbox.edit input.textinput', function() {
+	  $('body').on('blur', '.configlist .inputbox.edit input.textinput', function() {
 	    let txt = $(this).val();
 			let toSave = { 'nr': $(this).parent().parent().data('nr'), 'field': $(this).parent().parent().data('field'), 'content': txt };
 			saveConfigData( toSave );
@@ -107,7 +107,7 @@ jQuery(function($){
 
 	  });
 
-    $('body').on('keyup','#configlist .inputbox.edit input.textinput',function(){ // selector ? [contenteditable=true]
+    $('body').on('keyup','.configlist .inputbox.edit input.textinput',function(){ // selector ? [contenteditable=true]
         if(event.keyCode==13){
             $(this).blur();
         }

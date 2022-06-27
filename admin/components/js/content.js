@@ -28,6 +28,20 @@ jQuery(function($){
           });
         }
 
+        setMessagebox = function(msg, time = false){
+          if( $('body').find('#messagebox .formmessage').length < 1){
+            $('#messagebox').append('<div class="formmessage"></div>');
+          }
+          $('body').find('#messagebox .formmessage').fadeOut( 300, function(){
+            $('body').find('#messagebox .formmessage').html(msg).fadeIn(500);
+          });
+          if( time ){
+            setTimeout( function(){
+              $('body').find('#messagebox .formmessage').fadeOut(500);
+            }, time);
+          }
+        }
+
 
     });
 
