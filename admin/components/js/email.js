@@ -14,6 +14,8 @@ jQuery(function($) {
 
     formhtml.append('<div class="formrow"><label class="formfield"><span>Select Profile</span></label></div>');
 
+    formhtml.append('<div class="formrow"><label class="formfield"><span>Select Survey</span></label></div>');
+
     formhtml.append('<input id="action" name="action" type="hidden" value="input">'
     +'<div class="formrow"><label class="formfield"><span>From name</span><input id="fromName" name="fromName" type="text" placeholder="From Name"></label></div>'
     +'<div class="formrow"><label class="formfield"><span>From email</span><input id="fromEmail" name="fromEmail" type="text" placeholder="From Email-address"></label></div>'
@@ -22,6 +24,8 @@ jQuery(function($) {
     +'<div class="formrow"><label class="formfield"><span>Recipient Email</span><input id="toEmail" name="toEmail" type="email" placeholder="To Email-adres"></label></div>'
     +'<div class="formrow"><label class="formfield"><span>Subject</span><input id="subjectContent" name="subjectContent" type="text" placeholder="Subject"></label></div>'
     +'<div class="formrow"><label class="formfield"><span>Message</span><textarea id="htmlContent" name="htmlContent" placeholder="Email content"></textarea></label></div>');
+
+    formhtml.append('<div class="formpreview"><button class="previewemailbutton">Preview Email</button><button class="previewsurveybutton">Preview Survey</button></div>');
 
     formhtml.append('<div class="formend"><button class="sendbutton">Send</button></div>');
 

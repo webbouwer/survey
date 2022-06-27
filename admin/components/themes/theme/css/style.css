@@ -48,7 +48,7 @@ span.inputbox:hover
 
 input:hover, textarea:hover, button:hover, select:hover
 {
-  background:rgb(225,225,225,0.8);
+  background-color:rgb(225,225,225,0.8);
   color:#2d2d2d;
 }
 input.incorrect
@@ -57,6 +57,11 @@ input.incorrect
 }
 
 
+table#datalist tr:hover td
+{
+  background-color:rgb(225,225,225,0.2);
+  border:none;
+}
 button.small
 {
   font-size:0.8em;
