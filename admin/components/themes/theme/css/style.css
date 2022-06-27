@@ -40,19 +40,28 @@ input, textarea, button, select
   font-weight:500;
   line-height:1.6em;
 }
+
+span.inputbox:hover
+{
+  background-color:#ded0e8;
+}
+
 input:hover, textarea:hover, button:hover, select:hover
 {
   background:rgb(225,225,225,0.8);
   color:#2d2d2d;
 }
+input.incorrect
+{
+  border:1px solid red;
+}
+
 
 button.small
 {
   font-size:0.8em;
   letter-spacing: -0.01em;
 }
-
-
 
 
 /* form elements */
@@ -103,17 +112,34 @@ button.small
 }
 input.incorrect
 {
-  border:1px solid red;
+}
+
+
+/* overlay */
+.layer
+{
+}
+.overLayScreen.layer
+{
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  overflow-y:auto;
 }
 
 button.closeOverlay
 {
-
+  position:absolute;
+  top:12px;
+  right:12px;
+  z-index:999;
 }
 button.closeOverlay span
 {
-
 }
+
 
 /* Email form */
 
@@ -135,6 +161,13 @@ table th
 {
   position:relative;
 }
+#dataview.overLayScreen.layer .framecontainer.outermargin .contentbox
+{
+  width:96vw;
+  max-width:980px;
+  margin:1vh auto;
+}
+
 #dataview.overLayScreen.layer .framecontainer .contentbox #editbox
 {
 }
@@ -144,25 +177,13 @@ table th
 #dataview #editbox > div.entry.json .element span.inputbox
 {
 }
-span.inputbox:hover
+span.inputbox
 {
-  background-color:#ded0e8;
 }
 
-/* overlay */
-.layer
-{
 
-}
-.overLayScreen.layer
-{
-  position:fixed;
-  width:100%;
-  height:100%;
-  top:0;
-  left:0;
-  overflow-y:auto;
-}
+
+
 
 
 
@@ -197,11 +218,12 @@ span.inputbox:hover
 #headcontainer
 {
   height:8vh;
+  min-height:60px;
 }
 #sidebarcontainer
 {
   position:absolute;
-	width:24%;
+	width:21%;
 	min-height:85vh;
 }
 
@@ -214,8 +236,8 @@ ul li
 
 #contentcontainer
 {
-	width:76%;
-  padding-left:24%;
+	width:79%;
+  padding-left:21%;
 	min-height:85vh;
 }
 
@@ -227,6 +249,7 @@ ul li
 #footcontainer
 {
   height:7vh;
+  min-height:50px;
 }
 
 }

@@ -49,7 +49,9 @@
                   // replace field value
                   if( isset($_REQUEST['data']['nr']) ){
                     $copy = $arr[ $_REQUEST['data']['nr'] ];
-                    $copy['id'] = $copy['id'].'-copy';
+                    $copy['id'] = $copy['id'].'-'. $_REQUEST['data']['nr'];
+                    $copy['title'] = $copy['title'].'-'. $_REQUEST['data']['nr'];
+                    $copy['desc'] = 'copy-'. $_REQUEST['data']['nr'] .'- '. $copy['desc'];
                     $arr[] = $copy;
           	        $this->source->dataToFile( $arr, $this->filename );
                   }
@@ -119,24 +121,44 @@
                   [
                   'id'=>'Id',
                   'title'=>'Title',
+                  'subtitle'=>'Sub Title',
                   'desc'=>'Short desc',
-                  'salut'=>'Salutation',
-                  'introtext'=>'Intro text',
-                  'infotext'=>'Info text',
-                  'usage'=>'Help text',
-                  'endtext'=>'Outro text',
+
+                  'email_salut'=>'Salutation',
+                  'email_regards'=>'Regard',
+                  'email_text'=>'Email start',
+                  'email_surveyintro'=>'Email survey intro',
+                  'email_end'=>'Email end',
+
+                  'survey_title'=>'Survey title',
+                  'survey_info'=>'Info text',
+                  'survey_help'=>'Help text',
+                  'survey_helplink'=>'Help link',
+                  'survey_disclaimerlink'=>'Disclaimer link',
+                  'survey_end'=>'Outro text',
+
                   'json'=>'Survey Data',
                   ],
                   1 =>
                   [
                   'id'=>'id',
-                  'title'=>'title',
+                  'title'=>'Header Title',
+                  'subtitle'=>'Sub Title',
                   'desc'=>'Short description text',
-                  'salut'=>'Salutation',
-                  'introtext'=>'Introduction text following the title in the intro section',
-                  'infotext'=>'Main Info text followed by the survey section',
-                  'usage'=>'Overall usage notes and tips text for help section',
-                  'endtext'=>'Outro text (finnishing) below the survey section',
+
+                  'email_salut'=>'Dear',
+                  'email_regards'=>'Best regards',
+                  'email_text'=>'This email is send as a follow up on our recent contact. We would like to ask you to help us validate and enhance our services. Would you be so kind to answer a few questions?',
+                  'email_surveyintro'=>'Below is the first question. By answering you will be directed anonymously to our website with the complete survey. Thank you for your effort!',
+                  'email_end'=>'Email Outro text (finnishing) below the survey section followed by the regards and sender person name',
+
+                  'survey_title'=>'Survey Example 1 Title',
+                  'survey_info'=>'Please share your thoughts about your experience with our services by answering the following questions.',
+                  'survey_help'=>'Overall usage notes and tips text for help sectio',
+                  'survey_helplink'=>'https://..#surveyhelp',
+                  'survey_disclaimerlink'=>'https://..#disclaimer',
+                  'survey_end'=>'Outro text (finnishing) below the survey section',
+
                   'json'=>$setup,
 
                   ],

@@ -22,7 +22,7 @@ $template->assign("htmlhead", $htmlhead );
 $template->assign("adminbar", $adminbar );
 
 $template->assign("title", "Versturen");
-$template->assign("intro", "Vul in en verstuur");
+$template->assign("intro", "");
 
 $template->assign("header", "<div>Admin theme header</div>");
 $template->assign("content", "Admin theme content");

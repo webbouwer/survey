@@ -4,23 +4,54 @@ jQuery(function($) {
 
   markupEmailForm = function( container ) {
 
+    var formtypes = {'email':'Basic email','survey': 'Survey email'};
+
     var formhtml = $('<div class="emailform"></div>');
 
-    formhtml.append('<div id="messagebox"></div>');
+    let selectTypeBox = makeSelectBox('formtype', formtypes);
 
-    formhtml.append('<input id="action" name="action" type="hidden" value="input">');
-    formhtml.append('<div class="formrow"><label class="formfield"><span>From name</span><input id="fromName" name="fromName" type="text" placeholder="Naam"></label></div>');
-    formhtml.append('<div class="formrow"><label class="formfield"><span>From email</span><select id="fromEmail" name="fromEmail"><option value="support@webdesigndenhaag.net" selected="selected">support@webdesigndenhaag.net</option><option value="project@oddsized.org">project@oddsized.org</option></select></label></div>');
-    formhtml.append('<div class="formrow"><label class="formfield"><span>Recipient name</span><input id="toName" name="toName" type="text" placeholder="Naam"></label></div>');
+    formhtml.append('<div class="formrow"><label class="formfield"><span>What to send</span>'+selectTypeBox+'</label></div>');
+
+    formhtml.append('<div class="formrow"><label class="formfield"><span>Select Profile</span></label></div>');
+
+    formhtml.append('<input id="action" name="action" type="hidden" value="input">'
+    +'<div class="formrow"><label class="formfield"><span>From name</span><input id="fromName" name="fromName" type="text" placeholder="From Name"></label></div>'
+    +'<div class="formrow"><label class="formfield"><span>From email</span><input id="fromEmail" name="fromEmail" type="text" placeholder="From Email-address"></label></div>'
+    +'<div class="formrow"><label class="formfield"><span>Recipient name</span><input id="toName" name="toName" type="text" placeholder="To Name"></label></div>'
     //formhtml.append('<label class="formfield"><select id="toEmail" name="toEmail"><option value="support@webdesigndenhaag.net" selected="selected">support@webdesigndenhaag.net</option><option value="project@oddsized.org">project@oddsized.org</option></select><label>');
-    formhtml.append('<div class="formrow"><label class="formfield"><span>Recipient Email</span><input id="toEmail" name="toEmail" type="email" placeholder="Email-adres"></label></div>');
-    formhtml.append('<div class="formrow"><label class="formfield"><span>Subject</span><input id="subjectContent" name="subjectContent" type="text" placeholder="Subject"></label></div>');
-    formhtml.append('<div class="formrow"><label class="formfield"><span>Message</span><textarea id="htmlContent" name="htmlContent" placeholder="Email content"></textarea></label></div>');
+    +'<div class="formrow"><label class="formfield"><span>Recipient Email</span><input id="toEmail" name="toEmail" type="email" placeholder="To Email-adres"></label></div>'
+    +'<div class="formrow"><label class="formfield"><span>Subject</span><input id="subjectContent" name="subjectContent" type="text" placeholder="Subject"></label></div>'
+    +'<div class="formrow"><label class="formfield"><span>Message</span><textarea id="htmlContent" name="htmlContent" placeholder="Email content"></textarea></label></div>');
 
     formhtml.append('<div class="formend"><button class="sendbutton">Send</button></div>');
 
     container.html(formhtml);
 
+  }
+
+  basicEmailForm = function(){
+
+  }
+
+  surveyEmailForm = function(){
+
+  }
+
+  makeSelectBox = function( name, options ){
+    if(name && options){
+      //let slcbx = '<select id="fromEmail" name="fromEmail"><option value="support@webdesigndenhaag.net" selected="selected">support@webdesigndenhaag.net</option><option value="project@oddsized.org">project@oddsized.org</option></select>';
+      let slcbx = '<select id="'+name+'" name="'+name+'">';
+      let selected = '';
+      $.each(options, function( val, txt ){
+        if(val == options[0] ){ // first selected
+          selected = 'selected="selected';
+        }
+        slcbx += '<option value="'+val+'" '+selected+'">'+txt+'</option>';
+      });
+      slcbx += '</select>';
+      return slcbx;
+    }
+    return false;
   }
 
   sendHTMLEmail = function(tosend = false) {
