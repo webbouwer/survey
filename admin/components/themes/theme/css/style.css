@@ -34,7 +34,6 @@ body
 input, textarea, button, select
 {
   background:rgb(225,225,225,0.5);
-
   font-family: 'Montserrat', sans-serif;
   font-size:1.1em;
   letter-spacing: 0.01em;
@@ -87,6 +86,7 @@ button.small
 {
   display:inline-block;
   min-width:180px;
+  min-height:28px;
   margin-right:10px;
 }
 
@@ -94,7 +94,7 @@ input, textarea, button, select
 {
   margin:0px 2px;
   border:none;
-  padding:4px 12px;
+  padding:2px 8px;
   border-radius:8px;
 }
 button.small

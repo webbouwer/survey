@@ -44,12 +44,12 @@ jQuery(function($){
                         $.each(obj, function( key, value) {
                           datalist[idx][key] = value;
                           if( key == 'id' || key == 'title' || key == 'desc')
-                            textdata += '<td class="element" data-nr="'+idx+'" data-field="'+key+'"><span class="inputbox">'+value+'</span></td>';
+                            textdata += '<td class="element" data-field="'+key+'"><span class="inputbox">'+value+'</span></td>';
                         });
                         textdata += '<td><button type="button" class="small view">view</button>';
                         textdata += '<button type="button" class="small copy">copy</button>';
                         textdata += '<button type="button" class="small delete">delete</button></td>';
-                        textdata += '</tr>';
+                        textdata += '</tr>'; 
                     }
 
                 });

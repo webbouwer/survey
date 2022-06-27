@@ -85,18 +85,46 @@
 
             $arr = [ 'fields' =>
                     [
-                    'sender'=>'Profile name',
-                    'email'=>'Emailaddress',
-                    'domain'=>'Website domain',
+                    'profile'=>'Profile name',
+                    'sender'=>'Person name',
+                    'email'=>'Profile mailaddress',
+                    'website'=>'Website link',
+                    
+                    'contacttitle'=>'Contact Title',
+                    'contactemail'=>'Contact Email',
+                    'contactphone'=>'Contact Phone',
+                    //'twitter'=>'Twitter',
+                    //'linkedin'=>'Linkedin',
+                    //'facebook'=>'Facebook',
+                    'addresstitle'=>'Adress Title',
+                    'addressstreet'=>'Adress Streetname + number',
+                    'addresspostbox'=>'Adress Postbox',
+                    'addressregion'=>'Adress Region/Province',
+                    'addresscity'=>'Adress City',
+
+                    'admin_mail'=>'Admin Emailaddress',
                     'admin_name'=>'Username',
                     'admin_pass'=>'Password',
                     'admin_lang'=>'Language',
                     ],
                     1 =>
                     [
-                      'sender'=>'Test Profiler',
+                      'profile'=>'Profile Example 1',
+                      'sender'=>'Tester Profile',
                       'email'=>'support@webdesigndenhaag.net',
-                      'domain'=>'webbouwer.org',
+                      'website'=>'webbouwer.org',
+
+                      'contacttitle'=>'Contact us at',
+                      'contactemail'=>'support@webdesigndenhaag.net',
+                      'contactphone'=>'0703647318',
+
+                      'addresstitle'=>'Profile office',
+                      'addressstreet'=>'Streetname 72',
+                      'addresspostbox'=>'3727bh',
+                      'addressregion'=>'Zuid Holland',
+                      'addresscity'=>'Den Haag',
+
+                      'admin_email'=>'support@webdesigndenhaag.net',
                       'admin_name'=>'admin',
                       'admin_pass'=>'admin',
                       'admin_lang'=>'en',
