@@ -3,6 +3,8 @@
     /* encryptdata */
     require_once('rwdata.php');
 
+    include('login.php');
+
     $activeData = new dataList;
 
     class dataList{
@@ -20,7 +22,10 @@
 
             // check file
             if (!(file_exists( $this->source->f . $this->filename ))) {
-                $this->setDefaultData();
+
+              $this->setDefaultData();
+              $loginAdmin->logoutAdmin();
+
             }
 
             // check file data
@@ -29,6 +34,7 @@
                 $this->datalist = $arr;
             }else{
                 $this->setDefaultData();
+                $loginAdmin->logoutAdmin();
             }
 
             if( isset($_REQUEST['action']) ){
@@ -88,9 +94,10 @@
                     'profile'=>'Profile/Company',
                     'sender'=>'Person name',
                     'email'=>'Profile Email',
-                    'website'=>'Website link',
+                    'website_text'=>'Website link text',
+                    'website_link'=>'Website link',
 
-                    'contact_title'=>'Contact Title',
+                    'contact_title'=>'Contact title',
                     'contact_email'=>'Contact Email',
                     'contact_phone'=>'Contact Phone',
                     //'twitter'=>'Twitter',
@@ -113,7 +120,8 @@
                       'profile'=>'Profile Example 1',
                       'sender'=>'Tester Profile',
                       'email'=>'support@webdesigndenhaag.net',
-                      'website'=>'https://webbouwer.org',
+                      'website_text'=>'webbouwer.org',
+                      'website_link'=>'https://webbouwer.org',
 
                       'contact_title'=>'Contact us at',
                       'contact_email'=>'support@webdesigndenhaag.net',

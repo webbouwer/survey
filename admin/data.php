@@ -10,6 +10,7 @@ $htmlhead = '<link rel="stylesheet" href="components/themes/theme/css/style.css"
 .'<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>'
 .'<script src="components/js/content.js"></script>'
 .'<script src="components/js/style.js"></script>'
+.'<script src="components/js/survey.js"></script>'
 .'<script src="components/js/datalist.js"></script>';
 
 $adminbar = '<div id="adminbar">'.getAdminbar().'</div>';

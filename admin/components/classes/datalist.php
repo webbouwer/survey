@@ -131,10 +131,14 @@
                   'email_end'=>'Email end',
 
                   'survey_title'=>'Survey title',
-                  'survey_info'=>'Info text',
+                  'survey_start'=>'Info text',
+                  'survey_end'=>'Info text',
                   'survey_help'=>'Help text',
                   'survey_helplink'=>'Help link',
-                  'survey_disclaimerlink'=>'Disclaimer link',
+                  'survey_disclaimtext1'=>'Disclaim text 1',
+                  'survey_disclaimtext2'=>'Disclaim text 2',
+                  'survey_disclaimlinktext'=>'Link text',
+                  'survey_disclaimlink'=>'Disclaimer link',
                   'survey_end'=>'Outro text',
 
                   'json'=>'Survey Data',
@@ -153,10 +157,14 @@
                   'email_end'=>'Email Outro text (finnishing) below the survey section followed by the regards and sender person name',
 
                   'survey_title'=>'Survey Example 1 Title',
-                  'survey_info'=>'Please share your thoughts about your experience with our services by answering the following questions.',
+                  'survey_start'=>'Please share your thoughts about your experience with our services by answering the following questions.',
+                  'survey_end'=>'Info text below survey box with questions',
                   'survey_help'=>'Overall usage notes and tips text for help sectio',
                   'survey_helplink'=>'https://..#surveyhelp',
-                  'survey_disclaimerlink'=>'https://..#disclaimer',
+                  'survey_disclaimtext1'=>'Disclaimer text 1 the below the end text underneath the survey box',
+                  'survey_disclaimtext2'=>'Disclaim text 2 at the end of the page above the footer (contact) area',
+                  'survey_disclaimlinktext'=>'Disclaimer',
+                  'survey_disclaimink'=>'https://..#disclaimer',
                   'survey_end'=>'Outro text (finnishing) below the survey section',
 
                   'json'=>$setup,

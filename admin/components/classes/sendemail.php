@@ -84,7 +84,7 @@ class sendHTMLEmail{
 
     // output json response
     header('Content-Type: application/json');
-    print json_encode($this->result); 
+    print json_encode($this->result);
 
   }
 
