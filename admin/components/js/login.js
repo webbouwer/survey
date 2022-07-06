@@ -8,16 +8,18 @@ jQuery(function($){
       if( $('body').find('#messagebox .loginmessage').length < 1){
         $('#loginbox').append('<div id="messagebox"><div class="loginmessage"></div></div>');
       }
-
+
       getConfigDataTable = function(){
         let nm = $("#name").val();
         let ps= $("#pass").val();
+
           $.ajax({
               type: 'POST',
               url: configDataUrl,
               data: {'action': 'login','name': nm ,'pass': ps },
               dataType: 'json',
           }).done( function( data ) {
+
 
             if( data['chk'] == 1){
 
@@ -50,8 +52,8 @@ jQuery(function($){
               //console.log(data);
           });
       }
-
-      $('body').on( 'click touchstart', '#loginbox #go', function(e){
+      //$('body').on( 'click touchstart', '#loginbox #go', function(e){
+      $("#loginbox form").submit(function (e) {
         e.preventDefault();
         getConfigDataTable();
       });

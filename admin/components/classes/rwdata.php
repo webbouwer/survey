@@ -1,4 +1,4 @@
-<?php require_once('protected.php');
+<?php //require_once('protected.php');
 class rwdata{
 
 	private $s;
@@ -8,6 +8,7 @@ class rwdata{
 
 		$this->s = "38ob8734lkrp2382kbld2kbh9db2khbh9db2khb38obhrrkn8n49fdkj00"; // encryption key
 		$this->f = "../data/"; // data folder
+
 
 		if(!is_dir( $this->f )){
 			mkdir( $this->f );
@@ -28,6 +29,7 @@ class rwdata{
 
 		// decrypted json to array
 		$data = file_get_contents( $this->f . $filename );
+
 		/* mcrypt is deprecated:
         $decrypted = rtrim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, md5($this->s), base64_decode($data), MCRYPT_MODE_CBC, md5(md5($this->s))), "\0");
         */
@@ -35,6 +37,14 @@ class rwdata{
 		$arr = json_decode( $decrypted, true);
 		return $arr;
 	}
+
+	public function getKey(){
+		return $this->s;
+	}
+
+	/*
+		// newKey / changeKey
+	*/
 
     private function encrypt($key, $payload) {
         // php mcrypt_encrypt alternative:

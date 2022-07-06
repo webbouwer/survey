@@ -3,7 +3,7 @@
     /* encryptdata */
     require_once('rwdata.php');
 
-    include('login.php');
+    //include('login.php');
 
     $activeData = new dataList;
 
@@ -24,7 +24,6 @@
             if (!(file_exists( $this->source->f . $this->filename ))) {
 
               $this->setDefaultData();
-              $loginAdmin->logoutAdmin();
 
             }
 
@@ -34,7 +33,6 @@
                 $this->datalist = $arr;
             }else{
                 $this->setDefaultData();
-                $loginAdmin->logoutAdmin();
             }
 
             if( isset($_REQUEST['action']) ){
@@ -49,9 +47,12 @@
                   }
 
               }
+
+
               if( $_REQUEST['action'] == 'list' ){
                 print_r(json_encode($this->datalist));
               }
+              // ajax login
               if( $_REQUEST['action'] == 'login' ){
                 //echo json_encode($this->datalist);
                 if( isset($_REQUEST['name']) && isset($_REQUEST['pass']) ){
@@ -78,10 +79,14 @@
                     }
                   }
                   $arr = ['chk' => $chk, 'msg' => $msg];
-                  print_r(json_encode($arr));
+
+                  header('Content-Type: application/json');
+                  print json_encode($arr);
                   //print_r(json_encode($this->datalist[$key]))
                 }
+
               }
+
             }
 
 
@@ -93,9 +98,15 @@
                     [
                     'profile'=>'Profile/Company',
                     'sender'=>'Person name',
-                    'email'=>'Profile Email',
                     'website_text'=>'Website link text',
                     'website_link'=>'Website link',
+
+                    'email_type'=>'Email settings', // phpmailer basic/smtp/tls..
+                    'email_address'=>'Email address',
+                    'email_username'=>'Username',
+                    'email_password'=>'Password',
+                    'email_smtphost'=>'SMTP Host',
+                    'email_smtpport'=>'SMTP port',
 
                     'contact_title'=>'Contact title',
                     'contact_email'=>'Contact Email',
@@ -119,9 +130,15 @@
                     [
                       'profile'=>'Profile Example 1',
                       'sender'=>'Tester Profile',
-                      'email'=>'support@webdesigndenhaag.net',
                       'website_text'=>'webbouwer.org',
                       'website_link'=>'https://webbouwer.org',
+
+                      'email_type'=>'', // phpmailer basic/smtp/tls..
+                      'email_address'=>'support@webdesigndenhaag.net',
+                      'email_username'=>'',
+                      'email_password'=>'',
+                      'email_smtphost'=>'',
+                      'email_smtpport'=>'',
 
                       'contact_title'=>'Contact us at',
                       'contact_email'=>'support@webdesigndenhaag.net',

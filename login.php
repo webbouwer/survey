@@ -1,22 +1,19 @@
 <?php session_start();
-
 require("admin/components/classes/template.php");
 
 $template = new Template();
 $template->file("public/theme/index.tpl"); // route
 
 $htmlhead = '<link rel="stylesheet" href="public/theme/css/style.css" type="text/css" media="all" />'
-.'<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>'
-.'<script src="admin/components/js/login.js"></script>';
+.'<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>';
+//.'<script src="admin/components/js/login.js"></script>';
+
 
 function htmlLoginbox(){
 
-  $loginbox = '<div class="loginbox">
-    <div class="content-title">
-      <h3>login here</h3>
-    </div>
-    <form action="admin/index.php" method="post">
-    <div class="formrow">
+  $loginbox = '<div id="loginbox"><div class="content-title"><h3>login here</h3></div>
+  <form action="admin/index.php" method="post">
+  <div class="formrow">
       <label class="formfield"><span>Username: </span><input id="name" name="name" type="text" placeholder="Admin name">
       </label>
     </div>
@@ -25,6 +22,7 @@ function htmlLoginbox(){
       </label>
     </div>
     <div class="formend">
+      <input id="action" name="action" type="hidden" value="login" />
       <div class="formfield"><span> </span><input id="go" name="go" type="submit" value="login" /></div>
     </div>
     </form>';

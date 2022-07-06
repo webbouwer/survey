@@ -15,7 +15,7 @@ $adminbar = '<div id="adminbar">'.getAdminbar().'</div>';
 
 $htmlfoot = '';
 
-$template->assign("htmlhead", $htmlhead ); 
+$template->assign("htmlhead", $htmlhead );
 
 $template->assign("adminbar", $adminbar );
 
