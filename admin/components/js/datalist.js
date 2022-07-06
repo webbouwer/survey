@@ -157,8 +157,39 @@ jQuery(function($){
 
       var fields = datalist['fields'];
       var row = datalist[idx];
+      let html = '';
 
-      let html = '<div id="editbox" data-nr="'+idx+'"><h3>Edit Data</h3>';
+      // surveybox
+
+      html += '<div id="surveybox" data-nr="'+idx+'"><h3>Survey Edit</h3>';
+
+      html += '<div class="container">';
+
+      html += '<div class="header"><div class="headertitle"><h1>'+row['title']+'</h1></div></div>';
+
+      html += '<div class="intro"><div class="subtitle"><h2>'+row['subtitle']+'</h2></div>';
+      html += '<div class="desc"><p>'+row['desc']+'</p></div>';
+      html += '<div class="intro_title"><h5>'+row['intro_title']+'</h5></div>';
+      html += '<div class="intro_text"><p>'+row['intro_text']+'</p></div>';
+      html += '<div class="intro_subtext"><p>'+row['intro_subtext']+'</p></div>';
+      html += '</div>';
+
+      html += '<div class="main">';
+      html += '<div class="top"><div class="survey_title"><h3>'+row['survey_title']+'</h3></div>';
+      html += '<div class="survey_start"><p>'+row['survey_start']+'</p></div></div>';
+
+      html += '<div class="slides"></div>';
+
+      html += '<div class="bottom">';
+      html += '<div class="survey_end"><p>'+row['survey_end']+'</p></div></div>';
+
+      html += '</div>';
+
+      html += '</div>';
+      html += '</div>';
+
+      // editbox
+      html += '<div id="editbox" data-nr="'+idx+'"><h3>Data Field Edit</h3>';
 
       $.each(row, function( fieldkey, fieldvalue) {
         if( fieldkey != 'json'){
