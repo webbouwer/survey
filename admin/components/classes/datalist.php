@@ -77,41 +77,14 @@
           	      $this->source->dataToFile( $arr, $this->filename );
 
               }
-
-
-            }
-
-            // remove data
-
-            //echo json_encode($this->datalist);
-            print_r(json_encode($arr));
+           }
+          //echo json_encode($this->datalist);
+          print_r(json_encode($arr));
 
         }
 
         private function defineFields(){
-/*        $json = [
-            "0"=> [
-              "question"=> "Vraag 1 .. , welk antwoord kies je?",
-              "type"  => "range",
-              "tips"  => "This is a survey",
-              "answers"=> [
-                  "0"=> "Mee eens",
-                  "1"=> "Maakt niet uit",
-                  "2"=> "Niet mee eens"
-              ]
-            ],
-            "1"=> [
-              "question"=> "Vraag 2, welk antwoord kies je?",
-              "type"  => "select",
-              "tips"  => "Answer this question",
-              "answers"=> [
-                  "0"=> "Antwoord 1",
-                  "1"=> "Antwoord 2",
-                  "2"=> "Antwoord 3",
-                  ]
-              ]
-
-          ];*/
+
           $json = [
 
           			"0"=> [
@@ -254,67 +227,4 @@
         }
     }
 
-
-
-/*
-    $rw = new rwdata;
-    $filename = 'contacts.json';
-
-    if( isset($_POST['data']) ){
-        // save
-        $data = json_decode($_POST['data']);
-        $rw->dataToFile( $data, $filename );
-
-    }
-
-
-    $arr = $rw->dataFromFile( $filename );
-
-    if( is_array($arr) && isset($arr['fields']) ){
-        $array = $arr;
-    }else{
-
-        $array = [ 'fields' =>
-                    [
-                    'fname'=>'Voornaam',
-                    'lname'=>'Achternaam',
-                    'mobile'=>'Mobiel',
-                    'phone'=>'Telefoon',
-                    'email'=>'Email',
-                    'bname'=>'Bedrijfsnaam',
-                    'street'=> 'Straatnaam',
-                    'streetnr'=> 'nummer',
-                    'postcode'=> 'postcode',
-                    'place'=> 'plaats',
-                    'state'=> 'land'
-                    ],
-                ];
-
-	   $rw->dataToFile( $array, $filename );
-    }
-
-    echo json_encode($array);
-
-
-
-	//print_r($arr);
-*/
-/*
-
-    // variable data array to store
-    $filename = 'contacts.json';
-
-
-    // array to json & write encrypted string to file
-	$rw->dataToFile( $array, $filename );
-
-    // get filedata & decrypt json string to array
-    $arr = $rw->dataFromFile( $filename );
-
-	//output
-	print_r($arr);
-
-	// check data/contacts.json
-
-*/
 ?>
