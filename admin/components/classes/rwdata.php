@@ -9,13 +9,12 @@ class rwdata{
 		$this->s = "38ob8734lkrp2382kbld2kbh9db2khbh9db2khb38obhrrkn8n49fdkj00"; // encryption key
 		$this->f = "../data/"; // data folder
 
+	}
+	public function dataToFile($array = false, $filename){
 
 		if(!is_dir( $this->f )){
 			mkdir( $this->f );
-		}
-
-	}
-	public function dataToFile($array = false, $filename){
+		} 
 		// array to encrypted json
 		$datastring = json_encode( $array );
 		/* mcrypt is deprecated
@@ -37,11 +36,11 @@ class rwdata{
 		$arr = json_decode( $decrypted, true);
 		return $arr;
 	}
-
+	/*
 	public function getKey(){
 		return $this->s;
 	}
-
+	*/
 	/*
 		// newKey / changeKey
 	*/

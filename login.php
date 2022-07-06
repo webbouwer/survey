@@ -2,10 +2,11 @@
 require("admin/components/classes/template.php");
 
 $template = new Template();
-$template->file("public/theme/index.tpl"); // route
+$template->file("public/themes/theme/index.tpl"); // route
 
-$htmlhead = '<link rel="stylesheet" href="public/theme/css/style.css" type="text/css" media="all" />'
-.'<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>';
+$htmlhead = '<link rel="stylesheet" href="public/themes/theme/css/style.css" type="text/css" media="all" />'
+.'<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>'
+.'<script src="public/themes/theme/js/style.js"></script>';
 //.'<script src="admin/components/js/login.js"></script>';
 
 

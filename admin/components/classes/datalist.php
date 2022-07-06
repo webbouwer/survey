@@ -89,8 +89,7 @@
         }
 
         private function defineFields(){
-
-          $json = [
+/*        $json = [
             "0"=> [
               "question"=> "Vraag 1 .. , welk antwoord kies je?",
               "type"  => "range",
@@ -112,7 +111,79 @@
                   ]
               ]
 
-          ];
+          ];*/
+          $json = [
+
+          			"0"=> [
+          				"question"=> "Did you know surveys are one of the first practical applications of the personal computer? ",
+          				"type"=> "polar",
+          				"tips"=> "This is a survey",
+          				"answers"=> [
+          					"0"=> "No",
+          					"1"=> "Yes"
+          				]
+          			],
+          			"1"=> [
+          				"question"=> "Which of the types listed below are polar questions like the first one? ",
+          				"type"=> "multi",
+          				"tips"=> "Multiple answers are possible",
+          				"answers"=> [
+          					"0"=> "Are you going? (inversion)",
+          					"1"=> "Are you staying or going? (inversion with an alternative)",
+          					"2"=> "You're going, aren't you? (tag)"
+          				]
+          			],
+          			"2"=> [
+          				"question"=> "So, the question 'You like it, don't you?' is",
+          				"type"=> "choice",
+          				"tips"=> "Choose one answer",
+          				"answers"=>[
+          					"0"=> "a polar inversion",
+          					"1"=> "a polar inversion with an alternative",
+          					"2"=> "a tagged polar"
+          				]
+          			],
+          			"3"=> [
+          				"question"=> "This is the fourth question; do you like it?",
+          				"type"=> "value",
+          				"tips"=> "Value from 1 to 5",
+          				"answers"=> [
+          					"0"=> "1",
+          					"1"=> "2",
+          					"2"=> "3",
+          					"3"=> "4",
+          					"4"=> "5"
+          				]
+          			],
+          			"4"=> [
+          				"question"=> "Can you define your joy level knowing this survey is almost over? ",
+          				"type"=> "scale",
+          				"tips"=> "Scale from 1 to 10",
+          				"answers"=> [
+          					"0"=> "1",
+          					"1"=> "2",
+          					"2"=> "3",
+          					"3"=> "4",
+          					"4"=> "5",
+          					"5"=> "6",
+          					"6"=> "7",
+          					"7"=> "8",
+          					"8"=> "9",
+          					"9"=> "10"
+          				]
+          			],
+          			"5"=> [
+          				"question"=> "Yes, you 've made it, no question more. You can leave a notice of your love in the textbox below. Or should we make this a question too? ;)",
+          				"type"=> "open",
+          				"tips"=> "Space to write those words",
+          				"max"=> 100,
+          				"answers"=> [
+          					"0"=> "Please express your passion for this survey app within a 100 words",
+          				]
+          			]
+          		];
+
+
 
           $setup = json_encode($json, true);
 
@@ -164,7 +235,7 @@
                   'survey_disclaimtext1'=>'Disclaimer text 1 the below the end text underneath the survey box',
                   'survey_disclaimtext2'=>'Disclaim text 2 at the end of the page above the footer (contact) area',
                   'survey_disclaimlinktext'=>'Disclaimer',
-                  'survey_disclaimink'=>'https://..#disclaimer',
+                  'survey_disclaimlink'=>'#disclaimer',
                   'survey_end'=>'Outro text (finnishing) below the survey section',
 
                   'json'=>$setup,
