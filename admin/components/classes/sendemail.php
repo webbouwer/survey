@@ -1,11 +1,18 @@
 <?php require_once('protected.php');
 
+/* PHP Mailer
+ * verification emailadresses (google etc.)
+ * https://support.google.com/mail/answer/81126#authentication
+ *
+*/
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 require '../lib/PHPMailer/src/Exception.php';
 require '../lib/PHPMailer/src/PHPMailer.php';
 //require '../lib/PHPMailer/src/SMTP.php';
+
+
 
 $result = [];
 $chk = false;
@@ -59,7 +66,7 @@ if($chk){
       $result['status'] = 'failed';
       $result['msg'] = 'Error: '. $mail->ErrorInfo;
   	 } else {
-       $result['status'] = 'failed';
+       $result['status'] = 'succes';
        $result['msg'] = 'Message sent to '.$toEmail.'!';
   	 }
   }
