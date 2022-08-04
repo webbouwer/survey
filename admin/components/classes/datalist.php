@@ -174,6 +174,10 @@
                   'email_surveyintro'=>'Email survey intro',
                   'email_end'=>'Email end',
 
+                  'intro_title'=>'Intro title',
+                  'intro_text'=>'Intro text',
+                  'intro_subtext'=>'Intro sub text',
+
                   'survey_title'=>'Survey title',
                   'survey_start'=>'Info text',
                   'survey_end'=>'Info text',
@@ -183,7 +187,8 @@
                   'survey_disclaimtext2'=>'Disclaim text 2',
                   'survey_disclaimlinktext'=>'Link text',
                   'survey_disclaimlink'=>'Disclaimer link',
-                  'survey_end'=>'Outro text',
+
+                  'outro_text'=>'Outro text',
 
                   'json'=>'Survey Data',
                   ],
@@ -200,6 +205,10 @@
                   'email_surveyintro'=>'Below is the first question. By answering you will be directed anonymously to our website with the complete survey. Thank you for your effort!',
                   'email_end'=>'Email Outro text (finnishing) below the survey section followed by the regards and sender person name',
 
+                  'intro_title'=>'Intro title',
+                  'intro_text'=>'Intro text before the survey section',
+                  'intro_subtext'=>'Intro sub text',
+
                   'survey_title'=>'Survey Example 1 Title',
                   'survey_start'=>'Please share your thoughts about your experience with our services by answering the following questions.',
                   'survey_end'=>'Info text below survey box with questions',
@@ -209,7 +218,8 @@
                   'survey_disclaimtext2'=>'Disclaim text 2 at the end of the page above the footer (contact) area',
                   'survey_disclaimlinktext'=>'Disclaimer',
                   'survey_disclaimlink'=>'#disclaimer',
-                  'survey_end'=>'Outro text (finnishing) below the survey section',
+
+                  'outro_text'=>'Outro text (finnishing) below the survey section',
 
                   'json'=>$setup,
 

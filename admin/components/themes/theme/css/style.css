@@ -1,4 +1,7 @@
-/**/
+/*
+https://mycolor.space/?hex=%23DED0E8&sub=1
+https://mycolor.space/?hex=%23161B22&sub=1
+*/
 
 body
 {
@@ -41,6 +44,15 @@ input, textarea, button, select
   line-height:1.6em;
 }
 
+span.inputbox
+{
+  display:inline-block;
+  min-height:26px;
+  min-width:160px;
+  margin-bottom:-4px;
+  background:rgb(225,225,225,0.3);
+}
+
 span.inputbox:hover
 {
   background-color:#ded0e8;
@@ -51,11 +63,24 @@ input:hover, textarea:hover, button:hover, select:hover
   background-color:rgb(225,225,225,0.8);
   color:#2d2d2d;
 }
-input.incorrect
+input.incorrect,
+textarea.incorrect
 {
   border:1px solid red;
 }
 
+
+.configlist .profile .titlebox
+{
+  border-radius:8px;
+  color:#232323;
+  background-color:rgb(0,0,0,0.1);
+}
+
+.configlist .profile .titlebox:hover
+{
+  background-color: #cdefef; /*green.. #29a685;/* rgb(0,0,0,0.2); */
+}
 
 table#datalist tr:hover td
 {
@@ -68,6 +93,55 @@ button.small
   letter-spacing: -0.01em;
 }
 
+
+/* css build icons */
+#sidebarcontainer .menutoggle span
+{
+  position: relative;
+  display:inline-block;
+  height:25px;
+  width: 25px;
+  border-top: 5px solid black;
+  transition: all linear 0.3s;
+}
+#sidebarcontainer .menutoggle span::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 0px;
+  width: 25px;
+  border-top: 5px solid black;
+  transition: all linear 0.3s;
+}
+#sidebarcontainer .menutoggle span::after
+{
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 0px;
+  width: 25px;
+  border-top: 5px solid black;
+  transition: all linear 0.3s;
+}
+.menu #sidebarcontainer .menutoggle span
+{
+  border-top:5px solid transparent;
+}
+.menu #sidebarcontainer .menutoggle span::before
+{
+	transform: rotate(-45deg);
+}
+.menu #sidebarcontainer .menutoggle span::after
+{
+	transform: rotate(45deg);
+  top: 5px;
+}
+
+
+
+/*
+ * Positioning
+ */
 
 /* form elements */
 #messagebox
@@ -136,7 +210,7 @@ input.incorrect
 
 button.closeOverlay
 {
-  position:absolute;
+  position:fixed;
   top:12px;
   right:12px;
   z-index:999;
@@ -148,6 +222,27 @@ button.closeOverlay span
 
 /* Email form */
 
+/* Config list */
+
+.configlist .profile .titlebox
+{
+  padding:10px 12px;
+  width:auto;
+  max-width:360px;
+}
+.configlist .profile .titlebox h3,
+.configlist .profile .titlebox p
+{
+  padding:2px 0px 0px;
+  margin:0;
+}
+
+.configlist .profile .editbox
+{
+  display:none;
+}
+
+
 
 /* datalist */
 table#datalist
@@ -158,6 +253,14 @@ table th
 {
   text-align:left;
 }
+table#datalist .entry .field-id span
+{
+  display:inline-block;
+  min-width:40px;
+  min-height:28px;
+  margin-right:10px;
+}
+
 
 #dataview.overLayScreen.layer
 {
@@ -218,6 +321,31 @@ span.inputbox
 {
 }
 
+@media all and (max-width: 560px){
+
+	#sidebarcontainer .menutoggle
+	{
+		text-align:right;
+	   padding: 1vh 2vw;
+	}
+
+	#adminbar
+	{
+		margin-top:-100vh;
+		transition: all linear 0.3s;
+	}
+
+	.menu #adminbar
+	{
+		margin-top:0px;
+	}
+
+
+}
+
+
+
+
 /* large */
 @media all and (min-width: 560px){
 #headcontainer
@@ -225,6 +353,7 @@ span.inputbox
   height:8vh;
   min-height:60px;
 }
+/*
 #sidebarcontainer
 {
   position:absolute;
@@ -232,12 +361,6 @@ span.inputbox
 	min-height:85vh;
 }
 
-ul li
-{
-  list-style:none;
-  margin:0px;
-  padding:0px;
-}
 
 #contentcontainer
 {
@@ -246,9 +369,68 @@ ul li
 	min-height:85vh;
 }
 
+
+*/
+ul li
+{
+  list-style:none;
+  margin:0px;
+  padding:0px;
+}
+
+
+#adminmenu,
+#sidebarcontainer .menutoggle
+{
+	padding: 1vh 2vw;
+}
+#sidebarcontainer .menutoggle
+{
+	position:absolute;
+	width:40px;
+	right:calc( -40px - 4vw);
+}
+
+.menu #sidebarcontainer .menutoggle
+{
+	text-align:right;
+	right:0px;
+}
+#sidebarcontainer {
+  position: absolute;
+  width: 21%;
+  min-height: 85vh;
+	left:-21%;
+  transition: all linear 0.3s;
+}
+.menu #sidebarcontainer {
+  position: absolute;
+  width: 21%;
+  min-height: 85vh;
+	left:0px;
+}
+#contentcontainer {
+  width: 100%;
+  padding-left: 0%;
+  min-height: 85vh;
+  transition: all linear 0.3s;
+}
+.menu #contentcontainer {
+  width: 79%;
+  padding-left: 21%;
+  min-height: 85vh;
+}
+
+
+
 .outermargin
 {
   padding:2vh 2vw;
+}
+
+.configlist .profile .titlebox
+{
+  margin:6px 12px 2px -12px;
 }
 
 #footcontainer

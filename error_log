@@ -1,9 +1,0 @@
-[06-Jul-2022 13:23:29 UTC] PHP Warning:  require(admin/components/classes/template.php): failed to open stream: No such file or directory in /home/webbouwer/public_html/lab/php/survey/login.php on line 2
-[06-Jul-2022 13:23:29 UTC] PHP Warning:  require(admin/components/classes/template.php): failed to open stream: No such file or directory in /home/webbouwer/public_html/lab/php/survey/login.php on line 2
-[06-Jul-2022 13:23:29 UTC] PHP Fatal error:  require(): Failed opening required 'admin/components/classes/template.php' (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home/webbouwer/public_html/lab/php/survey/login.php on line 2
-[06-Jul-2022 13:26:16 UTC] PHP Warning:  require(admin/components/classes/template.php): failed to open stream: No such file or directory in /home/webbouwer/public_html/lab/php/survey/index.php on line 2
-[06-Jul-2022 13:26:16 UTC] PHP Warning:  require(admin/components/classes/template.php): failed to open stream: No such file or directory in /home/webbouwer/public_html/lab/php/survey/index.php on line 2
-[06-Jul-2022 13:26:16 UTC] PHP Fatal error:  require(): Failed opening required 'admin/components/classes/template.php' (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home/webbouwer/public_html/lab/php/survey/index.php on line 2
-[06-Jul-2022 13:26:29 UTC] PHP Warning:  require(admin/components/classes/template.php): failed to open stream: No such file or directory in /home/webbouwer/public_html/lab/php/survey/index.php on line 2
-[06-Jul-2022 13:26:29 UTC] PHP Warning:  require(admin/components/classes/template.php): failed to open stream: No such file or directory in /home/webbouwer/public_html/lab/php/survey/index.php on line 2
-[06-Jul-2022 13:26:29 UTC] PHP Fatal error:  require(): Failed opening required 'admin/components/classes/template.php' (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home/webbouwer/public_html/lab/php/survey/index.php on line 2
