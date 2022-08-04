@@ -44,7 +44,7 @@ jQuery(function($){
                         $.each(obj, function( key, value) {
                           datalist[idx][key] = value;
                           if( key == 'id' || key == 'title' || key == 'desc')
-                            textdata += '<td class="element" data-nr="'+idx+'" data-field="'+key+'"><span class="inputbox">'+value+'</span></td>';
+                            textdata += '<td class="element field-'+key+'" data-nr="'+idx+'" data-field="'+key+'"><span class="inputbox">'+value+'</span></td>';
                         });
                         textdata += '<td><button type="button" class="small view">view</button>';
                         textdata += '<button type="button" class="small copy">copy</button>';
@@ -159,9 +159,8 @@ jQuery(function($){
       var row = datalist[idx];
       let html = '';
 
-      // surveybox
-
-      html += '<div id="surveybox" data-nr="'+idx+'"><h3>Survey Edit</h3>';
+      // previewbox
+      html += '<div id="previewbox" data-nr="'+idx+'"><h3>Data Preview</h3>';
 
       html += '<div class="container">';
 
@@ -189,7 +188,7 @@ jQuery(function($){
       html += '</div>';
 
       // editbox
-      html += '<div id="editbox" data-nr="'+idx+'"><h3>Data Field Edit</h3>';
+      html += '<div id="editbox" data-nr="'+idx+'"><h3>Data Edit</h3>'; 
 
       $.each(row, function( fieldkey, fieldvalue) {
         if( fieldkey != 'json'){

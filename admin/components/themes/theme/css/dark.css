@@ -49,6 +49,14 @@ input:hover, textarea:hover, button:hover, select:hover
 }
 
 
+#sidebarcontainer .menutoggle span,
+#sidebarcontainer .menutoggle span::before,
+#sidebarcontainer .menutoggle span::after
+{
+  border-top: 5px solid #ededed;
+}
+
+
 .configlist .profile .titlebox
 {
   border-radius:8px;

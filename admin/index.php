@@ -22,9 +22,9 @@ $template->assign("adminbar", $adminbar );
 $template->assign("header", "Admin theme header");
 
 $template->assign("title", "Admin");
-$template->assign("intro", "Selecteer een optie");
+$template->assign("intro", "Welcome at the Admin area");
 
-$template->assign("content", "");
+$template->assign("content", "Build a data set, edit the survey and send the first question encrypted to the participant 's mailbox.");
 
 $template->assign("footer", "Admin theme footer");
 

@@ -1,4 +1,9 @@
 /* colors light */
+body
+{
+  color:#232323;
+  background-color:#ffffff;
+}
 #headcontainer,
 #footcontainer
 {
