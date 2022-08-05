@@ -1,5 +1,6 @@
 <?php require_once('protected.php');
-
+
+
 $sendEmail = new sendHTMLEmail;
 
 class sendHTMLEmail{

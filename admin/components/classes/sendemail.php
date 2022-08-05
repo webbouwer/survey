@@ -12,8 +12,6 @@ require '../lib/PHPMailer/src/Exception.php';
 require '../lib/PHPMailer/src/PHPMailer.php';
 //require '../lib/PHPMailer/src/SMTP.php';
 
-
-
 $result = [];
 $chk = false;
 
@@ -43,23 +41,23 @@ if($chk){
   //Create a new PHPMailer instance
   $mail = new PHPMailer(true);
 
-  /* Open the try/catch block. */
+  // Open the try/catch block.
   try {
-     /* Set the mail sender. */
+     // Set the mail sender.
      $mail->setFrom($fromEmail, $fromName);
 
-     /* Add a recipient. */
+     // Add a recipient.
      $mail->addAddress( $toEmail, 'Email test participant');
 
      $mail->isHTML(true);
 
-     /* Set the subject. */
+     // Set the subject.
      $mail->Subject = $subject;
 
-     /* Set the mail message body. */
+     // Set the mail message body.
      $mail->Body = $htmlContent;
 
-     /* Finally send the mail. */
+     // Finally send the mail.
      //$mail->send();
   	 if (!$mail->send()) {
   	     //echo 'Mailer Error: ' . $mail->ErrorInfo;
@@ -72,7 +70,7 @@ if($chk){
   }
   catch (Exception $e)
   {
-     /* PHPMailer exception. */
+     // PHPMailer exception.
      //echo $e->errorMessage();
      $result['status'] = 'failed';
      $result['msg'] = 'Error: '. $e->errorMessage();
@@ -85,6 +83,8 @@ if($chk){
 
 header('Content-Type: application/json');
 print json_encode($result);
+
+
 
 /*
 $sendEmail = new sendHTMLEmail;

@@ -100,7 +100,6 @@ jQuery(function($){
 		saveConfigData = function( tosave ){
 
 			//alert( JSON.stringify( tosave ) );
-
 			var senddata =  { 'data': tosave, 'action': 'save' };
 			$.ajax({
 					type: 'POST',
@@ -108,20 +107,16 @@ jQuery(function($){
 					data: senddata,
 					dataType: 'json',
 			}).done( function( data ) {
-					//console.log('done');
+					console.log('data saved');
 					//console.log(data);
-					//displayList(data); //(for admins)
-					//alert( JSON.stringify( data ) );
-
 			})
 			.fail( function( data ) {
-					//console.log('failed to save data');
+					console.log('failed to save data');
 					//console.log(data);
 			});
 
 		}
 
-    //getConfigDataTable( $('body') );
 
 
 

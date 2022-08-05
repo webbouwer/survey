@@ -1,20 +1,16 @@
 jQuery(function($) {
 
+
   $(document).ready(function(){
 
   markupEmailForm = function( container ) {
 
-    var formtypes = {'email':'Basic email','survey': 'Survey email'};
+    var formtypes = { 'email': 'Basic email', 'survey': 'Survey email' };
 
     var formhtml = $('<div class="emailform"></div>');
 
-    let selectTypeBox = makeSelectBox('formtype', formtypes);
-
+    let selectTypeBox = makeTypeSelectBox('formtype', formtypes);
     formhtml.append('<div class="formrow"><label class="formfield"><span>What to send</span>'+selectTypeBox+'</label></div>');
-
-    formhtml.append('<div class="formrow"><label class="formfield"><span>Select Profile</span></label></div>');
-
-    formhtml.append('<div class="formrow"><label class="formfield"><span>Select Survey</span></label></div>');
 
     formhtml.append('<input id="action" name="action" type="hidden" value="input">'
     +'<div class="formrow"><label class="formfield"><span>From name</span><input id="fromName" name="fromName" type="text" placeholder="From Name"></label></div>'
@@ -31,7 +27,127 @@ jQuery(function($) {
 
     container.html(formhtml);
 
+    setProfileSelect();
+
+    setSurveySelect();
+    $('body').on('change', '#formsurvey', function() {
+      setSurveySelect( this.value );
+    });
+
   }
+
+
+
+      var setProfileSelect = function(){
+
+
+            var profilelist;
+            var profileselect = {};
+            var selectProfileBox = '';
+
+                  let configDataUrl = 'components/classes/config.php'; // protected
+
+                      $.ajax({
+                          type: 'POST',
+                          url: configDataUrl,
+                          data: {'action': 'list', 'name': 'check' },
+                          dataType: 'json',
+                      }).done( function( data ) {
+                          if( data['fields'] ){
+                              profilelist = data;
+                              let fields = data['fields'];
+                              $.each(data, function(idx, obj) {
+                                if(idx != 'fields'){
+                                  profileselect[idx] = obj['email_address'];
+                                }
+                              });
+                          }
+
+                              var slcbx = '<select id="formprofile" name="formprofile">';
+
+                              var cnt = 0;
+                              var slc = false;
+                              $.each(profileselect, function( val, txt ){
+                                let selected = '';
+                                if(cnt == 0 ){ // first selected
+                                  slc = val;
+                                  selected = 'selected="selected"';
+                                }
+                                slcbx += '<option value="'+val+'" '+selected+'>'+txt+'</option>';
+                                cnt++;
+                              });
+                              slcbx += '</select>';
+                              selectProfileBox = '<div class="formrow"><label class="formfield"><span>Select Profile</span>'+slcbx+'</label></div>';
+
+                              $('.formrow:first-child').after( selectProfileBox );
+                              $('input[name="fromName"]').val( profilelist[slc]['profile'] );
+                              $('input[name="fromEmail"]').val( profilelist[slc]['email_address'] );
+                      });
+
+
+      }
+
+      var setSurveySelect = function( idx = false ){
+
+
+            var surveylist;
+            var surveyselect = {};
+            var selectSurveyBox = '';
+
+                  let surveyDataUrl = 'components/classes/datalist.php'; // protected
+
+                      $.ajax({
+                          type: 'POST',
+                          url: surveyDataUrl,
+                          data: {'action': 'list', 'name': 'check' },
+                          dataType: 'json',
+                      }).done( function( data ) {
+                          if( data['fields'] ){
+                              surveylist = data;
+                              let fields = data['fields'];
+                              $.each(data, function(idx, obj) {
+                                if(idx != 'fields'){
+                                  surveyselect[idx] = obj['title'];
+                                }
+                              });
+                          }
+
+                              var slcbx = '<select id="formsurvey" name="formsurvey">';
+
+                              var cnt = 0;
+                              var slc = false;
+                              $.each(surveyselect, function( val, txt ){
+                                let selected = '';
+                                if( !idx && cnt == 0){ // first selected
+                                  slc = val;
+                                  selected = 'selected="selected"';
+                                }
+                                if( idx && idx == val ){ // first selected
+                                  slc = val;
+                                  selected = 'selected="selected"';
+                                }
+                                slcbx += '<option value="'+val+'" '+selected+'>'+txt+'</option>';
+                                cnt++;
+                              });
+                              slcbx += '</select>';
+
+                              selectSurveyBox = '<div class="formrow"><label class="formfield"><span>Select Survey</span>'+slcbx+'</label></div>';
+                              $('#formsurvey').closest('.formrow').remove();
+                              $('.formrow:nth-child(2)').after( selectSurveyBox );
+
+                              $('input[name="subjectContent"]').val( surveylist[slc]['title'] );
+                              $('textarea[name="htmlContent"]').val( surveylist[slc]['desc'] );
+
+                      });
+
+
+      }
+
+
+
+
+
+
 
   basicEmailForm = function(){
 
@@ -41,22 +157,25 @@ jQuery(function($) {
 
   }
 
-  makeSelectBox = function( name, options ){
+  var makeTypeSelectBox = function( name, options ){
+
     if(name && options){
+
       //let slcbx = '<select id="fromEmail" name="fromEmail"><option value="support@webdesigndenhaag.net" selected="selected">support@webdesigndenhaag.net</option><option value="project@oddsized.org">project@oddsized.org</option></select>';
       let slcbx = '<select id="'+name+'" name="'+name+'">';
       let selected = '';
       $.each(options, function( val, txt ){
         if(val == options[0] ){ // first selected
-          selected = 'selected="selected';
+          selected = 'selected="selected"';
         }
-        slcbx += '<option value="'+val+'" '+selected+'">'+txt+'</option>';
+        slcbx += '<option value="'+val+'" '+selected+'>'+txt+'</option>';
       });
       slcbx += '</select>';
       return slcbx;
     }
     return false;
   }
+
 
   sendHTMLEmail = function(tosend = false) {
 
