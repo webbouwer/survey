@@ -35,6 +35,15 @@ class rwdata{
 	}
 
 	// TODO: newKey / changeKey
+	/*
+	public function changeEncryptkey( $newkey ){
+		$oldkey = $this->s;
+		// get all files
+		// each file replace encrypted data
+		$data = file_get_contents( $this->f . $filename );
+		$decrypted = $this->decrypt( $this->s, $data );
+	}
+	*/
 
   private function encrypt($key, $payload) {
     // php mcrypt_encrypt alternative:

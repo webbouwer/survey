@@ -9,12 +9,16 @@ This code and repository may be suited for personal and educational use.
 Survey participants receive an email with a startup question. On answer the participant is send to the online survey page to finish the survey. The encrypted data (participant name, emailadress and survey data) is used on the server side only to check the unique survey id and to send the data of the completed survey back to the survey sender and the participant by email. The admin configurations and survey data is stored as encrypted json.
 
 ## Change log
+In [prototype v5](https://github.com/webbouwer/survey/tree/Prototype-v5) mailfunction php and styling
+- Mail function is replaced with the phpmailer class
+- Datalist edit options are extended with json data for the survey edit mode (fields-click-to-edit)
+- Theming extended with theme dark/light detect for public and admin views
+- Preparing email form for options and settings - to be replaced with phpmailer
 
 In [prototype v4](https://github.com/webbouwer/survey/tree/Prototype-v4) functionalities extended and changed a lot
 - login replaced with server side php login including first run and profile login config
 - data edit including basic type questions survey json data
-- Theming extended with theme dark/light detect for public and admin views
-- preparing email form for options and settings - to be replaced with phpmailer
+- Theming menu slide (interface test)
 
 In [prototype v3](https://github.com/webbouwer/survey/tree/Prototype-v3) a few basic functionalities are in place like
 - data edit (inline) with read/write encrypted data including survey json data

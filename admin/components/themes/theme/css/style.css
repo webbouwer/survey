@@ -221,6 +221,17 @@ button.closeOverlay span
 
 
 /* Email form */
+.emailform .formrow.surveyselect,
+.previewsurveybutton
+{
+  display:none;
+}
+.survey .formrow.surveyselect,
+.survey .previewsurveybutton
+{
+  display:block;
+}
+
 
 /* Config list */
 

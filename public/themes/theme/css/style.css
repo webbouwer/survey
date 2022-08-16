@@ -1,255 +1,255 @@
-/**/
-
-body
-{
-  margin:0;
-  padding:0;
-
-  font-family: 'Montserrat', sans-serif;
-  font-size:1.1em;
-  letter-spacing: -0.02em;
-  font-weight:500;
-  line-height:1.6em;
-}
-
-
-/* colors (light) */
-#headcontainer,
-#footcontainer
-{
-  background-color:#cdefef;
-}
-
-#messagebox .formmessage,
-#messagebox .loginmessage
-{
-  background-color:#ededed;
-}
-
-.overLayScreen.layer
-{
-  background-color:#ffffff;
-}
-
-input, textarea, button, select
-{
-  background:rgb(225,225,225,0.5);
-  font-family: 'Montserrat', sans-serif;
-  font-size:1.1em;
-  letter-spacing: 0.01em;
-  font-weight:500;
-  line-height:1.6em;
-}
-
-span.inputbox:hover
-{
-  background-color:#ded0e8;
-}
-
-input:hover, textarea:hover, button:hover, select:hover
-{
-  background:rgb(225,225,225,0.8);
-  color:#2d2d2d;
-}
-input.incorrect
-{
-  border:1px solid red;
-}
-
-
-button.small
-{
-  font-size:0.8em;
-  letter-spacing: -0.01em;
-}
-
-
-/* form elements */
-#messagebox
-{
-  position:fixed;
-  top:0px;
-  left:0px;
-  width:100%;
-  text-align:center;
-  z-index:999;
-}
-#messagebox .formmessage
-{
-  position:relative;
-  max-width:480px;
-  margin:5px auto;
-  text-align:left;
-}
-.formrow,
-.formend,
-.entry
-{
-  padding:3px 0px;
-}
-.formend
-{
-}
-
-.formfield span
-{
-  display:inline-block;
-  min-width:180px;
-  min-height:28px;
-  margin-right:10px;
-}
-
-input, textarea, button, select
-{
-  margin:0px 2px;
-  border:none;
-  padding:2px 8px;
-  border-radius:8px;
-}
-button.small
-{
-  padding:3px 6px;
-}
-input.incorrect
-{
-}
-
-
-/* overlay */
-.layer
-{
-}
-.overLayScreen.layer
-{
-  position:fixed;
-  width:100%;
-  height:100%;
-  top:0;
-  left:0;
-  overflow-y:auto;
-}
-
-button.closeOverlay
-{
-  position:absolute;
-  top:12px;
-  right:12px;
-  z-index:999;
-}
-button.closeOverlay span
-{
-}
-
-
-/* Email form */
-
-
-/* datalist */
-table#datalist
-{
-  width:100%;
-}
-table th
-{
-  text-align:left;
-}
-
-#dataview.overLayScreen.layer
-{
-}
-#dataview.overLayScreen.layer .framecontainer.outermargin
-{
-  position:relative;
-}
-#dataview.overLayScreen.layer .framecontainer.outermargin .contentbox
-{
-  width:96vw;
-  max-width:980px;
-  margin:1vh auto;
-}
-
-#dataview.overLayScreen.layer .framecontainer .contentbox #editbox
-{
-}
-#dataview #editbox > div.element.row span.inputbox
-{
-}
-#dataview #editbox > div.entry.json .element span.inputbox
-{
-}
-span.inputbox
-{
-}
-
-
-
-
-
-
-
-/* (Sm)all */
-#pagecontainer
-{
-  width:100%;
-}
-.outermargin
-{
-  padding:2vh 2vw;
-}
-
-#headcontainer,
-#contentcontainer,
-#footcontainer
-{
-  width:100%;
-}
-#sidebarcontainer
-{
-}
-#contentcontainer
-{
-}
-#footcontainer
-{
-}
-
-/* large */
-@media all and (min-width: 560px){
-#headcontainer
-{
-  height:8vh;
-  min-height:60px;
-}
-#sidebarcontainer
-{
-  position:absolute;
-	width:21%;
-	min-height:85vh;
-}
-
-ul li
-{
-  list-style:none;
-  margin:0px;
-  padding:0px;
-}
-
-#contentcontainer
-{
-	width:79%;
-  padding-left:21%;
-	min-height:85vh;
-}
-
-.outermargin
-{
-  padding:2vh 2vw;
-}
-
-#footcontainer
-{
-  height:7vh;
-  min-height:50px;
-}
-
-}
+/**/
+
+body
+{
+  margin:0;
+  padding:0;
+
+  font-family: 'Montserrat', sans-serif;
+  font-size:1.1em;
+  letter-spacing: -0.02em;
+  font-weight:500;
+  line-height:1.6em;
+}
+
+
+/* colors (light) */
+#headcontainer,
+#footcontainer
+{
+  background-color:#cdefef;
+}
+
+#messagebox .formmessage,
+#messagebox .loginmessage
+{
+  background-color:#ededed;
+}
+
+.overLayScreen.layer
+{
+  background-color:#ffffff;
+}
+
+input, textarea, button, select
+{
+  background:rgb(225,225,225,0.5);
+  font-family: 'Montserrat', sans-serif;
+  font-size:1.1em;
+  letter-spacing: 0.01em;
+  font-weight:500;
+  line-height:1.6em;
+}
+
+span.inputbox:hover
+{
+  background-color:#ded0e8;
+}
+
+input:hover, textarea:hover, button:hover, select:hover
+{
+  background:rgb(225,225,225,0.8);
+  color:#2d2d2d;
+}
+input.incorrect
+{
+  border:1px solid red;
+}
+
+
+button.small
+{
+  font-size:0.8em;
+  letter-spacing: -0.01em;
+}
+
+
+/* form elements */
+#messagebox
+{
+  position:fixed;
+  top:0px;
+  left:0px;
+  width:100%;
+  text-align:center;
+  z-index:999;
+}
+#messagebox .formmessage
+{
+  position:relative;
+  max-width:480px;
+  margin:5px auto;
+  text-align:left;
+}
+.formrow,
+.formend,
+.entry
+{
+  padding:3px 0px;
+}
+.formend
+{
+}
+
+.formfield span
+{
+  display:inline-block;
+  min-width:180px;
+  min-height:28px;
+  margin-right:10px;
+}
+
+input, textarea, button, select
+{
+  margin:0px 2px;
+  border:none;
+  padding:2px 8px;
+  border-radius:8px;
+}
+button.small
+{
+  padding:3px 6px;
+}
+input.incorrect
+{
+}
+
+
+/* overlay */
+.layer
+{
+}
+.overLayScreen.layer
+{
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  overflow-y:auto;
+}
+
+button.closeOverlay
+{
+  position:absolute;
+  top:12px;
+  right:12px;
+  z-index:999;
+}
+button.closeOverlay span
+{
+}
+
+
+/* Email form */
+
+
+/* datalist */
+table#datalist
+{
+  width:100%;
+}
+table th
+{
+  text-align:left;
+}
+
+#dataview.overLayScreen.layer
+{
+}
+#dataview.overLayScreen.layer .framecontainer.outermargin
+{
+  position:relative;
+}
+#dataview.overLayScreen.layer .framecontainer.outermargin .contentbox
+{
+  width:96vw;
+  max-width:980px;
+  margin:1vh auto;
+}
+
+#dataview.overLayScreen.layer .framecontainer .contentbox #editbox
+{
+}
+#dataview #editbox > div.element.row span.inputbox
+{
+}
+#dataview #editbox > div.entry.json .element span.inputbox
+{
+}
+span.inputbox
+{
+}
+
+
+
+
+
+
+
+/* (Sm)all */
+#pagecontainer
+{
+  width:100%;
+}
+.outermargin
+{
+  padding:2vh 2vw;
+}
+
+#headcontainer,
+#contentcontainer,
+#footcontainer
+{
+  width:100%;
+}
+#sidebarcontainer
+{
+}
+#contentcontainer
+{
+}
+#footcontainer
+{
+}
+
+/* large */
+@media all and (min-width: 560px){
+#headcontainer
+{
+  height:8vh;
+  min-height:60px;
+}
+#sidebarcontainer
+{
+  position:absolute;
+	width:21%;
+	min-height:85vh;
+}
+
+ul li
+{
+  list-style:none;
+  margin:0px;
+  padding:0px;
+}
+
+#contentcontainer
+{
+	width:79%;
+  padding-left:21%;
+	min-height:85vh;
+}
+
+.outermargin
+{
+  padding:2vh 2vw;
+}
+
+#footcontainer
+{
+  height:7vh;
+  min-height:50px;
+}
+
+}
