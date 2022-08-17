@@ -5,11 +5,21 @@
   --body_bg: #000000;
   --body_text: #cdcdcd;
 
+  --text_link: #3275F5;
+  --text_link_hover: #0055FF;
+
+  --button_text: #121212;
+  --button_bg: #3275F5;
+  --button_text_hover: #efefef;
+  --button_bg_hover: #0055FF;
+
   /* dark theme tables */
-  --row_bg_hover: #34414e;
+  --row_bg_hover: #121212;
 
   /* dark theme fields */
-  --input_bg: rgb(234,238,242, 0.3);
-  --input_bg_hover: rgb(165, 214, 255,0.5);
+  --input_bg: red;
+  --input_text_color: white;
+  --input_bg_hover: orange;
+  --input_text_color_hover: red;
 
 }

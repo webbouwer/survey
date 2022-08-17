@@ -5,10 +5,20 @@
   --body_bg: #ffffff;
   --body_text: #232323;
 
-  /* light theme tables.css */
-  --row_bg_hover: rgb(201, 209, 217);
+  --text_link: #0066CC;
+  --text_link_hover: #0055FF;
 
-  /* light theme fields.css */
-  --input_bg: rgb(234,238,242, 0.5);
-  --input_bg_hover: rgb(165, 214, 255,0.8);
+  --button_text: #efefef;
+  --button_bg: #3275F5;
+  --button_text_hover: #efefef;
+  --button_bg_hover: #0055FF;
+
+  /* light theme tables.css */
+  --row_bg_hover: #ededed;
+
+  /* light theme fields */
+  --input_bg: red;
+  --input_text_color: white;
+  --input_bg_hover: orange;
+  --input_text_color_hover: red;
 }

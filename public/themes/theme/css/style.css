@@ -22,7 +22,40 @@ body
   background-color: var(--body_bg);
 }
 
-input, textarea, button, select
+a
+{
+  color: var(--text_link);
+  text-decoration:none;
+}
+a:hover
+{
+  color: var(--text_link_hover);
+  text-decoration:underline;
+}
+input#go,
+button
+{
+  background-color:var(--button_bg);
+  color: var(--button_text);
+}
+input#go:hover,
+button:hover
+{
+  background-color:var(--button_bg_hover);
+  color: var(--button_text_hover);
+}
+
+
+#adminbar,
+.outermargin
+{
+  position:relative;
+  width:90%;
+  max-width:1158px;
+  margin: 0px auto;
+}
+
+input, textarea, select
 {
   background: var(--input_bg);
   font-family: var(--font_base_family);
