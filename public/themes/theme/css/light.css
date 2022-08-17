@@ -1,12 +1,14 @@
-/* colors light */
-#headcontainer,
-#footcontainer
-{
-  background-color:#cdefef;
-}
-
-#messagebox .formmessage,
-#messagebox .loginmessage
-{
-  background-color:#ededed;
-}
+/* public colors light */
+:root {
+
+  /* light theme style.css */
+  --body_bg: #ffffff;
+  --body_text: #232323;
+
+  /* light theme tables.css */
+  --row_bg_hover: rgb(201, 209, 217);
+
+  /* light theme fields.css */
+  --input_bg: rgb(234,238,242, 0.5);
+  --input_bg_hover: rgb(165, 214, 255,0.8);
+}

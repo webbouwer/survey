@@ -30,7 +30,7 @@ jQuery(function($){
 
         setMessagebox = function(msg, time = false){
           if( $('body').find('#messagebox').length < 1){
-            $('body').append('<div id="messagebox"></div>');
+            $('body').prepend('<div id="messagebox"></div>');
           }
           if( $('body').find('#messagebox .formmessage').length < 1){
             $('#messagebox').append('<div class="formmessage"></div>');

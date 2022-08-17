@@ -331,6 +331,7 @@ jQuery(function($){
         let container = $('#datalist').parent();
 
         setMessagebox('Saved!', 2000);
+        //alert('saved!');
         setTimeout( function(){
           getTableData( container );
         }, 10);
@@ -378,17 +379,13 @@ jQuery(function($){
       //let toSave = JSON.stringify(data); alert( toSave );
 			saveDataList( data );
 
-      setMessagebox('Saved!', 2000);
+      setMessagebox('Saved!', 1200);
 	    $(this).parent().removeClass('edit').html(txt);
 
-      //if( toSave.field == 'id'){ //id changed
         let container = $('#datalist').parent();
         setTimeout( function(){
           getTableData( container );
         }, 10);
-      // }
-
-
 
 	  });
 
@@ -398,8 +395,9 @@ jQuery(function($){
         }
     });
 
-    /* Message box layer */
+    /* Message box layer moved in content.js
     function setMessagebox(msg, time = false){
+
       if( $('body').find('#messagebox .formmessage').length < 1){
         $('#messagebox').append('<div class="formmessage"></div>');
       }
@@ -411,7 +409,9 @@ jQuery(function($){
           $('body').find('#messagebox .formmessage').fadeOut(500);
         }, time);
       }
+
     }
+    */
 
     /* Data row actions */
     $('body').on('click touchstart', '#datalist .entry button.view', function() {
@@ -439,6 +439,7 @@ jQuery(function($){
     });
 
     $('body').on('click touchstart', '.closeOverlay', function() {
+      getTableData( $('#maincontent') );
       removeOverlay();
     });
 

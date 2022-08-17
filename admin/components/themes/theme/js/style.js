@@ -28,7 +28,7 @@ jQuery(function($) {
   });
 
 
-  /* menu toggle */
+  /* menu toggle
 	$('#sidebarcontainer').prepend('<div class="menutoggle"><span></span></div>');
 	$('body').on('click touchend', '.menutoggle', function(){
 		$('#pagecontainer').toggleClass('menu');
@@ -39,6 +39,7 @@ jQuery(function($) {
   $('body').on('unload', function(){
     $('#pagecontainer').removeClass('menu');
   });
+  */
 
 
 });

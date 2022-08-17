@@ -1,17 +1,24 @@
-/* colors light */
-body
-{
-  color:#232323;
-  background-color:#ffffff;
+/* admin colors light */
+:root {
+
+  /* light theme style.css */
+  --body_bg: #ffffff;
+  --body_text: #232323;
+
+  --text_link: #0066CC;
+  --text_link_hover: #0055FF;
+
+  --button_text: #efefef;
+  --button_bg: #3275F5;
+  --button_text_hover: #efefef;
+  --button_bg_hover: #0055FF;
+
+  /* light theme tables.css */
+  --row_bg_hover: #ededed;
+
+  /* light theme fields */
+  --input_bg: red;
+  --input_text_color: white;
+  --input_bg_hover: orange;
+  --input_text_color_hover: red;
 }
-#headcontainer,
-#footcontainer
-{
-  background-color:#cdefef;
-}
-
-#messagebox .formmessage,
-#messagebox .loginmessage
-{
-  background-color:#ededed;
-}

@@ -1,73 +1,25 @@
-/* colors dark */
-body
-{
-  color:#ededed;
-  background-color:#161B22;
-}
+/* admin colors dark */
+:root {
 
-a
-{
-  color:#888888;
-}
-a:hover
-{
-  color:#ededed;
-}
+  /* dark theme style */
+  --body_bg: #000000;
+  --body_text: #cdcdcd;
 
-input, textarea, button, select
-{
-  background:rgb(225,225,225,0.5);
+  --text_link: #3275F5;
+  --text_link_hover: #0055FF;
 
-  font-family: 'Montserrat', sans-serif;
-  font-size:1.1em;
-  letter-spacing: 0.01em;
-  font-weight:500;
-  line-height:1.6em;
-}
-span.inputbox:hover,
-input:hover, textarea:hover, button:hover, select:hover
-{
-  /*background:rgb(225,225,225,0.8);*/
-  background-color: #ded0e8;
-  color:#2d2d2d;
-}
+  --button_text: #121212;
+  --button_bg: #3275F5;
+  --button_text_hover: #efefef;
+  --button_bg_hover: #0055FF;
 
+  /* dark theme tables */
+  --row_bg_hover: #121212;
 
-#headcontainer,
-#footcontainer
-{
-  color:#ededed;
-  background-color:#0D1117;
-}
+  /* dark theme fields */
+  --input_bg: red;
+  --input_text_color: white;
+  --input_bg_hover: orange;
+  --input_text_color_hover: red;
 
-#messagebox .formmessage,
-#messagebox .loginmessage,
-.overLayScreen.layer
-{
-  color:#ededed;
-  background-color:#161B22;
-}
-
-
-#sidebarcontainer .menutoggle span,
-#sidebarcontainer .menutoggle span::before,
-#sidebarcontainer .menutoggle span::after
-{
-  border-top: 5px solid #ededed;
-}
-
-
-.configlist .profile .titlebox
-{
-  border-radius:8px;
-  color:#888888;
-  border:1px solid rgb(0,0,0,0);
-  background-color:rgb(0,0,0,0.2);
-}
-
-.configlist .profile .titlebox:hover
-{
-  background-color: #29a685;
-  color:#efefef;
-  border:1px solid #343434;
 }

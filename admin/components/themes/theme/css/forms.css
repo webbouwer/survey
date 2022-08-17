@@ -1,0 +1,54 @@
+/* form element styling */
+
+.formrow,
+.formend,
+.entry
+{
+  padding:3px 0px;
+}
+.formend
+{
+}
+.formfield span
+{
+  display:inline-block;
+  min-width:200px;
+  min-height:28px;
+  margin-right:10px;
+}
+
+/* messagebox */
+#messagebox
+{
+  position:fixed;
+  top:0px;
+  left:0px;
+  width:100%;
+  text-align:center;
+  z-index:999;
+
+}
+#messagebox .formmessage
+{
+  position:relative;
+  width:96%;
+  max-width:480px;
+  margin:5px auto;
+  text-align:left;
+
+  color: var(--body_text);
+  background-color: var(--body_bg);
+}
+
+
+/* Email form */
+.emailform .formrow.surveyselect,
+.previewsurveybutton
+{
+  display:none;
+}
+.survey .formrow.surveyselect,
+.survey .previewsurveybutton
+{
+  display:block;
+}

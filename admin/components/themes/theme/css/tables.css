@@ -1,0 +1,51 @@
+/* interactive table/section elements */
+
+/* datalist */
+table#datalist
+{
+  width:100%;
+}
+table th
+{
+  text-align:left;
+}
+table#datalist .entry .field-id span
+{
+  display:inline-block;
+  min-width:40px;
+  min-height:28px;
+  margin-right:10px;
+}
+table#datalist
+{
+  width:100%;
+}
+table#datalist tr:hover td
+{
+  background-color:var(--row_bg_hover);
+  border:none;
+}
+
+/* configlist */
+.configlist .profile .titlebox:hover
+{
+  background-color: var(--row_bg_hover);
+}
+
+.configlist .profile .titlebox
+{
+  padding:10px 12px;
+  width:auto;
+  max-width:360px;
+}
+.configlist .profile .titlebox h3,
+.configlist .profile .titlebox p
+{
+  padding:2px 0px 0px;
+  margin:0;
+}
+
+.configlist .profile .editbox
+{
+  display:none;
+}

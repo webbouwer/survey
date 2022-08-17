@@ -1,196 +1,47 @@
-/*
-https://mycolor.space/?hex=%23DED0E8&sub=1
-https://mycolor.space/?hex=%23161B22&sub=1
-*/
+/* Globals admin */
+:root {
+  --font_base_family: 'Montserrat', sans-serif;
+  --font_base_size: 1.1em;
+  --font_small_size: 0.8em;
+
+  --border_radius_base: 6px;
+}
 
 body
 {
+
   margin:0;
   padding:0;
 
-  font-family: 'Montserrat', sans-serif;
-  font-size:1.1em;
+  font-family: var(--font_base_family);
+  font-size: var(--font_base_size);
+
   letter-spacing: -0.02em;
   font-weight:500;
   line-height:1.6em;
+
+  color: var(--body_text);
+  background-color: var(--body_bg);
 }
 
-
-/* colors (light) */
-#headcontainer,
-#footcontainer
+a
 {
-  background-color:#cdefef;
+  color: var(--text_link);
+  text-decoration:none;
 }
-
-#messagebox .formmessage,
-#messagebox .loginmessage
+a:hover
 {
-  background-color:#ededed;
+  color: var(--text_link_hover);
+  text-decoration:underline;
 }
 
-.overLayScreen.layer
-{
-  background-color:#ffffff;
-}
-
-input, textarea, button, select
-{
-  background:rgb(225,225,225,0.5);
-  font-family: 'Montserrat', sans-serif;
-  font-size:1.1em;
-  letter-spacing: 0.01em;
-  font-weight:500;
-  line-height:1.6em;
-}
-
-span.inputbox
-{
-  display:inline-block;
-  min-height:26px;
-  min-width:160px;
-  margin-bottom:-4px;
-  background:rgb(225,225,225,0.3);
-}
-
-span.inputbox:hover
-{
-  background-color:#ded0e8;
-}
-
-input:hover, textarea:hover, button:hover, select:hover
-{
-  background-color:rgb(225,225,225,0.8);
-  color:#2d2d2d;
-}
-input.incorrect,
-textarea.incorrect
-{
-  border:1px solid red;
-}
-
-
-.configlist .profile .titlebox
-{
-  border-radius:8px;
-  color:#232323;
-  background-color:rgb(0,0,0,0.1);
-}
-
-.configlist .profile .titlebox:hover
-{
-  background-color: #cdefef; /*green.. #29a685;/* rgb(0,0,0,0.2); */
-}
-
-table#datalist tr:hover td
-{
-  background-color:rgb(225,225,225,0.2);
-  border:none;
-}
-button.small
-{
-  font-size:0.8em;
-  letter-spacing: -0.01em;
-}
-
-
-/* css build icons */
-#sidebarcontainer .menutoggle span
-{
-  position: relative;
-  display:inline-block;
-  height:25px;
-  width: 25px;
-  border-top: 5px solid black;
-  transition: all linear 0.3s;
-}
-#sidebarcontainer .menutoggle span::before {
-  content: "";
-  position: absolute;
-  top: 5px;
-  left: 0px;
-  width: 25px;
-  border-top: 5px solid black;
-  transition: all linear 0.3s;
-}
-#sidebarcontainer .menutoggle span::after
-{
-  content: "";
-  position: absolute;
-  top: 15px;
-  left: 0px;
-  width: 25px;
-  border-top: 5px solid black;
-  transition: all linear 0.3s;
-}
-.menu #sidebarcontainer .menutoggle span
-{
-  border-top:5px solid transparent;
-}
-.menu #sidebarcontainer .menutoggle span::before
-{
-	transform: rotate(-45deg);
-}
-.menu #sidebarcontainer .menutoggle span::after
-{
-	transform: rotate(45deg);
-  top: 5px;
-}
-
-
-
-/*
- * Positioning
- */
-
-/* form elements */
-#messagebox
-{
-  position:fixed;
-  top:0px;
-  left:0px;
-  width:100%;
-  text-align:center;
-  z-index:999;
-}
-#messagebox .formmessage
+#adminbar,
+.outermargin
 {
   position:relative;
-  max-width:480px;
-  margin:5px auto;
-  text-align:left;
-}
-.formrow,
-.formend,
-.entry
-{
-  padding:3px 0px;
-}
-.formend
-{
-}
-
-.formfield span
-{
-  display:inline-block;
-  min-width:180px;
-  min-height:28px;
-  margin-right:10px;
-}
-
-input, textarea, button, select
-{
-  margin:0px 2px;
-  border:none;
-  padding:2px 8px;
-  border-radius:8px;
-}
-button.small
-{
-  padding:3px 6px;
-}
-input.incorrect
-{
+  width:90%;
+  max-width:1158px;
+  margin: 0px auto;
 }
 
 
@@ -206,13 +57,15 @@ input.incorrect
   top:0;
   left:0;
   overflow-y:auto;
+
+  background-color: var(--body_bg);
 }
 
 button.closeOverlay
 {
-  position:fixed;
-  top:12px;
-  right:12px;
+  position:absolute;
+  top:0px;
+  right:0px;
   z-index:999;
 }
 button.closeOverlay span
@@ -220,234 +73,17 @@ button.closeOverlay span
 }
 
 
-/* Email form */
-.emailform .formrow.surveyselect,
-.previewsurveybutton
+button.small
 {
-  display:none;
+  font-size: var(--font_small_size);
+  letter-spacing: -0.01em;
+  padding:3px 6px;
 }
-.survey .formrow.surveyselect,
-.survey .previewsurveybutton
-{
-  display:block;
-}
-
-
-/* Config list */
-
-.configlist .profile .titlebox
-{
-  padding:10px 12px;
-  width:auto;
-  max-width:360px;
-}
-.configlist .profile .titlebox h3,
-.configlist .profile .titlebox p
-{
-  padding:2px 0px 0px;
-  margin:0;
-}
-
-.configlist .profile .editbox
-{
-  display:none;
-}
-
-
-
-/* datalist */
-table#datalist
-{
-  width:100%;
-}
-table th
-{
-  text-align:left;
-}
-table#datalist .entry .field-id span
-{
-  display:inline-block;
-  min-width:40px;
-  min-height:28px;
-  margin-right:10px;
-}
-
-
-#dataview.overLayScreen.layer
-{
-}
-#dataview.overLayScreen.layer .framecontainer.outermargin
-{
-  position:relative;
-}
-#dataview.overLayScreen.layer .framecontainer.outermargin .contentbox
-{
-  width:96vw;
-  max-width:980px;
-  margin:1vh auto;
-}
-
-#dataview.overLayScreen.layer .framecontainer .contentbox #editbox
-{
-}
-#dataview #editbox > div.element.row span.inputbox
-{
-}
-#dataview #editbox > div.entry.json .element span.inputbox
-{
-}
-span.inputbox
-{
-}
-
-
-
-
-
-
-
-/* (Sm)all */
-#pagecontainer
-{
-  width:100%;
-}
-.outermargin
-{
-  padding:2vh 2vw;
-}
-
-#headcontainer,
-#contentcontainer,
-#footcontainer
-{
-  width:100%;
-}
-#sidebarcontainer
-{
-}
-#contentcontainer
-{
-}
-#footcontainer
-{
-}
-
-@media all and (max-width: 560px){
-
-	#sidebarcontainer .menutoggle
-	{
-		text-align:right;
-	   padding: 1vh 2vw;
-	}
-
-	#adminbar
-	{
-		margin-top:-100vh;
-		transition: all linear 0.3s;
-	}
-
-	.menu #adminbar
-	{
-		margin-top:0px;
-	}
-
-
-}
-
-
-
 
 /* large */
 @media all and (min-width: 560px){
-#headcontainer
-{
-  height:8vh;
-  min-height:60px;
-}
-/*
-#sidebarcontainer
-{
-  position:absolute;
-	width:21%;
-	min-height:85vh;
-}
-
-
-#contentcontainer
-{
-	width:79%;
-  padding-left:21%;
-	min-height:85vh;
-}
-
-
-*/
-ul li
-{
-  list-style:none;
-  margin:0px;
-  padding:0px;
-}
-
-
-#adminmenu,
-#sidebarcontainer .menutoggle
-{
-	padding: 1vh 2vw;
-}
-#sidebarcontainer .menutoggle
-{
-	position:absolute;
-	width:40px;
-	right:calc( -40px - 4vw);
-}
-
-.menu #sidebarcontainer .menutoggle
-{
-	text-align:right;
-	right:0px;
-}
-#sidebarcontainer {
-  position: absolute;
-  width: 21%;
-  min-height: 85vh;
-	left:-21%;
-  transition: all linear 0.3s;
-}
-.menu #sidebarcontainer {
-  position: absolute;
-  width: 21%;
-  min-height: 85vh;
-	left:0px;
-}
-#contentcontainer {
-  width: 100%;
-  padding-left: 0%;
-  min-height: 85vh;
-  transition: all linear 0.3s;
-}
-.menu #contentcontainer {
-  width: 79%;
-  padding-left: 21%;
-  min-height: 85vh;
-}
 
 
 
-.outermargin
-{
-  padding:2vh 2vw;
-}
-
-.configlist .profile .titlebox
-{
-  margin:6px 12px 2px -12px;
-}
-
-#footcontainer
-{
-  height:7vh;
-  min-height:50px;
-}
 
 }

@@ -1,0 +1,63 @@
+/* interactive data fields */
+input, textarea, button, select
+{
+
+  background-color: var(--input_bg);
+  color: var(--input_text_color);
+
+  font-family: var(--font_base_family);
+  font-size: var(--font_base_size);
+
+  /* matching body style */
+  letter-spacing: 0.01em;
+  font-weight:500;
+  line-height:1.6em;
+
+  border:none;
+  border-radius: var(--border_radius_base);
+
+  margin:0px 2px;
+  border:none;
+  padding:2px 8px;
+}
+
+span.inputbox
+{
+  display:inline-block;
+  min-height:26px;
+  /* min-width:160px;*/
+  margin-bottom:-4px;
+  background: transparent; /* rgb(225,225,225,0.5); */
+}
+
+span.inputbox:hover
+{
+  background-color: var(--input_bg_hover);
+  color: var(--input_text_color_hover);
+  border-radius: var(--border_radius_base);
+}
+
+input:hover, textarea:hover, select:hover
+{
+  background-color: var(--input_bg_hover);
+  color: var(--input_text_color_hover);
+}
+
+
+button
+{
+  background-color:var(--button_bg);
+  color: var(--button_text);
+}
+
+button:hover
+{
+  background-color:var(--button_bg_hover);
+  color: var(--button_text_hover);
+}
+
+input.incorrect,
+textarea.incorrect
+{
+  border:1px solid red;
+}

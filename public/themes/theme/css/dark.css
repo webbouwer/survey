@@ -1,48 +1,15 @@
-/* colors dark */
-body
-{
-  color:#ededed;
-  background-color:#161B22;
-}
-
-a
-{
-  color:#888888;
-}
-a:hover
-{
-  color:#ededed;
-}
-
-input, textarea, button, select
-{
-  background:rgb(225,225,225,0.5);
-
-  font-family: 'Montserrat', sans-serif;
-  font-size:1.1em;
-  letter-spacing: 0.01em;
-  font-weight:500;
-  line-height:1.6em;
-}
-span.inputbox:hover,
-input:hover, textarea:hover, button:hover, select:hover
-{
-  background:rgb(225,225,225,0.8);
-  color:#2d2d2d;
-}
-
-
-#headcontainer,
-#footcontainer
-{
-  color:#ededed;
-  background-color:#0D1117;
-}
-
-#messagebox .formmessage,
-#messagebox .loginmessage,
-.overLayScreen.layer
-{
-  color:#ededed;
-  background-color:#161B22;
-}
+/* public colors dark */
+:root {
+
+  /* dark theme style */
+  --body_bg: #000000;
+  --body_text: #cdcdcd;
+
+  /* dark theme tables */
+  --row_bg_hover: #34414e;
+
+  /* dark theme fields */
+  --input_bg: rgb(234,238,242, 0.3);
+  --input_bg_hover: rgb(165, 214, 255,0.5);
+
+}
