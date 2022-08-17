@@ -47,6 +47,7 @@ jQuery(function($){
                             textdata += '<td class="element field-'+key+'" data-nr="'+idx+'" data-field="'+key+'"><span class="inputbox">'+value+'</span></td>';
                         });
                         textdata += '<td><button type="button" class="small view">view</button>';
+                        textdata += '<button type="button" class="small edit">edit</button>';
                         textdata += '<button type="button" class="small copy">copy</button>';
                         textdata += '<button type="button" class="small delete">delete</button></td>';
                         textdata += '</tr>';
@@ -152,43 +153,96 @@ jQuery(function($){
 
 		}
 
+    function previewDataView( idx ){
 
-    function editDataRow( idx ){
+        var fields = datalist['fields'];
+        var row = datalist[idx];
+        let html = '';
+
+        // previewbox
+        html += '<div id="editbox" data-nr="'+idx+'"><h3>Data Preview</h3>';
+
+        html += '<div class="container">';
+
+        html += '<div class="header"><div class="headertitle"><h1>'+row['title']+'</h1></div></div>';
+
+        html += '<div class="intro"><div class="subtitle"><h2>'+row['subtitle']+'</h2></div>';
+        html += '<div class="desc"><p>'+row['desc']+'</p></div>';
+        html += '<div class="intro_title"><h5>'+row['intro_title']+'</h5></div>';
+        html += '<div class="intro_text"><p>'+row['intro_text']+'</p></div>';
+        html += '<div class="intro_subtext"><p>'+row['intro_subtext']+'</p></div>';
+        html += '</div>';
+
+        html += '<div class="main">';
+
+        html += '<div class="top"><div class="survey_title"><h3>'+row['survey_title']+'</h3></div>';
+        html += '<div class="survey_start"><p>'+row['survey_start']+'</p></div></div>';
+
+        // survey box html
+        let json = JSON.parse(row['json']);
+
+        html += '<div class="slides">0/'+json.length+'</div>';
+
+
+
+        html += '<div class="bottom">';
+
+        html += '<div class="survey_end"><p>'+row['survey_end']+'</p></div></div>';
+        html += '</div>';
+
+        html += '</div>';
+        html += '</div>';
+
+        return html;
+    }
+
+
+        /* edit example box
+        html += '<div id="surveybox" data-nr="'+idx+'"><h3>Data Edit</h3>';
+
+        $.each(row, function( fieldkey, fieldvalue) {
+          if( fieldkey != 'json'){
+            html += '<div class="element row" data-nr="'+idx+'" data-field="'+fieldkey+'">';
+            html += ''+fields[fieldkey]+': <span class="inputbox">'+fieldvalue+'</span>';
+            html += '</div>';
+          }
+        });
+
+        let json = JSON.parse(row['json']); //JSON.stringify();
+
+        $.each(json, function( key, value) {
+
+          html += '<div data-nr="'+idx+'" class="entry json">';
+          $.each(value, function( rkey, rvalue) {
+          html += '<div class="element" data-field="'+rkey+'">';
+          if( $.isArray(rvalue) ){
+            html += '<div class="subelements" data-field="'+rkey+'">';
+            let c = 0;
+            $.each(rvalue, function( fkey, fvalue) {
+              html += '<div data-field="'+fkey+'">'+fkey+': <span class="inputbox">'+fvalue+'</span></div>';
+              c++;
+            });
+            html += '</div>';
+          }else{
+            html += ''+rkey+': <span class="inputbox">'+rvalue+'</span>';
+          }
+          html += '</div>';
+          });
+          html += '</div>';
+
+        });
+        html += '</div>';
+        */
+
+
+    function editDataView( idx ){
 
       var fields = datalist['fields'];
       var row = datalist[idx];
       let html = '';
 
-      // previewbox
-      html += '<div id="previewbox" data-nr="'+idx+'"><h3>Data Preview</h3>';
-
-      html += '<div class="container">';
-
-      html += '<div class="header"><div class="headertitle"><h1>'+row['title']+'</h1></div></div>';
-
-      html += '<div class="intro"><div class="subtitle"><h2>'+row['subtitle']+'</h2></div>';
-      html += '<div class="desc"><p>'+row['desc']+'</p></div>';
-      html += '<div class="intro_title"><h5>'+row['intro_title']+'</h5></div>';
-      html += '<div class="intro_text"><p>'+row['intro_text']+'</p></div>';
-      html += '<div class="intro_subtext"><p>'+row['intro_subtext']+'</p></div>';
-      html += '</div>';
-
-      html += '<div class="main">';
-      html += '<div class="top"><div class="survey_title"><h3>'+row['survey_title']+'</h3></div>';
-      html += '<div class="survey_start"><p>'+row['survey_start']+'</p></div></div>';
-
-      html += '<div class="slides"></div>';
-
-      html += '<div class="bottom">';
-      html += '<div class="survey_end"><p>'+row['survey_end']+'</p></div></div>';
-
-      html += '</div>';
-
-      html += '</div>';
-      html += '</div>';
-
       // editbox
-      html += '<div id="editbox" data-nr="'+idx+'"><h3>Data Edit</h3>'; 
+      html += '<div id="editbox" data-nr="'+idx+'"><h3>Data Edit</h3>';
 
       $.each(row, function( fieldkey, fieldvalue) {
         if( fieldkey != 'json'){
@@ -228,7 +282,14 @@ jQuery(function($){
 
     function viewDataRow(rowid){
 
-      let data = editDataRow( rowid )
+      let previewdata = previewDataView( rowid )
+      addOverlay('dataview', previewdata);
+
+    }
+
+    function editDataRow(rowid){
+
+      let data = editDataView( rowid )
       addOverlay('dataview', data);
 
     }
@@ -275,6 +336,7 @@ jQuery(function($){
         }, 10);
       //}
 	  });
+
     $('body').on('keyup','#datalist .inputbox.edit input.textinput,#editbox .row .inputbox.edit input.textinput',function(){ // selector ? [contenteditable=true]
         if(event.keyCode==13){
             $(this).blur();
@@ -355,6 +417,11 @@ jQuery(function($){
     $('body').on('click touchstart', '#datalist .entry button.view', function() {
       let row =$(this).closest('tr').data('nr');
       viewDataRow(row);
+    });
+
+    $('body').on('click touchstart', '#datalist .entry button.edit', function() {
+      let row =$(this).closest('tr').data('nr');
+      editDataRow(row);
     });
 
     $('body').on('click touchstart', '#datalist .entry button.copy', function() {
