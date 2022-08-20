@@ -37,6 +37,7 @@ button
 {
   background-color:var(--button_bg);
   color: var(--button_text);
+  padding:3px 6px;
 }
 input#go:hover,
 button:hover
@@ -55,11 +56,15 @@ button:hover
   margin: 0px auto;
 }
 
-input, textarea, select
+input, textarea, button, select
 {
-  background: var(--input_bg);
+
+  background-color: var(--input_bg);
+  color: var(--input_text_color);
+
   font-family: var(--font_base_family);
   font-size: var(--font_base_size);
+
   /* matching body style */
   letter-spacing: 0.01em;
   font-weight:500;
@@ -67,6 +72,10 @@ input, textarea, select
 
   border:none;
   border-radius: var(--border_radius_base);
+
+  margin:0px 2px;
+  border:none;
+  padding:2px 8px;
 }
 .formrow,
 .formend,

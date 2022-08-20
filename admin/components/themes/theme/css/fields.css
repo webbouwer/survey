@@ -43,19 +43,6 @@ input:hover, textarea:hover, select:hover
   color: var(--input_text_color_hover);
 }
 
-
-button
-{
-  background-color:var(--button_bg);
-  color: var(--button_text);
-}
-
-button:hover
-{
-  background-color:var(--button_bg_hover);
-  color: var(--button_text_hover);
-}
-
 input.incorrect,
 textarea.incorrect
 {

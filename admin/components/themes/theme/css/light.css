@@ -2,23 +2,23 @@
 :root {
 
   /* light theme style.css */
-  --body_bg: #ffffff;
-  --body_text: #232323;
+  --body_bg: #FFFFFF;
+  --body_text: #0D0C13;
 
-  --text_link: #0066CC;
-  --text_link_hover: #0055FF;
+  --text_link: #0C53F6;
+  --text_link_hover: #012883;
 
-  --button_text: #efefef;
-  --button_bg: #3275F5;
-  --button_text_hover: #efefef;
-  --button_bg_hover: #0055FF;
+  --button_text: #EDEDEF;
+  --button_bg: #0066FF;
+  --button_text_hover: #FFFFFF;
+  --button_bg_hover: #0C53F6;
 
-  /* light theme tables.css */
-  --row_bg_hover: #ededed;
+  /* dark theme tables */
+  --row_bg_hover: #EDEDEF;
 
-  /* light theme fields */
-  --input_bg: red;
-  --input_text_color: white;
-  --input_bg_hover: orange;
-  --input_text_color_hover: red;
+  /* dark theme fields */
+  --input_bg: #EDEDEF;
+  --input_text_color: #24232B;
+  --input_bg_hover: #D0D0D5;
+  --input_text_color_hover: #0D0C13;
 }

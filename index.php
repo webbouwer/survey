@@ -15,4 +15,4 @@ $template->assign("htmlhead", $htmlhead);
 $template->assign("content", "Public content setup" );
 $template->assign("footer", "Theme footer");
 $template->assign("htmlfoot", $htmlfoot );
-$template->render();
+$template->render(); 

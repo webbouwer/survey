@@ -29,6 +29,7 @@ jQuery(function($){
         }
 
         setMessagebox = function(msg, time = false){
+
           if( $('body').find('#messagebox').length < 1){
             $('body').prepend('<div id="messagebox"></div>');
           }

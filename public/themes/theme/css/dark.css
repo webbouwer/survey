@@ -2,24 +2,24 @@
 :root {
 
   /* dark theme style */
-  --body_bg: #000000;
-  --body_text: #cdcdcd;
+  --body_bg: #040409;
+  --body_text: #D0D0D5;
 
-  --text_link: #3275F5;
-  --text_link_hover: #0055FF;
+  --text_link: #0C53F6;
+  --text_link_hover: #0138B6;
 
-  --button_text: #121212;
-  --button_bg: #3275F5;
-  --button_text_hover: #efefef;
-  --button_bg_hover: #0055FF;
+  --button_text: #14141B;
+  --button_bg: #0C53F6;
+  --button_text_hover: #EDEDEF;
+  --button_bg_hover: #0138B6;
 
   /* dark theme tables */
-  --row_bg_hover: #121212;
+  --row_bg_hover: #0D0C13;
 
   /* dark theme fields */
-  --input_bg: red;
-  --input_text_color: white;
-  --input_bg_hover: orange;
-  --input_text_color_hover: red;
+  --input_bg: #0D0C13;
+  --input_text_color: #D0D0D5;
+  --input_bg_hover: #24232B; 
+  --input_text_color_hover: #EDEDEF;
 
 }

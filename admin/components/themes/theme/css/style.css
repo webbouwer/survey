@@ -73,12 +73,38 @@ button.closeOverlay span
 }
 
 
+
+
+button
+{
+  background-color:var(--button_bg);
+  color: var(--button_text);
+  cursor:hand;
+  cursor:pointer;
+  transition: all 0.9s ease-out;
+}
+
 button.small
 {
   font-size: var(--font_small_size);
   letter-spacing: -0.01em;
   padding:3px 6px;
 }
+
+button.previewemailbutton,
+button.previewsurveybutton
+{
+}
+
+button:hover
+{
+  background-color:var(--button_bg_hover);
+  color: var(--button_text_hover);
+}
+
+
+
+
 
 /* large */
 @media all and (min-width: 560px){

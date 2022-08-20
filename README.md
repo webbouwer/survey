@@ -8,6 +8,14 @@ This code and repository may be suited for personal and educational use.
 ## Mechanics
 Survey participants receive an email with a startup question. On answer the participant is send to the online survey page to finish the survey. The encrypted data (participant name, emailadress and survey data) is used on the server side only to check the unique survey id and to send the data of the completed survey back to the survey sender and the participant by email. The admin configurations and survey data is stored as encrypted json.
 
+In Progress:
+- [] Remake Theming dark/light detect and toggle
+- Survey Engine class
+	- [ ] preview survey email
+	- [ ] preview/run survey page
+	- [ ] edit survey page
+	- [ ] set theme
+
 ## Change log
 In [prototype v5](https://github.com/webbouwer/survey/tree/Prototype-v5) mailfunction php and styling
 - Mail function is replaced with the phpmailer class
