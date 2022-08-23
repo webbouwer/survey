@@ -113,7 +113,9 @@ jQuery(function($){
 					data: senddata,
 					dataType: 'json',
 			}).done( function( data ) {
-					console.log('data saved');
+
+
+				console.log('Profile saved');
 					//console.log(data);
 			})
 			.fail( function( data ) {
@@ -164,6 +166,7 @@ jQuery(function($){
 			}).done( function( data ) {
         // reload table
         let container = $('.configlist').parent();
+        setMessagebox('Copied!', 1200);
         setTimeout( function(){
           getConfigDataTable( container );
         }, 10);
@@ -196,6 +199,8 @@ jQuery(function($){
 			}).done( function( data ) {
         // reload table
         let container = $('.configlist').parent();
+
+        setMessagebox('Deleted!', 1200);
         setTimeout( function(){
           getConfigDataTable( container );
         }, 10);
@@ -237,6 +242,8 @@ jQuery(function($){
         txt = '<input style="border:none;" class="password" type="password" value="'+txt+'"/>'
       }
       $(this).parent().removeClass('edit').html(txt);
+
+      setMessagebox('Profile Field \''+field+'\' saved!', 1200);
 
       let container = $('.configlist').parent();
       setTimeout( function(){

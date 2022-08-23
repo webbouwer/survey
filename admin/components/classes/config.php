@@ -59,8 +59,8 @@
 
                     $copy['id'] = $copy['id'].'-'. $_REQUEST['data']['nr'];
 
-                    $copy['title'] = $copy['title'].'-'. $_REQUEST['data']['nr'];
-                    $copy['desc'] = 'copy-'. $_REQUEST['data']['nr'] .'- '. $copy['desc'];
+                    $copy['profile'] = $copy['profile'].'-'. $_REQUEST['data']['nr'];
+                    $copy['sender'] = 'copy-'. $_REQUEST['data']['nr'] .'- '. $copy['sender'];
                     $arr[] = $copy;
 
                     $this->source->dataToFile( $arr, $this->filename );

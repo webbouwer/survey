@@ -78,12 +78,10 @@
 
               }
            }
-
           //echo json_encode($this->datalist);
           print_r(json_encode($arr));
 
         }
-        
 
         private function defineFields(){
 
