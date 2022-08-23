@@ -49,6 +49,35 @@
 
               }
 
+              // copy row data
+
+              if( isset($_REQUEST['data']) && $_REQUEST['action'] == 'copy' ){
+                  // replace field value
+                  if( isset($_REQUEST['data']['nr']) ){
+
+                    $copy = $arr[ $_REQUEST['data']['nr'] ];
+
+                    $copy['id'] = $copy['id'].'-'. $_REQUEST['data']['nr'];
+
+                    $copy['title'] = $copy['title'].'-'. $_REQUEST['data']['nr'];
+                    $copy['desc'] = 'copy-'. $_REQUEST['data']['nr'] .'- '. $copy['desc'];
+                    $arr[] = $copy;
+
+                    $this->source->dataToFile( $arr, $this->filename );
+
+                  }
+                  print json_encode($arr);
+                }
+
+              // delete row
+              if( isset($_REQUEST['data']) && $_REQUEST['action'] == 'delete' ){
+                  // replace field value
+                  if( isset($_REQUEST['data']['nr']) ){
+                    unset( $arr[ $_REQUEST['data']['nr'] ] );
+                    $this->source->dataToFile( $arr, $this->filename );
+                  }
+                  print json_encode($arr);
+              }
 
               // add new
               if( $_REQUEST['action'] == 'new' ){
@@ -61,6 +90,10 @@
 
                 print json_encode($arr);
               }
+
+
+
+
 
               if( $_REQUEST['action'] == 'list' ){
                 print_r(json_encode($this->datalist));
@@ -110,6 +143,7 @@
 
             $this->fields = [ 'fields' =>
                     [
+                    'id'=>'Profile id',
                     'profile'=>'Profile/Company',
                     'sender'=>'Person name',
                     'website_text'=>'Website link text',
@@ -142,6 +176,7 @@
                     ],
                     1 =>
                     [
+                      'id'  => '1',
                       'profile'=>'Profile Example 1',
                       'sender'=>'Tester Profile',
                       'website_text'=>'webbouwer.org',

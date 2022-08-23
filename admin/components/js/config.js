@@ -32,6 +32,11 @@ jQuery(function($){
 
                         textdata += '<div class="profile" data-nr="'+idx+'">';
                         textdata += '<div class="titlebox">';
+                        textdata += '<div class="menu">';
+                        textdata += '<button type="button" class="small edit">edit</button>';
+                        textdata += '<button type="button" class="small copy">copy</button>';
+                        textdata += '<button type="button" class="small delete">delete</button>';
+                        textdata += '</div>';
                         textdata += '<h3><span class="profile">'+obj['profile']+'</span></h3><p><span class="sender">'+obj['sender']+'</span></p>';
                         textdata += '<p><span class="email_address">'+obj['email_address']+'</span></p></div>';
                         textdata += '<div class="editbox">';
@@ -55,7 +60,7 @@ jQuery(function($){
                 if( !container ){
                   return data;
                 }else{
-                  container.html('<div class="configlist"><button type="button" class="small new">Add new</button>' +textdata+'</div>');
+                  container.html('<div class="configlist"><div class="tabletop"><div class="menu"><button type="button" class="small new">Add new</button></div></div>' +textdata+'</div>');
                 }
 
             }
@@ -140,7 +145,46 @@ jQuery(function($){
 
 		}
 
-    function deleteConfigRow( todelete ){
+    function copyConfigData(row){
+      var dialog = confirm('copy: '+datalist[row]['id']+'?');
+      if (dialog) {
+        let toCopy = { 'nr': row };
+  			copyConfigDataRow( toCopy );
+      }
+    }
+    function copyConfigDataRow( tocopy ){
+
+			var senddata =  { 'data': tocopy, 'action': 'copy' };
+      //console.log( senddata.data );
+			$.ajax({
+					type: 'POST',
+					url: configDataUrl,
+					data: senddata,
+					dataType: 'json',
+			}).done( function( data ) {
+        // reload table
+        let container = $('.configlist').parent();
+        setTimeout( function(){
+          getConfigDataTable( container );
+        }, 10);
+				//console.log('copied');
+			})
+			.fail( function( data ) {
+					console.log('failed to copy');
+			});
+
+		}
+
+
+    function deleteConfigDataRow(row){
+      var dialog = confirm('delete: '+datalist[row]['id']+'?');
+      if (dialog) {
+        let toDelete = { 'nr': row };
+        deleteDataConfig( toDelete );
+      }
+    }
+
+    function deleteDataConfig( todelete ){
 
 			var senddata =  { 'data': todelete, 'action': 'delete' };
       //console.log( senddata.data );
@@ -208,13 +252,23 @@ jQuery(function($){
     });
 
     /* Data row actions */
-    $('body').on('click touchstart', '.configlist .profile .titlebox', function() {
+    $('body').on('click touchstart', '.configlist .profile .menu button.edit', function() {
       let row =$(this).closest('.profile').data('nr');
       viewDataRow(row);
     });
 
-    $('body').on('click touchstart', '.configlist button.new', function() {
+    $('body').on('click touchstart', '.configlist .tabletop .menu button.new', function() {
       newConfigDataRow();
+    });
+
+    $('body').on('click touchstart', '.configlist .profile .menu button.copy', function() {
+      let row =$(this).closest('.profile').data('nr');
+      copyConfigData(row);
+    });
+
+    $('body').on('click touchstart', '.configlist .profile .menu button.delete', function() {
+      let row =$(this).closest('.profile').data('nr');
+      deleteConfigDataRow(row);
     });
 
     $('body').on('click touchstart', '.closeOverlay', function() {

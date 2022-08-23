@@ -45,6 +45,21 @@ table#datalist tr:hover td
 }
 
 /* configlist */
+.configlist .tabletop
+{
+  position:relative;
+}
+.configlist .tabletop .menu
+{
+  position:absolute;
+  top:-30px;
+  right:0px;
+}
+.configlist .profile .menu
+{
+  float:right;
+}
+
 .configlist .profile .titlebox:hover
 {
   background-color: var(--row_bg_hover);
