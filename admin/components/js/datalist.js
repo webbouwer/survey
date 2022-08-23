@@ -230,8 +230,6 @@ jQuery(function($){
         return html;
     }
 
-
-
     function editDataView( idx ){
 
       var fields = datalist['fields'];
@@ -240,7 +238,6 @@ jQuery(function($){
 
       // editbox
       html += '<div id="editbox" data-nr="'+idx+'"><h3>Data Edit</h3>';
-
       $.each(row, function( fieldkey, fieldvalue) {
         if( fieldkey != 'json'){
           html += '<div class="element row" data-nr="'+idx+'" data-field="'+fieldkey+'">';
@@ -252,7 +249,6 @@ jQuery(function($){
       let json = JSON.parse(row['json']); //JSON.stringify();
 
       $.each(json, function( key, value) {
-
         html += '<div data-nr="'+idx+'" class="entry json">';
         $.each(value, function( rkey, rvalue) {
         html += '<div class="element" data-field="'+rkey+'">';
@@ -270,25 +266,19 @@ jQuery(function($){
         html += '</div>';
         });
         html += '</div>';
-
       });
       html += '</div>';
       return html;
     }
 
-
     function viewDataRow(rowid){
-
       let previewdata = previewDataView( rowid )
       addOverlay('dataview', previewdata);
-
     }
 
     function editDataRow(rowid){
-
       let data = editDataView( rowid )
       addOverlay('dataview', data);
-
     }
 
     function copyDataRow(row){
@@ -307,9 +297,6 @@ jQuery(function($){
       }
     }
 
-
-
-
     // inline edit datalist
 		$('body').on('click touchstart', '#datalist .inputbox:not(.edit),#editbox .row .inputbox:not(.edit)', function() {
 	    let txt = $(this).html().trim();
@@ -326,7 +313,6 @@ jQuery(function($){
 	    $(this).parent().removeClass('edit').html(txt);
       //if( toSave.field == 'id' ){ //id changed
         let container = $('#datalist').parent();
-
         setMessagebox('Saved!', 2000);
         //alert('saved!');
         setTimeout( function(){
@@ -341,7 +327,6 @@ jQuery(function($){
         }
     });
 
-
     // inline edit datalist[row][]'json'] editbox
 		$('body').on('click touchstart', '#editbox .json .inputbox:not(.edit)', function() {
 
@@ -353,7 +338,6 @@ jQuery(function($){
 	  });
 
 	  $('body').on('blur', '#editbox .json .inputbox.edit input.textinput', function() {
-
 	    let txt = $(this).val();
       let obj = $(this).parent().removeClass('edit').html(txt);
       let json = {};
@@ -391,24 +375,6 @@ jQuery(function($){
             $(this).blur();
         }
     });
-
-    /* Message box layer moved in content.js
-    function setMessagebox(msg, time = false){
-
-      if( $('body').find('#messagebox .formmessage').length < 1){
-        $('#messagebox').append('<div class="formmessage"></div>');
-      }
-      $('body').find('#messagebox .formmessage').fadeOut( 300, function(){
-        $('body').find('#messagebox .formmessage').html(msg).fadeIn(500);
-      });
-      if( time ){
-        setTimeout( function(){
-          $('body').find('#messagebox .formmessage').fadeOut(500);
-        }, time);
-      }
-
-    }
-    */
 
     /* Data row actions */
     $('body').on('click touchstart', '#datalist .entry button.view', function() {
