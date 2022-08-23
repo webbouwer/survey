@@ -156,83 +156,80 @@ jQuery(function($){
     function previewDataView( idx ){
 
         var fields = datalist['fields'];
-        var row = datalist[idx];
+        var data = datalist[idx];
         let html = '';
 
-        // previewbox
-        html += '<div id="editbox" data-nr="'+idx+'"><h3>Data Preview</h3>';
+        html += '<div class="surveycontainer" data-row="' + idx + '" data-id="' + data.id + '">';
+        html +=  '<div class="topbar"><div class="logobox"><span>logo</span></div><div class="titletext"><h2>' + data.title + '</h2></div></div>';
+        html +=  '<div class="header"><div class="introtitle"><h3>' + data.intro_title + '</h3></div><div class="introtext">' + data.intro_text + '</div></div>';
+        html +=  '<div class="introsubtext">' + data.intro_subtext + '</div>';
 
-        html += '<div class="container">';
+        let prvwpnls = '<div class="paneltitle">' + data.survey_title + '</div>';
+        if (data.survey_start != '') {
+          prvwpnls += '<div class="panelstarttext">' + data.survey_start + '</div>';
+        }
 
-        html += '<div class="header"><div class="headertitle"><h1>'+row['title']+'</h1></div></div>';
+  			prvwpnls += '<div id="surveypanels">'; // start surveypanels
 
-        html += '<div class="intro"><div class="subtitle"><h2>'+row['subtitle']+'</h2></div>';
-        html += '<div class="desc"><p>'+row['desc']+'</p></div>';
-        html += '<div class="intro_title"><h5>'+row['intro_title']+'</h5></div>';
-        html += '<div class="intro_text"><p>'+row['intro_text']+'</p></div>';
-        html += '<div class="intro_subtext"><p>'+row['intro_subtext']+'</p></div>';
-        html += '</div>';
+        if (data.json.length > 0) {
 
-        html += '<div class="main">';
+          let qs = JSON.parse(data.json);
 
-        html += '<div class="top"><div class="survey_title"><h3>'+row['survey_title']+'</h3></div>';
-        html += '<div class="survey_start"><p>'+row['survey_start']+'</p></div></div>';
+          let count = 0;
+          $.each(qs, function(nr, quest) {
 
-        // survey box html
-        let json = JSON.parse(row['json']);
+            prvwpnls += '<div id="panel' + count + '" class="panel">';
+            prvwpnls += '<div class="questionbox">' + quest.question + '</div>';
 
-        html += '<div class="slides">0/'+json.length+'</div>';
+            if (quest.type != '') {
+              prvwpnls += '<div class="answerbox ' + quest.type + '">';
 
+              //console.log(quest.type);
+              $.each(quest.answers, function(c, a) {
 
+                if (quest.type == "polar") {
+                  prvwpnls += '<label><input name="opt' + nr + '" type="radio" value="' + c + '" /><div class="optdata" data-updated="">' + a + '</div></label>';
+                }
 
-        html += '<div class="bottom">';
+                if (quest.type == "multi") {
+                  prvwpnls += '<label><input name="opt' + nr + '" type="checkbox" value="' + c + '" /><div class="optdata" data-updated="">' + a + '</div></label>';
+                }
+                if (quest.type == "choice") {
+                  prvwpnls += '<label><input name="opt' + nr + '" type="radio" value="' + c + '" /><div class="optdata" data-updated="">' + a + '</div></label>';
+                }
+                if (quest.type == "value") {
+                  prvwpnls += '<label><input name="opt' + nr + '" type="radio" value="' + c + '" /><div class="optdata" data-updated="">' + a + '</div></label>';
+                }
+                if (quest.type == "range") {
+                  prvwpnls += '<label><input name="opt' + nr + '" type="radio" value="' + c + '" /><div class="optdata" data-updated="">' + a + '</div></label>';
+                }
+                if (quest.type == "open") {
+                  prvwpnls += '<label><textarea name="opt' + nr + '" value="' + c + '" placaholder="' + a + '" /></textarea></label>';
+                }
+              });
+              prvwpnls += '</div>';
+            }
+            prvwpnls += '</div>';
+            count++;
+          });
+  				prvwpnls += '</div>'; // end surveypanels
+          if (data.survey_end != '') {
+            prvwpnls += '<div class="panelendtext">' + data.survey_end + '</div>';
+          }
 
-        html += '<div class="survey_end"><p>'+row['survey_end']+'</p></div></div>';
-        html += '</div>';
+        }
 
-        html += '</div>';
-        html += '</div>';
+        html +=  '<div class="main"><div class="beforebox">[survey generated info text]</div>';
+        html +=  prvwpnls;
+        //html +=  '<div class="afterbox">' + data.survey_end + '</div></div>';
+
+        html +=  '<div class="outro">' + data.outro_text + '</div><div class="disclaimerbox">' + data.survey_disclaimtext2 + ' <a href="' + data.survey_disclaimlink + '">' + data.survey_disclaimlinktext + '</a></div>';
+        html +=  '<div class="bottombar"><div class="column1">[profile contact info]</div><div class="column2">[profile organisation info]</div><div class="column3"><div class="logobox"><span>logo</span></div></div></div>';
+        html +=  '</div>';
 
         return html;
     }
 
-
-        /* edit example box
-        html += '<div id="surveybox" data-nr="'+idx+'"><h3>Data Edit</h3>';
-
-        $.each(row, function( fieldkey, fieldvalue) {
-          if( fieldkey != 'json'){
-            html += '<div class="element row" data-nr="'+idx+'" data-field="'+fieldkey+'">';
-            html += ''+fields[fieldkey]+': <span class="inputbox">'+fieldvalue+'</span>';
-            html += '</div>';
-          }
-        });
-
-        let json = JSON.parse(row['json']); //JSON.stringify();
-
-        $.each(json, function( key, value) {
-
-          html += '<div data-nr="'+idx+'" class="entry json">';
-          $.each(value, function( rkey, rvalue) {
-          html += '<div class="element" data-field="'+rkey+'">';
-          if( $.isArray(rvalue) ){
-            html += '<div class="subelements" data-field="'+rkey+'">';
-            let c = 0;
-            $.each(rvalue, function( fkey, fvalue) {
-              html += '<div data-field="'+fkey+'">'+fkey+': <span class="inputbox">'+fvalue+'</span></div>';
-              c++;
-            });
-            html += '</div>';
-          }else{
-            html += ''+rkey+': <span class="inputbox">'+rvalue+'</span>';
-          }
-          html += '</div>';
-          });
-          html += '</div>';
-
-        });
-        html += '</div>';
-        */
 
 
     function editDataView( idx ){
