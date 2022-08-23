@@ -38,7 +38,8 @@ jQuery(function($) {
     }
 
 
-    var setProfileSelect = function() {
+    var setProfileSelect = function(idx = false) {
+
       var profilelist;
       var profileselect = {};
       var selectProfileBox = '';
@@ -70,7 +71,11 @@ jQuery(function($) {
         var slc = false;
         $.each(profileselect, function(val, txt) {
           let selected = '';
-          if (cnt == 0) { // first selected
+          if (!idx && cnt == 0) { // first selected
+            slc = val;
+            selected = 'selected="selected"';
+          }
+          if (idx && idx == val) { // first selected
             slc = val;
             selected = 'selected="selected"';
           }
@@ -78,6 +83,11 @@ jQuery(function($) {
           cnt++;
         });
         slcbx += '</select>';
+
+        if( $('.formrow.profileselect').length > 0 ){
+          $('.formrow.profileselect').remove();
+        }
+
         selectProfileBox = '<div class="formrow profileselect"><label class="formfield"><span>Select Profile</span>' + slcbx + '</label></div>';
         $('.formrow:first-child').after(selectProfileBox);
         $('input[name="fromName"]').val(profilelist[slc]['profile']);
@@ -142,11 +152,15 @@ jQuery(function($) {
     }
 
 
+    // start engine ..
+
+    /*
     basicEmailForm = function() {
     }
 
     surveyEmailForm = function() {
     }
+    */
 
     var makeTypeSelectBox = function(name, options) {
 
@@ -184,7 +198,12 @@ jQuery(function($) {
         $('input[name="subjectContent"]').val('');
         $('textarea[name="htmlContent"]').val('');
       }
-      //$('body').find('.emailform').toggleClass('survey');
+    });
+
+    $('body').on('change', '#formprofile', function() {
+
+      setProfileSelect(this.value);
+
     });
 
 
