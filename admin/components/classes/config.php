@@ -29,6 +29,7 @@
 
             // check file data
             $arr = $this->source->dataFromFile( $this->filename );
+
             if( is_array($arr) && isset($arr['fields']) ){
                 $this->datalist = $arr;
             }else{
@@ -49,9 +50,22 @@
               }
 
 
+              // add new
+              if( $_REQUEST['action'] == 'new' ){
+
+                // add new row with fields
+                $this->defineFields();
+                $new = $this->fields[1];
+                $arr[] = $new;
+                $this->source->dataToFile( $arr, $this->filename );
+
+                print json_encode($arr);
+              }
+
               if( $_REQUEST['action'] == 'list' ){
                 print_r(json_encode($this->datalist));
               }
+
               // ajax login
               if( $_REQUEST['action'] == 'login' ){
                 //echo json_encode($this->datalist);
@@ -92,9 +106,9 @@
 
         }
 
-        private function setDefaultData(){
+        private function defineFields(){
 
-            $arr = [ 'fields' =>
+            $this->fields = [ 'fields' =>
                     [
                     'profile'=>'Profile/Company',
                     'sender'=>'Person name',
@@ -157,10 +171,18 @@
                       'admin_lang'=>'en',
                     ],
                 ];
+
+        }
+
+        private function setDefaultData(){
+
+          $this->defineFields();
+          $arr = $this->fields;
           $this->datalist = $arr;
 	        $this->source->dataToFile( $arr, $this->filename );
 
         }
+
     }
 
 ?>

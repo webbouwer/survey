@@ -24,7 +24,7 @@ $template->assign("htmlhead", $htmlhead );
 
 $template->assign("adminbar", $adminbar );
 
-$template->assign("header", "<div>Admin theme header</div>");
+$template->assign("header", '<div id="logotitle">Theme Admin header</div>');
 
 $template->assign("title", "Admin configurations");
 $template->assign("intro", "Profiel en login beheer");

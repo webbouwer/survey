@@ -24,6 +24,11 @@
         <div class="outermargin">
           <div id="headcontent">
             {header}
+            <div id="themetoggle" onclick="toggleDarkLightTheme();">
+            		<div class="slider">
+            			<div class="nob"></div>
+            		</div>
+            </div>
           </div>
         </div>
       </div>

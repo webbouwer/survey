@@ -32,12 +32,16 @@ table#datalist
 table#datalist tr
 {
   border:none;
+  transition: all 0.5s ease-out;
+}
+table#datalist td
+{
+  transition: all 0.5s ease-out;
 }
 table#datalist tr:hover td
 {
   background-color:var(--row_bg_hover);
   border:none;
-  transition: all 0.5s ease-out;
 }
 
 /* configlist */
@@ -75,4 +79,3 @@ table#datalist tr:hover td
 {
   margin-right:3px;
 }
- 

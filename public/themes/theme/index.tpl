@@ -9,8 +9,6 @@
 <!-- HTML doc title -->
 <title>{title}</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;800&display=swap" rel="stylesheet">
 
 {htmlhead}
@@ -22,6 +20,11 @@
         <div class="outermargin">
           <div id="headcontent">
             {header}
+            <div id="themetoggle" onclick="toggleDarkLightTheme();">
+            		<div class="slider">
+            			<div class="nob"></div>
+            		</div>
+            </div>
           </div>
         </div>
       </div>

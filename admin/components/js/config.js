@@ -35,6 +35,7 @@ jQuery(function($){
                         textdata += '<h3><span class="profile">'+obj['profile']+'</span></h3><p><span class="sender">'+obj['sender']+'</span></p>';
                         textdata += '<p><span class="email_address">'+obj['email_address']+'</span></p></div>';
                         textdata += '<div class="editbox">';
+
                         /*
                         $.each(obj, function( key, value) {
                           if( key == 'admin_pass'){
@@ -54,7 +55,7 @@ jQuery(function($){
                 if( !container ){
                   return data;
                 }else{
-                  container.html('<div class="configlist">' +textdata+'</div>');
+                  container.html('<div class="configlist"><button type="button" class="small new">Add new</button>' +textdata+'</div>');
                 }
 
             }
@@ -117,6 +118,51 @@ jQuery(function($){
 
 		}
 
+    function newConfigDataRow(){
+
+			var senddata =  { 'data': {}, 'action': 'new' };
+			$.ajax({
+					type: 'POST',
+					url: configDataUrl,
+					data: senddata,
+					dataType: 'json',
+			}).done( function( data ) {
+        // reload table
+        let container = $('.configlist').parent();
+        setTimeout( function(){
+          getConfigDataTable( container );
+        }, 10);
+				//console.log('new data added');
+			})
+			.fail( function( data ) {
+					console.log('failed to create new data');
+			});
+
+		}
+
+    function deleteConfigRow( todelete ){
+
+			var senddata =  { 'data': todelete, 'action': 'delete' };
+      //console.log( senddata.data );
+			$.ajax({
+					type: 'POST',
+					url: configDataUrl,
+					data: senddata,
+					dataType: 'json',
+			}).done( function( data ) {
+        // reload table
+        let container = $('.configlist').parent();
+        setTimeout( function(){
+          getConfigDataTable( container );
+        }, 10);
+				//console.log('deleted');
+			})
+			.fail( function( data ) {
+					console.log('failed to delete');
+			});
+
+		}
+
 
 
 
@@ -165,6 +211,10 @@ jQuery(function($){
     $('body').on('click touchstart', '.configlist .profile .titlebox', function() {
       let row =$(this).closest('.profile').data('nr');
       viewDataRow(row);
+    });
+
+    $('body').on('click touchstart', '.configlist button.new', function() {
+      newConfigDataRow();
     });
 
     $('body').on('click touchstart', '.closeOverlay', function() {

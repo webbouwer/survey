@@ -5,6 +5,92 @@
   --border_radius_base: 6px;
 }
 
+:root[data-theme="theme-light"] {
+
+  /* light theme style.css */
+  --body_bg: #FFFFFF;
+  --body_text: #0D0C13;
+
+  --text_link: #0C53F6;
+  --text_link_hover: #012883;
+
+  --button_text: #EDEDEF;
+  --button_bg: #0066FF;
+  --button_text_hover: #FFFFFF;
+  --button_bg_hover: #0C53F6;
+
+  /* dark theme tables */
+  --row_bg_hover: #EDEDEF;
+
+  /* dark theme fields */
+  --input_bg: #EDEDEF;
+  --input_text_color: #24232B;
+  --input_bg_hover: #D0D0D5;
+  --input_text_color_hover: #0D0C13;
+
+}:root[data-theme="theme-dark"] {
+
+  /* dark theme style */
+  --body_bg: #040409;
+  --body_text: #D0D0D5;
+
+  --text_link: #0C53F6;
+  --text_link_hover: #0138B6;
+
+  --button_text: #14141B;
+  --button_bg: #0C53F6;
+  --button_text_hover: #EDEDEF;
+  --button_bg_hover: #0138B6;
+
+  /* dark theme tables */
+  --row_bg_hover: #0D0C13;
+
+  /* dark theme fields */
+  --input_bg: #0D0C13;
+  --input_text_color: #D0D0D5;
+  --input_bg_hover: #24232B;
+  --input_text_color_hover: #EDEDEF;
+
+}
+
+#logotitle
+{
+  display:inline-block;
+}
+#themetoggle
+{
+  display:inline-block;
+  float:right;
+  width:38px;
+	margin:2vh auto;
+}
+
+#themetoggle .slider
+{
+  width:38px;
+  height:20px;
+  border-radius:10px;
+  background-color: var(--body_text);
+}
+#themetoggle .slider .nob
+{
+  width:22px;
+  height:20px;
+  border-radius:30px;
+  background-color: var(--body_bg);
+  transition: all 0.5s ease-out;
+}
+
+[data-theme="theme-dark"] #themetoggle .nob
+{
+  margin-left: calc( 100% - 22px);
+}
+
+
+
+
+
+
 body
 {
 
@@ -21,6 +107,12 @@ body
   color: var(--body_text);
   background-color: var(--body_bg);
 }
+
+
+
+
+
+
 
 a
 {

@@ -9,33 +9,30 @@
 <!-- HTML doc title -->
 <title>{title}</title>
 
-<!--
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
--->
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;800&display=swap" rel="stylesheet">
 
 {htmlhead}
 </head>
 <body>
 
-  <div id="pagecontainer" class="menu"> 
+  <div id="pagecontainer">
     <div id="headcontainer">
         <div class="outermargin">
           <div id="headcontent">
             {header}
+            <div id="themetoggle" onclick="toggleDarkLightTheme();">
+            		<div class="slider">
+            			<div class="nob"></div>
+            		</div>
+            </div>
           </div>
         </div>
       </div>
 
-    <div id="sidebarcontainer">
-      {adminbar}
-    </div>
-
     <div id="contentcontainer">
       <div class="outermargin">
 
-        <div class="content-title"><h2>{title}</h2></div><div class="content-intro">{intro}</div>
+        <div class="content-title"><h2>{title}</h2></div>
 
         <div id="maincontent">
           <!-- main content -->

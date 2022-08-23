@@ -13,7 +13,7 @@ $htmlhead = '<link rel="stylesheet" href="components/themes/theme/css/style.css"
 .'<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>'
 .'<script src="components/themes/theme/js/style.js"></script>'
 .'<script src="components/js/content.js"></script>'
-.'<script src="components/js/survey.js"></script>' 
+.'<script src="components/js/survey.js"></script>'
 .'<script src="components/js/datalist.js"></script>';
 
 $adminbar = '<div id="adminbar">'.getAdminbar().'</div>';
@@ -24,7 +24,8 @@ $template->assign("htmlhead", $htmlhead );
 
 $template->assign("adminbar", $adminbar );
 
-$template->assign("header", "Admin theme header");
+
+$template->assign("header", '<div id="logotitle">Theme Admin header</div>');
 
 $template->assign("title", "Data opmaak");
 $template->assign("intro", "Data velden beheer");

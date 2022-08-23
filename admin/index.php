@@ -22,7 +22,7 @@ $template->assign("htmlhead", $htmlhead );
 
 $template->assign("adminbar", $adminbar );
 
-$template->assign("header", "Admin theme header");
+$template->assign("header", '<div id="logotitle">Theme Admin header</div>');
 
 $template->assign("title", "Admin");
 $template->assign("intro", "Welcome at the Admin area");
