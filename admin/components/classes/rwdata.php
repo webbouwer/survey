@@ -11,7 +11,7 @@ class rwdata{
 
 	public  function __construct(){
 
-		$this->s = "38ob8734lkrp2382kbld2kbh9db2khbh9db2khb38obhrrkn8n49fdkj00"; // encryption key
+		$this->s = "38obfgjghjhjut634ert55hrrk5345dkj00"; // encryption key 
 		$this->f = "../data/"; // data folder
 
 	}

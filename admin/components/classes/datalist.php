@@ -181,15 +181,19 @@
                   'survey_title'=>'Survey title',
                   'survey_start'=>'Info text',
                   'survey_end'=>'Info below text',
+                  'survey_disclaimtext1'=>'Disclaim text 1',
                   'survey_help'=>'Help text',
                   'survey_helplink'=>'Help link',
+
                   'survey_complete_title'=> 'Completed title',
                   'survey_complete_text'=> 'Closing text',
+
+                  'survey_after'=>'Extra info',
+                  'outro_text'=>'Outro text',
+
                   'survey_disclaimtext2'=>'Disclaim text 2',
                   'survey_disclaimlinktext'=>'Link text',
                   'survey_disclaimlink'=>'Disclaimer link',
-
-                  'outro_text'=>'Outro text',
 
                   'json'=>'Survey Data',
                   ],
@@ -212,17 +216,20 @@
 
                   'survey_title'=>'Survey Example 1 Title',
                   'survey_start'=>'Please share your thoughts about your experience with our services by answering the following questions.',
-                  'survey_end'=>'Info text below survey box with questions',
-                  'survey_help'=>'Overall usage notes and tips text for help sectio',
+                  'survey_end'=>'Info text inside survey box with questions',
+                  'survey_disclaimtext1'=>'Disclaimer text 1 the below the end text underneath the survey box',
+                  'survey_help'=>'Overall usage notes and tips text for help section',
                   'survey_helplink'=>'https://..#surveyhelp',
+
                   'survey_complete_title'=> 'Survey Completed!',
                   'survey_complete_text'=> 'Thank you for taking this journey!',
-                  'survey_disclaimtext1'=>'Disclaimer text 1 the below the end text underneath the survey box',
+
+                  'survey_after'=>'Info text below survey box with questions',
+                  'outro_text'=>'Outro text (finnishing) below the survey section',
+
                   'survey_disclaimtext2'=>'Disclaim text 2 at the end of the page above the footer (contact) area',
                   'survey_disclaimlinktext'=>'Disclaimer',
                   'survey_disclaimlink'=>'#disclaimer',
-
-                  'outro_text'=>'Outro text (finnishing) below the survey section',
 
                   'json'=>$setup,
 

@@ -152,83 +152,25 @@ jQuery(function($){
 			});
 
 		}
-
+    /*
     function previewDataView( idx ){
-
-        var fields = datalist['fields'];
-        var data = datalist[idx];
-        let html = '';
-
-        html += '<div class="surveycontainer" data-row="' + idx + '" data-id="' + data.id + '">';
-        html +=  '<div class="topbar"><div class="logobox"><span>logo</span></div><div class="titletext"><h2>' + data.title + '</h2></div></div>';
-        html +=  '<div class="header"><div class="introtitle"><h3>' + data.intro_title + '</h3></div><div class="introtext">' + data.intro_text + '</div></div>';
-        html +=  '<div class="introsubtext">' + data.intro_subtext + '</div>';
-
-        let prvwpnls = '<div class="paneltitle">' + data.survey_title + '</div>';
-        if (data.survey_start != '') {
-          prvwpnls += '<div class="panelstarttext">' + data.survey_start + '</div>';
-        }
-
-  			prvwpnls += '<div id="surveypanels">'; // start surveypanels
-
-        if (data.json.length > 0) {
-
-          let qs = JSON.parse(data.json);
-
-          let count = 0;
-          $.each(qs, function(nr, quest) {
-
-            prvwpnls += '<div id="panel' + count + '" class="panel">';
-            prvwpnls += '<div class="questionbox">' + quest.question + '</div>';
-
-            if (quest.type != '') {
-              prvwpnls += '<div class="answerbox ' + quest.type + '">';
-
-              //console.log(quest.type);
-              $.each(quest.answers, function(c, a) {
-
-                if (quest.type == "polar") {
-                  prvwpnls += '<label><input name="opt' + nr + '" type="radio" value="' + c + '" /><div class="optdata" data-updated="">' + a + '</div></label>';
-                }
-
-                if (quest.type == "multi") {
-                  prvwpnls += '<label><input name="opt' + nr + '" type="checkbox" value="' + c + '" /><div class="optdata" data-updated="">' + a + '</div></label>';
-                }
-                if (quest.type == "choice") {
-                  prvwpnls += '<label><input name="opt' + nr + '" type="radio" value="' + c + '" /><div class="optdata" data-updated="">' + a + '</div></label>';
-                }
-                if (quest.type == "value") {
-                  prvwpnls += '<label><input name="opt' + nr + '" type="radio" value="' + c + '" /><div class="optdata" data-updated="">' + a + '</div></label>';
-                }
-                if (quest.type == "range") {
-                  prvwpnls += '<label><input name="opt' + nr + '" type="radio" value="' + c + '" /><div class="optdata" data-updated="">' + a + '</div></label>';
-                }
-                if (quest.type == "open") {
-                  prvwpnls += '<label><textarea name="opt' + nr + '" value="' + c + '" placaholder="' + a + '" /></textarea></label>';
-                }
-              });
-              prvwpnls += '</div>';
-            }
-            prvwpnls += '</div>';
-            count++;
-          });
-  				prvwpnls += '</div>'; // end surveypanels
-          if (data.survey_end != '') {
-            prvwpnls += '<div class="panelendtext">' + data.survey_end + '</div>';
-          }
-
-        }
-
-        html +=  '<div class="main"><div class="beforebox">[survey generated info text]</div>';
-        html +=  prvwpnls;
-        //html +=  '<div class="afterbox">' + data.survey_end + '</div></div>';
-
-        html +=  '<div class="outro">' + data.outro_text + '</div><div class="disclaimerbox">' + data.survey_disclaimtext2 + ' <a href="' + data.survey_disclaimlink + '">' + data.survey_disclaimlinktext + '</a></div>';
-        html +=  '<div class="bottombar"><div class="column1">[profile contact info]</div><div class="column2">[profile organisation info]</div><div class="column3"><div class="logobox"><span>logo</span></div></div></div>';
-        html +=  '</div>';
-
-        return html;
+        //var fields = datalist['fields'];
+        return buildSurvey( idx, datalist );
     }
+    */
+
+    function viewDataRow(rowid){
+      /*
+      let previewdata = previewDataView( rowid )
+      addOverlay('dataview', previewdata);
+      */
+      let previewdata = buildSurvey( rowid, datalist );
+      addOverlay('dataview', previewdata);
+      runSurvey();
+
+    } // end viewDataRow
+
+
 
     function editDataView( idx ){
 
@@ -271,10 +213,8 @@ jQuery(function($){
       return html;
     }
 
-    function viewDataRow(rowid){
-      let previewdata = previewDataView( rowid )
-      addOverlay('dataview', previewdata);
-    }
+
+
 
     function editDataRow(rowid){
       let data = editDataView( rowid )
