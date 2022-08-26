@@ -7,6 +7,9 @@ function runSurvey(){
   $('.navbut:first').addClass('active');
 
   var setNextButton = function( box ){
+
+    box.find('.button.next').removeClass('nonactive');
+    /*
     if( box.find('.button.next').length < 1 ){
       let text = 'Next';
       if(box.next().hasClass('end')){
@@ -14,6 +17,7 @@ function runSurvey(){
       }
       box.append('<div class="button next"><span>'+text+'</span></div>');
     }
+    */
   }
 
   var gotoPanel = function( id ){
@@ -69,13 +73,14 @@ function runSurvey(){
     nextPanel(panel);
   });
 
+  /*
   $('body').on('click touchstart', '.buttonrow .navbut.done', function(){
     let nr = $(this).data('nr');
     $(this).removeClass('done').addClass('active');
     results = surveyResult();
     gotoPanel( nr );
   });
-
+  */
 }
 
 /*
@@ -191,7 +196,14 @@ function buildSurvey( idx, data ){
   html +=  '<div class="main"><div class="introsubtext">' + data.intro_subtext + '</div>';
 
 
-  let prvwpnls = '<div class="surveyhead"><div class="paneltitle"><h1>' + data.survey_title + '</h1></div>';
+  var count = 0;
+  var qs = JSON.parse(data.json);
+  var total = 0;
+  $.each(qs, function(id, q) {
+    total++;
+  });
+
+  var prvwpnls = '<div class="surveyhead"><div class="paneltitle"><h1>' + data.survey_title + '</h1></div>';
   prvwpnls += '<div class="infobox"></div>';
   prvwpnls += '<div class="helpbox"></div>';
 
@@ -203,15 +215,16 @@ function buildSurvey( idx, data ){
   if (data.json.length > 0) {
 
     prvwpnls += '<div id="surveypanels">'; // start surveypanels
-    let qs = JSON.parse(data.json);
-    let total = qs.length;
-    let count = 1;
 
     $.each(qs, function(nr, quest) {
       let panelpos = '';
-      if(count == 1){
+      if(count == 0){
         panelpos = 'start active';
       }
+      if( quest.required == 1 ){
+        panelpos += ' required'
+      }
+
       prvwpnls += '<div id="panel' + count + '" class="panel '+panelpos+'" data-id="'+nr+'" data-type="'+quest.type+'">';
       prvwpnls += '<div class="questionbox">' + quest.question + '</div>';
       if (quest.type != '') {
@@ -245,8 +258,21 @@ function buildSurvey( idx, data ){
         });
         prvwpnls += '</div>';
       }
-      prvwpnls += '</div>';
       count++;
+
+      if (quest.type == "open" || quest.type == "multi"){
+        let text = 'Next';
+        let disable = '';
+        if(count == total){
+          text = 'Finnish';
+        }
+        if( quest.required == 1 ){
+          disable = ' nonactive';
+        }
+        prvwpnls += '<div class="button next'+disable+'"><span>'+text+'</span></div>';
+      }
+      prvwpnls += '</div>';
+
     });
 
     prvwpnls += '<div id="lastpanel" class="panel end"><div class="donetitle"><h4>' + data.survey_complete_title + '</h4></div><div class="donetext">'+data.survey_complete_text+'</div></div>';
@@ -258,7 +284,8 @@ function buildSurvey( idx, data ){
   prvwpnls += '<div class="surveyfoot">';
 
   prvwpnls += '<div class="panelnav"><div class="buttonrow">';
-  let t = JSON.parse(data.json).length;
+
+  let t = count;
   for(n=0;n<t;n++){
     prvwpnls += '<div class="navbut" data-nr="'+n+'"><span>'+n+'</span></div>';
   }

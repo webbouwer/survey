@@ -90,6 +90,7 @@
           			"0"=> [
           				"question"=> "Did you know surveys are one of the first practical applications of the personal computer? ",
           				"type"=> "polar",
+          				"required"=> 1,
           				"tips"=> "This is a survey",
           				"answers"=> [
           					"0"=> "No",
@@ -99,6 +100,7 @@
           			"1"=> [
           				"question"=> "Which of the types listed below are polar questions like the first one? ",
           				"type"=> "multi",
+          				"required"=> 1,
           				"tips"=> "Multiple answers are possible",
           				"answers"=> [
           					"0"=> "Are you going? (inversion)",
@@ -109,6 +111,7 @@
           			"2"=> [
           				"question"=> "So, the question 'You like it, don't you?' is",
           				"type"=> "choice",
+          				"required"=> 1,
           				"tips"=> "Choose one answer",
           				"answers"=>[
           					"0"=> "a polar inversion",
@@ -119,6 +122,7 @@
           			"3"=> [
           				"question"=> "This is the fourth question; do you like it?",
           				"type"=> "value",
+          				"required"=> 1,
           				"tips"=> "Value from 1 to 5",
           				"answers"=> [
           					"0"=> "1",
@@ -131,6 +135,7 @@
           			"4"=> [
           				"question"=> "Can you define your joy level knowing this survey is almost over? ",
           				"type"=> "scale",
+          				"required"=> 1,
           				"tips"=> "Scale from 1 to 10",
           				"answers"=> [
           					"0"=> "1",
@@ -148,6 +153,7 @@
           			"5"=> [
           				"question"=> "Yes, you 've made it, no question more. You can leave a notice of your love in the textbox below. Or should we make this a question too? ;)",
           				"type"=> "open",
+          				"required"=> 0,
           				"tips"=> "Space to write those words",
           				"max"=> 100,
           				"answers"=> [

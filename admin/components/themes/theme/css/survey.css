@@ -1,15 +1,27 @@
 :root{
   --surveypage-bgcolor: #ffffff;
   --surveypage-textcolor: #232323;
-
-  --surveybox-bgcolor: #ededed;
+  --surveybox-bgcolor: #F3F3F3;
   --surveybox-textcolor: #232323;
+	--surveybutton-bg-color: #E1D5EA;
+	--surveybutton-text-color: #580D87;
+	--surveybutton-bg-hover: #580D87;
+	--surveybutton-text-hover: #ffff;
+
+}
+
+.button,
+.answerbox .optdata
+{
+	cursor:hand;
+	cursor:pointer;
 }
 
 .surveypage
 {
   background-color: var(--surveypage-bgcolor);
   color: var(--surveypage-textcolor);
+  min-height:100vh;
 }
 .surveypage .topbar,
 .surveypage .main,
@@ -30,9 +42,12 @@
 {
   background-color: var(--surveybox-bgcolor);
   color: var(--surveybox-textcolor);
+
+	border-radius:10px;
 }
-.surveypanels
+#surveypanels
 {
+	padding: 6px 14px;
 }
 .panel
 {
@@ -43,10 +58,19 @@
 }
 
 
+
+
 .answerbox
 {
 	display:flex;
 	flex-wrap: wrap;
+}
+.questionbox
+{
+	background-color:#fff;
+	padding:12px 15px;
+	border-radius:10px;
+	margin:12px 0px;
 }
 .answerbox label
 {
@@ -64,24 +88,30 @@
   height: 0;
 }
 .section.unselected > .selected,
+.button.next.nonactive,
 [type=radio] + div,
 [type=checkbox] + div {
   cursor: pointer;
-	min-width:180px;
-	background-color:#0084FF; /*#244690;*/
+	min-width:70px;
+	background-color:var(--surveybutton-bg-color); /*#244690;*/
+	color:var(--surveybutton-text-color);
+	border-radius:10px;
 }
+
 [type=radio] + div:hover,
 [type=checkbox] + div:hover
 {
-	background-color: #312893;
-	color:#ffffff;
+	background-color: var(--surveybutton-bg-color);
+	border:2px solid var(--surveybutton-text-color);
+	margin:-2px;
 }
 .section > .selected,
+.button.next:hover,
 [type=radio]:checked + div,
 [type=checkbox]:checked + div
 {
-  background-color:#312893;
-	color:#ffffff;
+  background-color:var(--surveybutton-bg-hover);
+	color:var(--surveybutton-text-hover);
 }
 
 .section > .selected,
@@ -92,8 +122,20 @@
 	cursor:pointer;
 }
 
+.button.next
+{
+  width:100px;
+  margin:4px auto;
+  padding:4px;
+  text-align:center;
+  border-radius:5px;
+}
 
-
+.button.next.nonactive
+{
+  opacity:0.8;
+  pointer-events: none;
+}
 
 
 
@@ -115,7 +157,7 @@
   width:16px;
   height:24px;
   margin-right:4px;
-  background-color:#cdcdcd;
+  background-color:#E1D5EA;
   border-radius:3px;
   transition: all 500ms ease-out;
 }
@@ -126,10 +168,8 @@
 .panelnav .buttonrow > div.done
 {
   height:40px;
-  background-color:#000000;
+  background-color:#8655A6;
 }
-
-
 
 
 

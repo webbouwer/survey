@@ -1,4 +1,4 @@
-/* Globals admin */
+    /* Globals admin */
 :root {
   --font_base_family: 'Montserrat', sans-serif;
   --font_base_size: 1.1em;
@@ -162,7 +162,8 @@ button.closeOverlay span
 
 
 
-button
+button,
+.button 
 {
   background-color:var(--button_bg) !important;
   color: var(--button_text) !important;
