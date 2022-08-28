@@ -42,12 +42,12 @@
 {
   background-color: var(--surveybox-bgcolor);
   color: var(--surveybox-textcolor);
-
+  padding:12px 20px;
 	border-radius:10px;
 }
 #surveypanels
 {
-	padding: 6px 14px;
+	padding: 6px 0px;
 }
 .panel
 {
@@ -70,7 +70,8 @@
 	background-color:#fff;
 	padding:12px 15px;
 	border-radius:10px;
-	margin:12px 0px;
+  margin:12px 0px;
+
 }
 .answerbox label
 {
@@ -92,7 +93,7 @@
 [type=radio] + div,
 [type=checkbox] + div {
   cursor: pointer;
-	min-width:70px;
+	min-width:30px;
 	background-color:var(--surveybutton-bg-color); /*#244690;*/
 	color:var(--surveybutton-text-color);
 	border-radius:10px;
@@ -118,7 +119,7 @@
 [type=radio] + div,
 [type=checkbox] + div
 {
-	padding:20px;
+	padding:10px;
 	cursor:pointer;
 }
 
@@ -158,16 +159,16 @@
   height:24px;
   margin-right:4px;
   background-color:#E1D5EA;
-  border-radius:3px;
+  border-radius:4px;
   transition: all 500ms ease-out;
 }
 .panelnav .buttonrow > div.active
 {
-  height:40px;
+  height:32px;
 }
 .panelnav .buttonrow > div.done
 {
-  height:40px;
+  height:32px;
   background-color:#8655A6;
 }
 

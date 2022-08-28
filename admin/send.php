@@ -7,12 +7,14 @@ $template = new Template();
 $template->file("components/themes/theme/admin.tpl"); // route
 
 $htmlhead = '<link rel="stylesheet" href="components/themes/theme/css/style.css" type="text/css" media="all" />'
-.'<link rel="stylesheet" href="components/themes/theme/css/fields.css" type="text/css" media="all" />'
 .'<link rel="stylesheet" href="components/themes/theme/css/tables.css" type="text/css" media="all" />'
+.'<link rel="stylesheet" href="components/themes/theme/css/fields.css" type="text/css" media="all" />'
 .'<link rel="stylesheet" href="components/themes/theme/css/forms.css" type="text/css" media="all" />'
+.'<link rel="stylesheet" href="components/themes/theme/css/survey.css" type="text/css" media="all" />'
 .'<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>'
 .'<script src="components/themes/theme/js/style.js"></script>'
 .'<script src="components/js/content.js"></script>'
+.'<script src="components/js/survey.js"></script>'
 .'<script src="components/js/email.js"></script>'
 .'<script src="components/js/validate.js"></script>';
 

@@ -5,9 +5,14 @@ jQuery(function($){
 
     var datalist;
 
+    var surveyboard = new surveyEngine();
+
     var dataUrl = 'components/classes/datalist.php'; // protected
 
     getTableData = function( container = false ){
+
+        surveyboard.getSurveys();
+        surveyboard.getProfiles();
 
         $.ajax({
             type: 'POST',
@@ -26,6 +31,7 @@ jQuery(function($){
             if( data['fields'] ){
 
                 datalist = data;
+                surveyboard.surveydata = data;
 								let fields = data['fields'];
                 $.each(data, function(idx, obj) {
 
@@ -159,14 +165,26 @@ jQuery(function($){
     }
     */
 
+
     function viewDataRow(rowid){
+
+      surveyboard.surveyID = rowid;
+      surveyboard.profileID = 0;
+      surveyboard.surveyPagePreview();
+      //let previewdata = surveyboard.surveyPagePreview( rowid, datalist );
+      //addOverlay('dataview', previewdata);
+      //surveyboard.runSurveyPage();
       /*
       let previewdata = previewDataView( rowid )
       addOverlay('dataview', previewdata);
       */
+
+      /*
       let previewdata = buildSurvey( rowid, datalist );
       addOverlay('dataview', previewdata);
       runSurvey();
+      */
+
 
     } // end viewDataRow
 

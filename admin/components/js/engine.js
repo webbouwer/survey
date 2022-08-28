@@ -228,3 +228,166 @@ jQuery(function($) {
     });
 
   });
+
+
+
+  /*
+  function runSurvey(){
+
+    var results;
+
+    $('.panel:first').slideDown();
+    $('.navbut:first').addClass('active');
+
+    var setNextButton = function( box ){
+
+      if( box.data('type') == 'multi' && box.hasClass('required') ){
+        if( box.find('input[type=checkbox]:checked').length > 0 ){
+          box.find('.button.next').removeClass('nonactive');
+        }else{
+          box.find('.button.next').addClass('nonactive');
+        }
+      }else if( box.data('type') == 'open' && box.hasClass('required') ){
+        if( box.find('textarea').value.length > 0 ){
+          box.find('.button.next').removeClass('nonactive');
+        }else{
+          box.find('.button.next').addClass('nonactive');
+        }
+      }
+
+    }
+
+    var gotoPanel = function( id ){
+      $('.panel').removeClass('active').slideUp();
+      $('.panel[data-id='+id+']').addClass('active').slideDown();
+    }
+
+
+    var nextPanel = function( panel ){
+
+      let complete = 0;
+      if( panel.data('type') == 'multi' && panel.hasClass('required') ){
+        if( box.find('input[type=checkbox]:checked').length > 0 ){
+          complete = 1
+        }else{
+
+        }
+      }
+      panel.removeClass('active').slideUp();
+      let next = panel.next();
+      let id = panel.data('id');
+      let nxtid = next.data('id');
+
+      $('.navbut[data-nr='+id+']').removeClass('active');
+      $('.navbut[data-nr='+id+']').addClass('done');
+
+      if( !panel.hasClass('end') ){
+        $('.navbut[data-nr='+nxtid+']').addClass('active');
+        next.addClass('active').slideDown();
+      }
+      if( next.hasClass('end') ){
+          console.log(JSON.stringify(results));
+      }
+
+    }
+
+    var onAnswerSelect = function( panel ){
+      let id = panel.data('id');
+      let type = panel.data('type');
+      let next = panel.next();
+      if( type == 'multi' || type == 'open'){
+        setNextButton( panel );
+      }else{
+        results = surveyResult();
+        nextPanel(panel);
+      }
+    }
+
+    $('body').on('click touchstart', '.answerbox label input', function(){
+      let panel = $(this).closest('.panel');
+      onAnswerSelect( panel );
+    });
+
+    $('body').on('blur', '.answerbox label textarea', function(){
+      let panel = $(this).closest('.panel');
+      onAnswerSelect( panel );
+    });
+
+    $('body').on('click touchstart', '.button.next', function(){
+      let panel = $(this).closest('.panel');
+      results = surveyResult();
+      nextPanel(panel);
+    });
+
+
+    $('body').on('click touchstart', '.buttonrow .navbut.done', function(){
+      let nr = $(this).data('nr');
+      let panel = $('#panel'+nr);
+      $(this).removeClass('done').addClass('active');
+      $('.panels').removeClass('active');
+      panel.removeClass('done').addClass('active');
+      if( panel.hasClass('required') ){
+        panel.find('.button.next').addClass('nonactive');
+      }
+      results = surveyResult();
+      gotoPanel( nr );
+    });
+
+  }
+
+
+  function surveyResult(){
+
+    let result = {};
+
+    let panels = $('.panel');
+
+    $.each( panels, function(nr, quest) {
+
+        let panel = $(quest);
+        let id = panel.data('id');
+        let chk = 0;
+
+        if( panel.find('input[type=checkbox]:checked').length > 0 ){
+          let multi = [];
+          let chkd = panel.find('input[type=checkbox]:checked');
+          if( chk.length > 0 ){
+            $.each( chkd, function( n, answer){
+              multi[n] = $(answer).val();
+            });
+            result[id] = multi;
+            chk = 1;
+          }
+        }
+
+        if( panel.find('input[type=radio]:checked').length > 0 ){
+          result[id] = panel.find('input[type=radio]:checked').val();
+          chk = 1;
+        }
+
+        if( panel.find('textarea').length > 0 ){
+          result[id] = panel.find('textarea').val();
+          chk = 1;
+        }
+
+        if( chk == 1){
+
+          $('div.navbut[data-id='+id+']').addClass('done');
+          panel.addClass('done');
+
+        }else{
+
+          $('div.navbut[data-id='+id+']').removeClass('done');
+          panel.removeClass('done');
+          if( panel.hasClass('required') ){
+            panel.find('.button.next').addClass('nonactive');
+          }
+
+        }
+    });
+
+
+    return result;
+
+  }
+  */
