@@ -52,6 +52,8 @@ if( isset($_REQUEST['data']) && $_REQUEST['action'] == 'send' ){
       && isset($_REQUEST['data']['toemail'])
       && isset($_REQUEST['data']['subject'])
       && isset($_REQUEST['data']['htmlcontent'])
+      && isset($_REQUEST['data']['surveyid'])
+      && isset($_REQUEST['data']['profileid'])
       && isset($_REQUEST['data']['survey'])
       && isset($_REQUEST['data']['profile'])
     ){
@@ -62,11 +64,14 @@ if( isset($_REQUEST['data']) && $_REQUEST['action'] == 'send' ){
       $toEmail = $_REQUEST['data']['toemail'];
       $subject = $_REQUEST['data']['subject']; // $fromWebsite;
 
+      $surveyid = $_REQUEST['data']['surveyid'];
+      $profileid = $_REQUEST['data']['profileid'];
       $survey = $_REQUEST['data']['survey'];
       $profile = $_REQUEST['data']['profile'];
 
       // get survey html
-      $htmlContent =  markupSurveyHTML( $toName, $profile, $survey ); //'Survey title: '.$survey['title'].' - Profile name: '.$profile['profile'].' .. '.$_REQUEST['data']['htmlcontent'];
+      $activeid = uniqid();
+      $htmlContent =  markupSurveyHTML( $activeid, $toName, $toEmail, $profileid, $profile, $surveyid, $survey ); //'Survey title: '.$survey['title'].' - Profile name: '.$profile['profile'].' .. '.$_REQUEST['data']['htmlcontent'];
 
       $chk = true;
 

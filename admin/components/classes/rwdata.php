@@ -1,18 +1,20 @@
 <?php
 // protected from outside
 $pos = strpos($_SERVER['HTTP_REFERER'],getenv('HTTP_HOST'));
-if($pos===false)
+if($pos===false && !isset($_GET['s']) )
 die('Restricted access');
 
 class rwdata{
 
 	private $s;
 	public $f;
+	public $d;
 
 	public  function __construct(){
 
 		$this->s = "38obfgjghjhjut634ert55hrrk5345dkj00"; // encryption key
 		$this->f = "../data/"; // data folder
+		$this->d = "https://webbouwer.org/lab/php/survey/"; // data folder
 
 	}
 	public function dataToFile($array = false, $filename){
@@ -57,6 +59,21 @@ class rwdata{
     list($encrypted_data, $iv) = explode('::', base64_decode($garble), 2);
     return openssl_decrypt($encrypted_data, 'aes-256-cbc', $key, 0, $iv);
   }
+
+
+	public function encryptstring($payload) {
+    // php mcrypt_encrypt alternative:
+    $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-cbc'));
+    $encrypted = openssl_encrypt($payload, 'aes-256-cbc', $this->s, 0, $iv);
+    return base64_encode($encrypted . '::' . $iv);
+  }
+	public function decryptstring($garble) {
+    // php mcrypt_decrypt alternative:
+    list($encrypted_data, $iv) = explode('::', base64_decode($garble), 2);
+    return openssl_decrypt($encrypted_data, 'aes-256-cbc', $this->s, 0, $iv);
+  }
+
+
 }
 
 ?>
