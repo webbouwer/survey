@@ -7,7 +7,7 @@
 
     class dataList{
 
-        private $source;
+        private $source; 
         private $filename;
         private $fields;
         private $datalist;

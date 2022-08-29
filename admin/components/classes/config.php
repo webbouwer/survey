@@ -5,9 +5,9 @@
 
     //include('login.php');
 
-    $activeData = new dataList;
+    $activeConfig = new configList;
 
-    class dataList{
+    class configList{
 
         private $source;
         private $filename;
@@ -90,10 +90,6 @@
 
                 print json_encode($arr);
               }
-
-
-
-
 
               if( $_REQUEST['action'] == 'list' ){
                 print_r(json_encode($this->datalist));

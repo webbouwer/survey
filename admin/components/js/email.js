@@ -238,6 +238,20 @@ jQuery(function($) {
 
     function checkBeforeSend(form) {
 
+      // check email type
+      if( form.find('#formtype').children("option:selected").val() == 'email'){
+          // alert('basic email preview');
+          // clear survey id
+          form.find('#surveyid').val('');
+      }/*
+      else{
+        if(form.find('#surveyid') != ''){
+          surveyboard.surveyID = form.find('#surveyid').val();
+          surveyboard.profileID = form.find('#profileid').val();
+        }
+      }
+      */
+      // validate input
       let chk = validateEmailForm(form);
 
       if (chk.status == 'input') {
@@ -253,7 +267,17 @@ jQuery(function($) {
       }
 
       if (chk.status == 'send') {
-        toSend = chk.tosend;
+
+        let toSend = chk.tosend;
+
+        if(toSend.formtype == 'survey' && toSend.surveyid != '' && toSend.profileid != ''){
+
+          $.extend(toSend, {
+            'survey': surveylist[toSend.surveyid],
+            'profile': profilelist[toSend.profileid],
+          });
+
+        }
         //console.log( JSON.stringify(toSend) );
         setMessagebox('Sending email..');
         setTimeout(function() {

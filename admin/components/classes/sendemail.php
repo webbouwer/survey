@@ -1,5 +1,7 @@
 <?php require_once('protected.php');
 
+//require('config.php'); // $activeConfig
+//require('datalist.php'); // $activeData
 /* PHP Mailer
  * verification emailadresses (google etc.)
  * https://support.google.com/mail/answer/81126#authentication
@@ -11,14 +13,19 @@ use PHPMailer\PHPMailer\Exception;
 require '../lib/PHPMailer/src/Exception.php';
 require '../lib/PHPMailer/src/PHPMailer.php';
 //require '../lib/PHPMailer/src/SMTP.php';
+require '../lib/util/markupSurvey.php';
 
-$result = [];
-$chk = false;
+$result = []; // result of sending email
+$chk = false; // checked email variables default false
 
+// check vars, markup html and send with phpmailer
 if( isset($_REQUEST['data']) && $_REQUEST['action'] == 'send' ){
+
+  if( isset($_REQUEST['data']['formtype']) && $_REQUEST['data']['formtype'] == 'email'){
 
       if(  isset($_REQUEST['data']['fromname'])
         && isset($_REQUEST['data']['fromemail'])
+        && isset($_REQUEST['data']['toname'])
         && isset($_REQUEST['data']['toemail'])
         && isset($_REQUEST['data']['subject'])
         && isset($_REQUEST['data']['htmlcontent'])
@@ -27,12 +34,45 @@ if( isset($_REQUEST['data']) && $_REQUEST['action'] == 'send' ){
 
         $fromName = $_REQUEST['data']['fromname'];
         $fromEmail = $_REQUEST['data']['fromemail'];
+        $toName = $_REQUEST['data']['toname'];
         $toEmail = $_REQUEST['data']['toemail'];
         $subject = $_REQUEST['data']['subject']; // $fromWebsite;
-        $htmlContent = $_REQUEST['data']['htmlcontent'];
-        $chk = true;
 
+        $htmlContent = markupEmailHTML( $_REQUEST['data']['htmlcontent'] );
+        $chk = true;
       }
+
+  }
+
+  if( isset($_REQUEST['data']['formtype']) && $_REQUEST['data']['formtype'] == 'survey' ){
+
+    if(  isset($_REQUEST['data']['fromname'])
+      && isset($_REQUEST['data']['fromemail'])
+      && isset($_REQUEST['data']['toname'])
+      && isset($_REQUEST['data']['toemail'])
+      && isset($_REQUEST['data']['subject'])
+      && isset($_REQUEST['data']['htmlcontent'])
+      && isset($_REQUEST['data']['survey'])
+      && isset($_REQUEST['data']['profile'])
+    ){
+
+      $fromName = $_REQUEST['data']['fromname'];
+      $fromEmail = $_REQUEST['data']['fromemail'];
+      $toName = $_REQUEST['data']['toname'];
+      $toEmail = $_REQUEST['data']['toemail'];
+      $subject = $_REQUEST['data']['subject']; // $fromWebsite;
+
+      $survey = $_REQUEST['data']['survey'];
+      $profile = $_REQUEST['data']['profile'];
+
+      // get survey html
+      $htmlContent =  markupSurveyHTML( $toName, $profile, $survey ); //'Survey title: '.$survey['title'].' - Profile name: '.$profile['profile'].' .. '.$_REQUEST['data']['htmlcontent'];
+
+      $chk = true;
+
+
+    }
+  }
 
 }
 
@@ -47,7 +87,7 @@ if($chk){
      $mail->setFrom($fromEmail, $fromName);
 
      // Add a recipient.
-     $mail->addAddress( $toEmail, 'Email test participant');
+     $mail->addAddress( $toEmail, $toName);
 
      $mail->isHTML(true);
 
@@ -77,127 +117,13 @@ if($chk){
   }
 
 }else{
-  $this->result['status'] = 'failed';
-  $this->result['msg'] = 'Error: Not enough or incorrect data to send an email.';
+  $result['status'] = 'failed';
+  $result['msg'] = 'Error: Not enough or incorrect data to send an email.';
 }
 
 header('Content-Type: application/json');
 print json_encode($result);
 
-
-
-/*
-$sendEmail = new sendHTMLEmail;
-
-class sendHTMLEmail{
-
-    private $fromName;
-    private $fromEmail;
-    private $toEmail;
-    private $subject;
-    private $htmlcontent;
-
-    public $result = array();
-
-    public  function __construct(){
-
-      // check request action
-      $chk = false;
-
-      if( isset($_REQUEST['data']) && $_REQUEST['action'] == 'send' ){
-
-            if(  isset($_REQUEST['data']['fromname'])
-              && isset($_REQUEST['data']['fromemail'])
-              && isset($_REQUEST['data']['toemail'])
-              && isset($_REQUEST['data']['subject'])
-              && isset($_REQUEST['data']['htmlcontent'])
-
-            ){
-
-              $this->fromName = $_REQUEST['data']['fromname'];
-              $this->fromEmail = $_REQUEST['data']['fromemail'];
-              $this->toEmail = $_REQUEST['data']['toemail'];
-              $this->subject = $_REQUEST['data']['subject']; // $fromWebsite;
-              $this->htmlContent = $_REQUEST['data']['htmlcontent'];
-              $chk = true;
-
-            }
-
-
-
-      }
-
-      if($chk){
-         //echo 'Mailer Error: ' . $mail->ErrorInfo;
-         $this->sendThisEmail();
-      } else {
-        $this->result['status'] = 'failed';
-        $this->result['msg'] = 'Error: Not enough or incorrect data to send an email.';
-        $this->endResponse();
-      }
-
-    }
-
-    private function sendThisEmail(){
-
-      //Create a new PHPMailer instance
-      $mail = new PHPMailer(true);
-
-      // Open the try/catch block.
-      try {
-         // Set the mail sender.
-         $mail->setFrom($this->fromEmail, $this->fromName);
-         $mail->addReplyTo($this->fromEmail, $this->fromName);
-
-         // Add a recipient.
-         $mail->addAddress($this->toEmail, 'Emperor');
-
-         $mail->isHTML(true);
-
-         // Set the subject.
-         $mail->Subject = $this->subject;
-
-         // Set the mail message body.
-         $mail->Body = $this->htmlContent;
-
-         // attachtment
-         //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');
-
-         // Finally send the mail.
-         //$mail->send();
-         if (!$mail->send()) {
-      	   //echo 'Mailer Error: ' . $mail->ErrorInfo;
-           $this->result['status'] = 'failed';
-           $this->result['msg'] = 'Error: '. $mail->ErrorInfo;
-      	 } else {
-           $this->result['status'] = 'succes';
-           $this->result['msg'] = 'De email is verstuurd aan '.$this->toEmail;
-      	 }
-
-         // output json response
-         $this->endResponse();
-
-      }
-      catch (Exception $e)
-      {
-         // PHPMailer exception.
-         echo $e->errorMessage();
-      }
-
-    }
-
-    private function endRespsone(){
-
-      // output json response
-      header('Content-Type: application/json');
-      print json_encode($this->result);
-
-    }
-
-
-}
-
-*/
 
 
 
