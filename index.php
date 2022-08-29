@@ -5,10 +5,12 @@ if( isset($_GET['s']) ){
 
 if( $activesurvey['pn'] ){
 
-  $content = 'Hi '. $activesurvey['pn'];
-  $content .= 'Survey title: '. $surveydata['title'];
+  //$content .= 'Hi '. $activesurvey['pn'];
+  //$content .= 'Survey title: '. $surveydata['title'];
 
-  $script = '';//'<script>alert( JSON.stringify( '.json_encode($activesurvey).') );</script>';
+  $content = surveyPageHTML( $activesurvey['uid'], $activesurvey['sid'], $activesurvey['pn'], $surveydata );
+
+  $script = '<script>var qa1 = '.$_GET['qa'].';</script>';
 
 }else{
 
@@ -21,6 +23,7 @@ $template = new Template();
 $template->file("public/themes/theme/index.tpl"); // route
 
 $htmlhead = '<link rel="stylesheet" href="public/themes/theme/css/style.css" type="text/css" media="all" />'
+.'<link rel="stylesheet" href="public/themes/theme/css/survey.css" type="text/css" media="all" />'
 .'<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>'
 .'<script src="public/themes/theme/js/style.js"></script>'
 .'<script src="public/themes/theme/js/survey.js"></script>'
