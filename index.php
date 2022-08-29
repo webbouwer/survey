@@ -6,7 +6,9 @@ if( isset($_GET['s']) ){
 if( $activesurvey['pn'] ){
 
   $content = 'Hi '. $activesurvey['pn'];
-  $script = '<script>alert( JSON.stringify( '.json_encode($activesurvey).') );</script>';
+  $content .= 'Survey title: '. $surveydata['title'];
+
+  $script = '';//'<script>alert( JSON.stringify( '.json_encode($activesurvey).') );</script>';
 
 }else{
 
