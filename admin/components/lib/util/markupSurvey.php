@@ -29,7 +29,6 @@ function markupSurveyHTML( $activeid, $toname, $toemail, $pid, $profile, $sid, $
   $participant_name = $toname;
 
   $html .= '<div class="surveyemail" data-mode="preview" data-activeid="'.$activeid.'" data-row="' . $sid . '" data-id="' . $data['id'] . '">';
-
   $html .= '<div class="topbar"><div class="header"><div class="logobox"><span>logo</span></div><div class="titletext"><h2>' . $data['title'] . '</h2></div></div>';
   $html .= '<div class="intro"><div class="introtitle"><h3>' . $data['subtitle'] . '</h3></div><div class="introtext">' . $data['desc'] . '</div></div></div>';
   $html .= '<div class="main"><div class="emailintro"><div class="greeting">' . $data['email_salut'] . ' '.$participant_name.',</div><div class="text">' . $data['email_text'] . '</div></div>';
@@ -37,7 +36,6 @@ function markupSurveyHTML( $activeid, $toname, $toemail, $pid, $profile, $sid, $
 
   $count = 0;
   $pnls = '';
-
   $qs = json_decode( $data['json'], true); //$data['json'];
   if(count($qs) > 0) {
     $total = count($qs);

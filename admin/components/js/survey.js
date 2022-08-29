@@ -8,12 +8,10 @@ var surveyEngine = function() {
   var surveyID, profileID, currentQA = 0;
 
   this.runSurveyPage = function() {
-    ///
     $('.panel.active').slideDown();
   }
 
   this.runSurveyEmail = function() {
-    ///
     $('.panel.active').slideDown();
   }
 
@@ -62,7 +60,7 @@ var surveyEngine = function() {
     let html = '';
     let idx = root.surveyID;
     let data = root.surveydata[idx];
-    let sender = root.profiledata[root.profileID];
+    //let sender = root.profiledata[root.profileID];
     html += '<div class="surveypage" data-mode="preview" data-row="' + idx + '" data-id="' + data.id + '">';
     html += '<div class="topbar"><div class="header"><div class="logobox"><span>logo</span></div><div class="titletext"><h2>' + data.title + '</h2></div></div>';
     html += '<div class="intro"><div class="introtitle"><h3>' + data.intro_title + '</h3></div><div class="introtext">' + data.intro_text + '</div></div></div>';
