@@ -31,13 +31,20 @@ $htmlhead = '<link rel="stylesheet" href="public/themes/theme/css/style.css" typ
 
 $htmlfoot = '';
 
-
+if( $activesurvey['pn'] ){
+  $template->assign("title", "");
+  $template->assign("header", '');
+  $template->assign("htmlhead", $htmlhead);
+  $template->assign("content", $content );
+  $template->assign("footer", "");
+  $template->assign("htmlfoot", $htmlfoot );
+  $template->render();
+}else{
 $template->assign("title", "Theme frontend title");
 $template->assign("header", '<div id="logotitle">Theme Frontend header</div>');
 $template->assign("htmlhead", $htmlhead);
-
-
 $template->assign("content", $content );
 $template->assign("footer", "Theme footer");
 $template->assign("htmlfoot", $htmlfoot );
 $template->render();
+}

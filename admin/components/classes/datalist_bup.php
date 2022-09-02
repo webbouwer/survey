@@ -7,7 +7,7 @@
 
     class dataList{
 
-        private $source;
+        private $source; 
         private $filename;
         private $fields;
         private $datalist;
@@ -88,49 +88,42 @@
           $json = [
 
           			"0"=> [
-          				"question"=> "Ik voel mij gehoord in mijn ervaring van discriminatie.",
-                  "type"=> "value",
+          				"question"=> "Did you know surveys are one of the first practical applications of the personal computer? ",
+          				"type"=> "polar",
           				"required"=> 1,
-          				"tips"=> "Waardering van 1 tot 5",
+          				"tips"=> "This is a survey",
           				"answers"=> [
-          					"0"=> "1",
-          					"1"=> "2",
-          					"2"=> "3",
-          					"3"=> "4",
-          					"4"=> "5"
+          					"0"=> "No",
+          					"1"=> "Yes"
           				]
           			],
           			"1"=> [
-          				"question"=> "Ik kwam makkelijk in contact met Stichting iDb.",
-                  "type"=> "value",
+          				"question"=> "Which of the types listed below are polar questions like the first one? ",
+          				"type"=> "multi",
           				"required"=> 1,
-          				"tips"=> "Waardering van 1 tot 5",
+          				"tips"=> "Multiple answers are possible",
           				"answers"=> [
-          					"0"=> "1",
-          					"1"=> "2",
-          					"2"=> "3",
-          					"3"=> "4",
-          					"4"=> "5"
+          					"0"=> "Are you going? (inversion)",
+          					"1"=> "Are you staying or going? (inversion with an alternative)",
+          					"2"=> "You're going, aren't you? (tag)"
           				]
           			],
           			"2"=> [
-          				"question"=> "Ik ben efficiënt geholpen en/of doorverwezen.",
-                  "type"=> "value",
+          				"question"=> "So, the question 'You like it, don't you?' is",
+          				"type"=> "choice",
           				"required"=> 1,
-          				"tips"=> "Waardering van 1 tot 5",
-          				"answers"=> [
-          					"0"=> "1",
-          					"1"=> "2",
-          					"2"=> "3",
-          					"3"=> "4",
-          					"4"=> "5"
+          				"tips"=> "Choose one answer",
+          				"answers"=>[
+          					"0"=> "a polar inversion",
+          					"1"=> "a polar inversion with an alternative",
+          					"2"=> "a tagged polar"
           				]
           			],
           			"3"=> [
-          				"question"=> "Ik ben zorgvuldig geïnformeerd en regelmatig betrokken bij de klachtenprocedure.",
-                  "type"=> "value",
+          				"question"=> "This is the fourth question; do you like it?",
+          				"type"=> "value",
           				"required"=> 1,
-          				"tips"=> "Waardering van 1 tot 5",
+          				"tips"=> "Value from 1 to 5",
           				"answers"=> [
           					"0"=> "1",
           					"1"=> "2",
@@ -140,49 +133,10 @@
           				]
           			],
           			"4"=> [
-          				"question"=> "Ik voel mij sterker na de afhandeling van mijn melding/klacht. ",
-                  "type"=> "value",
+          				"question"=> "Can you define your joy level knowing this survey is almost over? ",
+          				"type"=> "scale",
           				"required"=> 1,
-          				"tips"=> "Waardering van 1 tot 5",
-          				"answers"=> [
-          					"0"=> "1",
-          					"1"=> "2",
-          					"2"=> "3",
-          					"3"=> "4",
-          					"4"=> "5"
-          				]
-          			],
-          			"5"=> [
-          				"question"=> "Discriminatie melden heeft zin.",
-                  "type"=> "value",
-          				"required"=> 1,
-          				"tips"=> "Waardering van 1 tot 5",
-          				"answers"=> [
-          					"0"=> "1",
-          					"1"=> "2",
-          					"2"=> "3",
-          					"3"=> "4",
-          					"4"=> "5"
-          				]
-          			],
-                "6"=> [
-          				"question"=> "Ik raad mensen die discriminatie ervaren aan contact te zoeken met Stichting iDb.",
-                  "type"=> "value",
-          				"required"=> 1,
-          				"tips"=> "Waardering van 1 tot 5",
-          				"answers"=> [
-          					"0"=> "1",
-          					"1"=> "2",
-          					"2"=> "3",
-          					"3"=> "4",
-          					"4"=> "5"
-          				]
-          			],
-                "7"=> [
-          				"question"=> "Hoe tevreden bent u over de wijze waarop uw melding/klacht is behandeld?",
-                  "type"=> "value",
-          				"required"=> 1,
-          				"tips"=> "Waardering van 1 tot 10",
+          				"tips"=> "Scale from 1 to 10",
           				"answers"=> [
           					"0"=> "1",
           					"1"=> "2",
@@ -196,27 +150,16 @@
           					"9"=> "10"
           				]
           			],
-                "8"=> [
-          				"question"=> "Heeft u nog andere opmerkingen of suggesties?",
+          			"5"=> [
+          				"question"=> "Yes, you 've made it, no question more. You can leave a notice of your love in the textbox below. Or should we make this a question too? ;)",
           				"type"=> "open",
           				"required"=> 0,
-          				"tips"=> "Opmerkingen of suggesties",
+          				"tips"=> "Space to write those words",
           				"max"=> 100,
           				"answers"=> [
-          					"0"=> "Tekst max 100 woorden",
+          					"0"=> "Please express your passion for this survey app within a 100 words",
           				]
-          			],
-
-                          			"9"=> [
-                          				"question"=> "Mogen wij u benaderen met voor een gesprek waarin u persoonlijk uitgebreide feedback geeft?",
-                          				"type"=> "polar",
-                          				"required"=> 1,
-                          				"tips"=> "This is a survey",
-                          				"answers"=> [
-                          					"0"=> "No",
-                          					"1"=> "Yes"
-                          				]
-                          			]
+          			]
           		];
 
 

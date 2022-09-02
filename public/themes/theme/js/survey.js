@@ -5,6 +5,18 @@ jQuery(function($){
 
     var results;
 
+    var firstq = 0;
+    var url = window.location.search.substring(1);
+    var varUrl = url.split('&');
+    for (var i = 0; i < varUrl.length; i++)
+    {
+        var parameter = varUrl[i].split('=');
+        if (parameter[0] == 'qa')
+        {
+            firstq = parameter[1];
+        }
+    }
+    $('#panel0').find('input[value='+firstq+']').attr( 'checked','checked');
 
 
     $('.navbut[data-nr=0]').addClass('done');
@@ -36,8 +48,10 @@ jQuery(function($){
         $('.navbut[data-nr='+nxtid+']').addClass('active');
         next.addClass('active').slideDown();
       }
+
       if( next.hasClass('end') ){
-          alert(JSON.stringify(results));
+          $('div.surveyfoot .panelnav').slideUp();
+          console.log(JSON.stringify(results));
       }
 
     }
@@ -83,6 +97,7 @@ jQuery(function($){
   function surveyResult(){
     let result = {};
     let panels = $('.panel');
+    let amount = panels.length;
     $.each( panels, function(nr, quest) {
 
         let id = $(quest).data('id');

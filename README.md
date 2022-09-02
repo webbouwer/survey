@@ -16,6 +16,10 @@ In Progress:
 	- [ ] set theme
 
 ## Change log
+Development End
+Version v6.7 is the latest version made during this development trail.
+The application succeeded in sending encrypted data back and forth. Allthough a promising project the development of a backoffice with enough data management and feedback funtcions was a bit to much to develop in a short time. This Repository can be used for educational usage.
+
 In [prototype v6](https://github.com/webbouwer/survey/tree/Prototype-v6) preparing styling and survey/profile edit options
 - Remake Theming dark/light detect and toggle, variables in single style.css
 - Configlist profile management new/edit/copy/delete

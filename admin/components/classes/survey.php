@@ -18,7 +18,7 @@ function surveyPageHTML( $uid, $idx, $toname, $data ) {
   $html = '';
 
   $html .= '<div class="surveypage" data-mode="preview" data-activeid="'.$uid.'" data-row="' . $idx . '" data-id="' . $data['id'] . '">';
-  $html .= '<div class="topbar"><div class="header"><div class="logobox"><span>logo</span></div><div class="titletext"><h2>' . $data['title'] . '</h2></div></div>';
+  $html .= '<div class="topbar"><div class="header"><div class="logobox"><img src="public/themes/theme/media/logo.png" /></div><div class="titletext"><h2>' . $data['title'] . '</h2></div></div>';
   $html .= '<div class="intro"><div class="introtitle"><h3>' . $data['intro_title'] . '</h3></div><div class="introtext">' . $data['intro_text'] . '</div></div></div>';
   $html .= '<div class="main"><div class="introsubtext">' . $data['intro_subtext'] . '</div>';
 
@@ -142,11 +142,11 @@ function surveyPageHTML( $uid, $idx, $toname, $data ) {
   $html .= '</div>'; // end main
 
   $html .= '<div class="bottombar">';
-  if ($data['email_end'] != '') {
-    $html .= '<div class="outro">' . $data['email_end'] . '</div>';
+  if ($data['outro_text'] != '') {
+    $html .= '<div class="outro">' . $data['outro_text'] . '</div>';
   }
-  $html .= '<div class="endgreetings">' . $data['email_regards'] . ',</br />'.$sender['sender'].'</div>';
-  $html .= '<div class="profilename">'.$sender['profile'].'</div>';
+  //$html .= '<div class="endgreetings">' . $data['email_regards'] . ',</br />'.$sender['sender'].'</div>';
+  //$html .= '<div class="profilename">'.$sender['profile'].'</div>';
   $html .= '<div class="disclaimerbox">' . $data['survey_disclaimtext2'] . ' <a href="' . $data['survey_disclaimlink'] . '">' . $data['survey_disclaimlinktext'] . '</a></div>';
   $html .= '<div class="footer">';
   $html .= '<div class="column1">[profile contact info]</div><div class="column2">[profile organisation info]</div><div class="column3"><div class="logobox"><span>logo</span></div></div>';
