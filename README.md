@@ -1,5 +1,8 @@
 # Survey by e-mail
 An application to **create and send surveys by email**.
+
+## This project is halted, this repository is kept as an archive
+
 Survey participant encrypted data is only send by email, not stored. All other anonymous data and stored encrypted in a json file.
 
 Build with json, ajax and php, this application is in development and **not for production** use yet.
